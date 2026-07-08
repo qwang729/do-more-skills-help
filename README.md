@@ -53,13 +53,34 @@ data/experiments/
 
 ## Data
 
-Raw datasets are intentionally not committed because they are large. The local project used:
+Raw datasets are intentionally not committed because they are large. Download them from the official sources below.
 
-- Skill-Usage
-- SkillsBench
-- SWE-Skills-Bench
+| Dataset | Source | Expected local path | Project use |
+|---|---|---|---|
+| Skill-Usage | [GitHub](https://github.com/UCSB-NLP-Chang/Skill-Usage), [Hugging Face](https://huggingface.co/datasets/Shiyu-Lab/Skill-Usage) | `data/raw/Skill-Usage` | Main retrieval-scaling experiment |
+| SkillsBench | [GitHub](https://github.com/benchflow-ai/skillsbench), [Hugging Face](https://huggingface.co/datasets/benchflow/skillsbench) | `data/raw/skillsbench` | Downstream validation |
+| SWE-Skills-Bench | [GitHub](https://github.com/GeniusHTX/SWE-Skills-Bench), [Hugging Face](https://huggingface.co/datasets/GeniusHTX/SWE-Skills-Bench) | `data/raw/SWE-Skills-Bench` | SWE skill/no-skill comparison |
 
-See `docs/data_usage_guide.md` and `docs/project_data_inventory.md` for download notes and expected local paths.
+Recommended setup:
+
+```bash
+mkdir -p data/raw
+cd data/raw
+
+git clone https://github.com/UCSB-NLP-Chang/Skill-Usage.git
+cd Skill-Usage
+hf download Shiyu-Lab/Skill-Usage skills-34k/skills.zip skills-34k/skills_meta.jsonl --repo-type dataset --local-dir .
+unzip skills-34k/skills.zip -d skills/
+cp skills-34k/skills_meta.jsonl skills/
+hf download Shiyu-Lab/Skill-Usage search_index/search_index.zip --repo-type dataset --local-dir .
+unzip search_index/search_index.zip -d search_server/index/
+
+cd ..
+git clone https://github.com/benchflow-ai/skillsbench.git
+git clone https://github.com/GeniusHTX/SWE-Skills-Bench.git
+```
+
+See `docs/data_usage_guide.md` and `docs/project_data_inventory.md` for more details about data size, expected paths, and usage notes.
 
 ## Reproducing the Pilot
 
