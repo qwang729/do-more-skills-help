@@ -23,6 +23,8 @@ We completed a first retrieval-scaling pilot using the Skill-Usage dataset.
 - Retriever: lightweight local BM25 over skill name + description
 - Metrics: Top-1 Accuracy, Recall@3, Recall@5, Recall@10, MRR, NDCG@10
 
+Note: in this pilot, `Recall@K` means the fraction of the full gold skill set recovered in the top K, not `Hit@K`. Therefore `Recall@3` can be lower than `Top-1 Accuracy` when a task has multiple gold skills.
+
 Main result:
 
 - Top-1 Accuracy drops from **0.963** at pool size 10 to **0.414** at full library.

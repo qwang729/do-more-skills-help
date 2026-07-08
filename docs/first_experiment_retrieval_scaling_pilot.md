@@ -37,6 +37,77 @@
 
 ---
 
+## 指标说明
+
+这组实验里有些任务对应多个 gold skills，因此 `Top-1 Accuracy` 和 `Recall@K` 的数值关系可能看起来有点反直觉。
+
+### Top-1 Accuracy
+
+`Top-1 Accuracy` 衡量排名第一的 skill 是否命中任意一个 gold skill：
+
+```text
+Top-1 Accuracy = 1 if ranked_ids[0] in gold else 0
+```
+
+只要第 1 名是 gold set 中的任意一个 skill，这个任务的 Top-1 就记为 1。
+
+### Recall@K
+
+本实验中的 `Recall@K` 不是 “Top-K 里是否至少包含一个正确 skill”，而是：
+
+```text
+Recall@K = Top-K 中命中的 gold skill 数 / gold skill 总数
+```
+
+对应代码是：
+
+```python
+len(set(ranked_ids[:k]) & gold) / len(gold)
+```
+
+因此，如果一个任务有 5 个 gold skills，而 Top-1 命中了其中 1 个：
+
+```text
+Top-1 Accuracy = 1
+Recall@3 = 1 / 5 = 0.2
+```
+
+所以 `Recall@3` 低于 `Top-1 Accuracy` 并不矛盾。它说明虽然第一名已经是正确 skill，但 Top-3 没有覆盖完整 gold skill set。
+
+### Hit@K / Top-K Accuracy
+
+如果我们想衡量 “Top-K 里是否至少有一个正确 skill”，应该使用 `Hit@K` 或 `Top-K Accuracy`：
+
+```text
+Hit@K = 1 if Top-K contains any gold skill else 0
+```
+
+这个指标才一定满足：
+
+```text
+Hit@3 >= Top-1 Accuracy
+Hit@5 >= Hit@3
+Hit@10 >= Hit@5
+```
+
+后续实验可以同时报告 `Recall@K` 和 `Hit@K`：前者衡量 gold skill set 的覆盖率，后者衡量至少检索到一个可用 skill 的概率。
+
+### MRR
+
+`MRR` 是 Mean Reciprocal Rank，衡量第一个命中的 gold skill 排在多靠前：
+
+```text
+MRR = 1 / rank_of_first_gold_skill
+```
+
+如果第 1 名命中，MRR 为 1；如果第 3 名才命中，MRR 为 1/3；如果 Top-K 内没有命中，MRR 为 0。
+
+### NDCG@10
+
+`NDCG@10` 衡量 gold skills 在前 10 名中的排序质量。越靠前命中的 gold skill 权重越高，并且会按理想排序进行归一化。它比 `Recall@10` 更关注 “正确 skill 排得是否靠前”。
+
+---
+
 ## 观察
 
 1. 随着 candidate pool 从 10 扩大到 full，Top-1 Accuracy 从 0.963 降到 0.414。
@@ -60,4 +131,3 @@
 2. 扩展 `experiments/retrieval_scaling_pilot.py`，加入 same-owner、same-repo 和 lexical-overlap distractors。
 3. 增加 plots：pool size vs Top-1、Recall@10、NDCG@10。
 4. 抽取 full pool 失败案例，做 qualitative analysis。
-
