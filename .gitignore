@@ -8,6 +8,8 @@ data/raw/
 __pycache__/
 *.py[cod]
 data/experiments/rq3_retriever_enhanced/neural_doc_embeddings.npy
+data/experiments/rq4_agent_passrate_protocol/task_packages/
+data/experiments/rq4_agent_passrate_protocol/jobs/
 
 # Local environment files.
 .env

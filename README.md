@@ -109,6 +109,8 @@ Takeaway: retrieval correctness helps, but downstream readiness requires a compl
 
 See the full analysis in [`docs/rq4_downstream_skill_exposure_analysis_2026-07-09.md`](docs/rq4_downstream_skill_exposure_analysis_2026-07-09.md).
 
+We also prepared the real-agent pass-rate validation protocol for 8 representative SkillsBench tasks across five conditions: `no_skill`, `oracle_gold_all`, `bm25_top10`, `hybrid_bm25_neural_top10`, and `oracle_gold_plus_5_noise`. The command matrix is ready, but the current local environment does not have BenchFlow CLI, Docker, or model API credentials, so true pass rate is not reported yet. See [`docs/rq4_agent_passrate_protocol_2026-07-09.md`](docs/rq4_agent_passrate_protocol_2026-07-09.md).
+
 ## Previous Pilot Experiment
 
 We completed a first retrieval-scaling pilot using the Skill-Usage dataset.
@@ -137,6 +139,7 @@ docs/
   rq3_retriever_comparison_analysis_2026-07-09.md
   rq3_retriever_enhanced_analysis_2026-07-09.md
   rq4_downstream_skill_exposure_analysis_2026-07-09.md
+  rq4_agent_passrate_protocol_2026-07-09.md
   first_experiment_retrieval_scaling_pilot.md
   data_usage_guide.md
   project_data_inventory.md
@@ -147,6 +150,7 @@ experiments/
   rq3_retriever_comparison.py
   rq3_retriever_enhanced.py
   rq4_downstream_skill_exposure.py
+  rq4_agent_passrate_protocol.py
   retrieval_scaling_pilot.py
 
 data/experiments/
@@ -180,6 +184,11 @@ data/experiments/
     summary.json
     per_task_exposure.csv
     case_studies.json
+  rq4_agent_passrate_protocol/
+    selected_tasks.csv
+    condition_matrix.csv
+    protocol_summary.json
+    run_commands.sh
   retrieval_scaling_pilot/
     summary.csv
     summary.json
@@ -284,6 +293,18 @@ The script writes results to:
 
 ```text
 data/experiments/rq4_downstream_skill_exposure/
+```
+
+To prepare the real-agent pass-rate validation protocol, run:
+
+```bash
+python3 experiments/rq4_agent_passrate_protocol.py
+```
+
+This writes the selected task set, condition matrix, and BenchFlow command script to:
+
+```text
+data/experiments/rq4_agent_passrate_protocol/
 ```
 
 ## Reproducing the Pilot

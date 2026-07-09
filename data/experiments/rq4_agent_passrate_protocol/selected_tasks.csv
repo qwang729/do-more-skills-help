@@ -1,0 +1,9 @@
+task_id,difficulty,category,gold_skill_count,bm25_top1_is_gold,bm25_top10_complete,hybrid_top10_complete,reason
+video-silence-remover,hard,media-content-production,7,1.0,0.0,0.0,representative SkillsBench validation task
+drone-planning-control,medium,industrial-physical-systems,6,1.0,1.0,1.0,representative SkillsBench validation task
+fix-erlang-ssh-cve,hard,cybersecurity,6,1.0,0.0,0.0,representative SkillsBench validation task
+financial-modeling-qa,hard,finance-economics,2,0.0,0.0,0.0,representative SkillsBench validation task
+energy-market-pricing,hard,industrial-physical-systems,4,1.0,1.0,1.0,representative SkillsBench validation task
+offer-letter-generator,easy,office-white-collar,1,1.0,1.0,1.0,representative SkillsBench validation task
+react-performance-debugging,hard,software-engineering,2,1.0,1.0,1.0,representative SkillsBench validation task
+setup-fuzzing-py,medium,cybersecurity,3,1.0,1.0,1.0,representative SkillsBench validation task
