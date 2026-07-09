@@ -22,14 +22,15 @@ We completed the formal RQ1 retrieval-scaling experiment using the Skill-Usage d
 - Skill library size: 34,396
 - Candidate pool sizes: 10, 50, 100, 500, 1000, 5000, 10000, full
 - Retriever: lightweight local BM25 over skill name + description
+- Ranking: Top-K results include zero-score candidates; `positive_score_count` is logged separately
 - Repeats: 20 random-distractor repeats for non-full pools; 1 full-library run
 - Metrics: Top-1 Accuracy, Hit@K, Recall@K, MRR@10, NDCG@10
 
 Main result:
 
 - Top-1 Accuracy drops from **0.964** at pool size 10 to **0.414** at full library.
-- Hit@10 drops from **0.989** to **0.667**.
-- Recall@10 drops from **0.880** to **0.449**.
+- Hit@10 drops from **1.000** to **0.667**.
+- Recall@10 drops from **1.000** to **0.449**.
 
 See the full analysis in [`docs/rq1_retrieval_scaling_analysis_2026-07-09.md`](docs/rq1_retrieval_scaling_analysis_2026-07-09.md).
 

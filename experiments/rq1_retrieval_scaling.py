@@ -97,6 +97,7 @@ def bm25_rank(query: str, candidate_ids: list[str], docs: dict[str, dict], top_k
     k1 = 1.5
     b = 0.75
     scores = []
+    positive_score_count = 0
     for sid in candidate_ids:
         doc = docs[sid]
         doc_len = doc["length"] or 1
@@ -111,7 +112,8 @@ def bm25_rank(query: str, candidate_ids: list[str], docs: dict[str, dict], top_k
             denom = freq + k1 * (1 - b + b * doc_len / avg_len)
             score += idf * (freq * (k1 + 1)) / denom
         if score > 0:
-            scores.append((score, sid))
+            positive_score_count += 1
+        scores.append((score, sid))
 
     scores.sort(key=lambda item: (-item[0], item[1]))
     return [
@@ -119,6 +121,8 @@ def bm25_rank(query: str, candidate_ids: list[str], docs: dict[str, dict], top_k
             "rank": rank,
             "skill_id": sid,
             "score": round(score, 6),
+            "positive_score": score > 0,
+            "positive_score_count": positive_score_count,
             "name": docs[sid]["name"],
             "owner": docs[sid]["owner"],
             "repo": docs[sid]["repo"],
@@ -205,7 +209,7 @@ def write_csv(path: Path, rows: list[dict]) -> None:
         path.write_text("")
         return
     with path.open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -328,6 +332,7 @@ def main() -> None:
                 ranked = bm25_rank(query, candidates, docs, args.top_k)
                 ranked_ids = [row["skill_id"] for row in ranked]
                 first_gold_rank = first_gold_rank_at_k(ranked_ids, gold, args.top_k)
+                positive_score_count = ranked[0]["positive_score_count"] if ranked else 0
 
                 row = {
                     "task": task,
@@ -335,6 +340,8 @@ def main() -> None:
                     "actual_pool_size": len(candidates),
                     "repeat": repeat,
                     "gold_count": len(gold),
+                    "returned_count": len(ranked),
+                    "positive_score_count": positive_score_count,
                     "top1_accuracy": 1.0 if ranked_ids and ranked_ids[0] in gold else 0.0,
                     "hit@3": hit_at_k(ranked_ids, gold, 3),
                     "hit@5": hit_at_k(ranked_ids, gold, 5),

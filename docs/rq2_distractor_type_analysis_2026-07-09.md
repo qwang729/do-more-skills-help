@@ -108,6 +108,8 @@ BM25 over skill name + skill description
 - Recall@10
 - MRR@10
 - NDCG@10
+- Mean hard-negative purity：非 random distractor 中，真正 hard negatives 占 distractors 的平均比例。
+- Mean fallback distractors：当 hard negatives 不足以填满 candidate pool 时，平均用 random distractors 补齐的数量。
 
 ---
 
@@ -117,8 +119,8 @@ BM25 over skill name + skill description
 
 | Distractor type | Pool size | Top-1 | Error | Hit@10 | MRR@10 |
 |---|---:|---:|---:|---:|---:|
-| random | 50 | 0.908 | 0.092 | 0.989 | 0.941 |
-| random | 100 | 0.889 | 0.111 | 0.988 | 0.924 |
+| random | 50 | 0.908 | 0.092 | 0.992 | 0.941 |
+| random | 100 | 0.889 | 0.111 | 0.989 | 0.924 |
 | random | 500 | 0.763 | 0.237 | 0.953 | 0.836 |
 | random | 1000 | 0.717 | 0.283 | 0.937 | 0.796 |
 | query_overlap | 50 | 0.391 | 0.609 | 0.736 | 0.502 |
@@ -144,9 +146,9 @@ BM25 over skill name + skill description
 
 | Distractor type | Avg Top-1 | Avg Error | Avg Hit@10 | Avg Hit@10 Miss | Avg MRR@10 | Avg NDCG@10 |
 |---|---:|---:|---:|---:|---:|---:|
-| random | 0.819 | 0.181 | 0.967 | 0.033 | 0.874 | 0.789 |
-| gold_skill_near | 0.526 | 0.474 | 0.830 | 0.170 | 0.625 | 0.525 |
-| embedding_semantic_near | 0.503 | 0.497 | 0.790 | 0.210 | 0.601 | 0.501 |
+| random | 0.819 | 0.181 | 0.968 | 0.032 | 0.874 | 0.791 |
+| gold_skill_near | 0.526 | 0.474 | 0.830 | 0.170 | 0.625 | 0.526 |
+| embedding_semantic_near | 0.503 | 0.497 | 0.790 | 0.210 | 0.601 | 0.502 |
 | bm25_hard | 0.414 | 0.586 | 0.695 | 0.305 | 0.508 | 0.413 |
 | query_overlap | 0.397 | 0.603 | 0.707 | 0.293 | 0.502 | 0.419 |
 
@@ -162,13 +164,24 @@ Pool size 100 is a useful midpoint because RQ1 showed random distractors were st
 
 | Distractor type | Top-1 | Drop vs random | Hit@10 |
 |---|---:|---:|---:|
-| random | 0.889 | 0.000 | 0.988 |
+| random | 0.889 | 0.000 | 0.989 |
 | gold_skill_near | 0.563 | 0.325 | 0.862 |
 | embedding_semantic_near | 0.540 | 0.348 | 0.805 |
 | bm25_hard | 0.425 | 0.463 | 0.678 |
 | query_overlap | 0.379 | 0.509 | 0.713 |
 
 At pool size 100, query-overlap distractors reduce Top-1 Accuracy by **0.509** compared with random distractors. This shows that distractor *quality* can matter as much as, or more than, distractor *quantity*.
+
+### Hard-negative purity
+
+| Distractor type | Avg hard-negative purity | Avg fallback distractors |
+|---|---:|---:|
+| query_overlap | 0.953 | 31.986 |
+| bm25_hard | 1.000 | 0.000 |
+| gold_skill_near | 1.000 | 0.000 |
+| embedding_semantic_near | 1.000 | 0.000 |
+
+`query_overlap` occasionally needs random fallback distractors at larger pool sizes because some queries do not have enough non-gold skills with positive token overlap to fill the full pool. The fallback rate is reported explicitly, and the main conclusion remains stable because query-overlap is still the most harmful distractor type by average Top-1 Accuracy.
 
 ---
 

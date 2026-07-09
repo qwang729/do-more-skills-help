@@ -9,8 +9,100 @@
         "rank": 1,
         "skill_id": "benchflow-ai--mesh-analysis",
         "score": 8.440837,
+        "positive_score": true,
+        "positive_score_count": 1,
         "name": "mesh-analysis",
         "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 2,
+        "skill_id": "giuseppe-trisciuoglio--unit-test-exception-handler",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "unit-test-exception-handler",
+        "owner": "giuseppe-trisciuoglio",
+        "repo": ""
+      },
+      {
+        "rank": 3,
+        "skill_id": "glebis--llm-cli",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "llm-cli",
+        "owner": "glebis",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "jjmartres--work-on-ticket",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "work-on-ticket",
+        "owner": "jjmartres",
+        "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "lookatitude--doc-writing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "doc-writing",
+        "owner": "lookatitude",
+        "repo": "beluga-ai"
+      },
+      {
+        "rank": 6,
+        "skill_id": "mepuka--effect-errors-retries",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "effect-errors-retries",
+        "owner": "mepuka",
+        "repo": "effect-ontology"
+      },
+      {
+        "rank": 7,
+        "skill_id": "mims-harvard--tooluniverse-binder-discovery",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "tooluniverse-binder-discovery",
+        "owner": "mims-harvard",
+        "repo": "tooluniverse"
+      },
+      {
+        "rank": 8,
+        "skill_id": "umbraco--umbraco-skill-validator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "umbraco-skill-validator",
+        "owner": "umbraco",
+        "repo": "umbraco-cms-backoffice-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "wlzh--invoice-scanner",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "invoice-scanner",
+        "owner": "wlzh",
+        "repo": ""
+      },
+      {
+        "rank": 10,
+        "skill_id": "zenobi-us--game-developer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "game-developer",
+        "owner": "zenobi-us",
         "repo": ""
       }
     ]
@@ -29,6 +121,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--yaml-config",
         "score": 8.150892,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "yaml-config",
         "owner": "benchflow-ai",
         "repo": ""
@@ -37,6 +131,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--csv-processing",
         "score": 7.899424,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "csv-processing",
         "owner": "benchflow-ai",
         "repo": ""
@@ -45,6 +141,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--pid-controller",
         "score": 4.751725,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "pid-controller",
         "owner": "benchflow-ai",
         "repo": ""
@@ -53,6 +151,8 @@
         "rank": 4,
         "skill_id": "benchflow-ai--simulation-metrics",
         "score": 3.821194,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "simulation-metrics",
         "owner": "benchflow-ai",
         "repo": ""
@@ -61,9 +161,61 @@
         "rank": 5,
         "skill_id": "benchflow-ai--vehicle-dynamics",
         "score": 1.156046,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "vehicle-dynamics",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "ddttom--content-driven-development",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "content-driven-development",
+        "owner": "ddttom",
+        "repo": ""
+      },
+      {
+        "rank": 7,
+        "skill_id": "foxzool--openlark-api",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "openlark-api",
+        "owner": "foxzool",
+        "repo": "open-lark"
+      },
+      {
+        "rank": 8,
+        "skill_id": "ishk-sftckz--plan-one-shot",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "plan-one-shot",
+        "owner": "ishk-sftckz",
+        "repo": "exspecso"
+      },
+      {
+        "rank": 9,
+        "skill_id": "openserv-labs--openserv-agent-sdk",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "openserv-agent-sdk",
+        "owner": "openserv-labs",
+        "repo": "skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "simota--navigator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "navigator",
+        "owner": "simota",
+        "repo": "agent-skills"
       }
     ]
   },
@@ -77,6 +229,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--azure-bgp",
         "score": 3.632826,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "azure-bgp",
         "owner": "benchflow-ai",
         "repo": ""
@@ -85,9 +239,91 @@
         "rank": 2,
         "skill_id": "curiositech--test-automation-expert",
         "score": 1.493124,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "test-automation-expert",
         "owner": "curiositech",
         "repo": "some_claude_skills"
+      },
+      {
+        "rank": 3,
+        "skill_id": "bitsoex--mutation-testing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "mutation-testing",
+        "owner": "bitsoex",
+        "repo": "bitso-java"
+      },
+      {
+        "rank": 4,
+        "skill_id": "dauquangthanh--alibaba-cloud",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "alibaba-cloud",
+        "owner": "dauquangthanh",
+        "repo": "hanoi-rainbow"
+      },
+      {
+        "rank": 5,
+        "skill_id": "majiayu000--wp-abilities-api",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "wp-abilities-api",
+        "owner": "majiayu000",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "partme-ai--ascii-cli-logo-banner",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "ascii-cli-logo-banner",
+        "owner": "partme-ai",
+        "repo": "full-stack-skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "pbakaus--normalize",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "normalize",
+        "owner": "pbakaus",
+        "repo": "impeccable"
+      },
+      {
+        "rank": 8,
+        "skill_id": "plurigrid--jira-issues",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "jira-issues",
+        "owner": "plurigrid",
+        "repo": ""
+      },
+      {
+        "rank": 9,
+        "skill_id": "wh-2099--mermaid",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "mermaid",
+        "owner": "wh-2099",
+        "repo": "mermaid-skill"
+      },
+      {
+        "rank": 10,
+        "skill_id": "wshobson--web-component-design",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "web-component-design",
+        "owner": "wshobson",
+        "repo": ""
       }
     ]
   },
@@ -101,6 +337,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--citation-management",
         "score": 8.337683,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "citation-management",
         "owner": "benchflow-ai",
         "repo": ""
@@ -109,6 +347,8 @@
         "rank": 2,
         "skill_id": "troykelly--project-board-enforcement",
         "score": 1.784593,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "project-board-enforcement",
         "owner": "troykelly",
         "repo": "claude-skills"
@@ -117,9 +357,81 @@
         "rank": 3,
         "skill_id": "omer-metin--smart-contract-auditor",
         "score": 1.295781,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "smart-contract-auditor",
         "owner": "omer-metin",
         "repo": "skills-for-antigravity"
+      },
+      {
+        "rank": 4,
+        "skill_id": "athola--python-packaging",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "python-packaging",
+        "owner": "athola",
+        "repo": "claude-night-market"
+      },
+      {
+        "rank": 5,
+        "skill_id": "fcakyon--commit-workflow",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "commit-workflow",
+        "owner": "fcakyon",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "heyman333--ios-glass-ui-designer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "ios-glass-ui-designer",
+        "owner": "heyman333",
+        "repo": "atelier-ui"
+      },
+      {
+        "rank": 7,
+        "skill_id": "imgly--docs-svelte",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "docs-svelte",
+        "owner": "imgly",
+        "repo": "agent-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "mathews-tom--architecture-diagram",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "architecture-diagram",
+        "owner": "mathews-tom",
+        "repo": "praxis-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "outsharp--shipp",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "shipp",
+        "owner": "outsharp",
+        "repo": "shipp-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "sickn33--git-pr-workflows-onboard",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "git-pr-workflows-onboard",
+        "owner": "sickn33",
+        "repo": "antigravity-awesome-skills"
       }
     ]
   },
@@ -136,6 +448,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--hex-grid-spatial",
         "score": 5.634986,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "hex-grid-spatial",
         "owner": "benchflow-ai",
         "repo": ""
@@ -144,6 +458,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--map-optimization-strategy",
         "score": 3.637862,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "map-optimization-strategy",
         "owner": "benchflow-ai",
         "repo": ""
@@ -152,6 +468,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--civ6lib",
         "score": 2.328081,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "civ6lib",
         "owner": "benchflow-ai",
         "repo": ""
@@ -160,9 +478,71 @@
         "rank": 4,
         "skill_id": "sickn33--network-engineer",
         "score": 1.928051,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "network-engineer",
         "owner": "sickn33",
         "repo": "antigravity-awesome-skills"
+      },
+      {
+        "rank": 5,
+        "skill_id": "benchflow-ai--sqlite-map-parser",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "sqlite-map-parser",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "davidortinau--maui-unit-testing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "maui-unit-testing",
+        "owner": "davidortinau",
+        "repo": "maui-skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "jeremylongshore--clerk-rate-limits",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "clerk-rate-limits",
+        "owner": "jeremylongshore",
+        "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "madteacher--agents-md-generator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "agents-md-generator",
+        "owner": "madteacher",
+        "repo": "mad-agents-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "new-silvermoon--android-retrofit",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "android-retrofit",
+        "owner": "new-silvermoon",
+        "repo": "awesome-android-agent-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "shinchven--real-mecha",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "real-mecha",
+        "owner": "shinchven",
+        "repo": "nano-banana-skills"
       }
     ]
   },
@@ -176,9 +556,101 @@
         "rank": 1,
         "skill_id": "benchflow-ai--pdf-1",
         "score": 7.3811,
+        "positive_score": true,
+        "positive_score_count": 1,
         "name": "pdf-1",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 2,
+        "skill_id": "CharlesWiltgen--axiom-storage",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "axiom-storage",
+        "owner": "CharlesWiltgen",
+        "repo": ""
+      },
+      {
+        "rank": 3,
+        "skill_id": "aj-geddes--responsive-web-design",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "responsive-web-design",
+        "owner": "aj-geddes",
+        "repo": "useful-ai-prompts"
+      },
+      {
+        "rank": 4,
+        "skill_id": "glittercowboy--plugin-workflow",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "plugin-workflow",
+        "owner": "glittercowboy",
+        "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "iserter--brainstorming-laravel",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "brainstorming-laravel",
+        "owner": "iserter",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "jgamaraalv--ioredis",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "ioredis",
+        "owner": "jgamaraalv",
+        "repo": "ts-dev-kit"
+      },
+      {
+        "rank": 7,
+        "skill_id": "jmsktm--agent-workflow-builder",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "agent-workflow-builder",
+        "owner": "jmsktm",
+        "repo": "claude-settings"
+      },
+      {
+        "rank": 8,
+        "skill_id": "outsharp--shipp",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "shipp",
+        "owner": "outsharp",
+        "repo": "shipp-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "proffesor-for-testing--context-driven-testing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "context-driven-testing",
+        "owner": "proffesor-for-testing",
+        "repo": ""
+      },
+      {
+        "rank": 10,
+        "skill_id": "zhihaoairobotic--tmux",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "tmux",
+        "owner": "zhihaoairobotic",
+        "repo": "clawphd"
       }
     ]
   },
@@ -193,6 +665,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--pymatgen",
         "score": 2.580958,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "pymatgen",
         "owner": "benchflow-ai",
         "repo": ""
@@ -201,9 +675,91 @@
         "rank": 2,
         "skill_id": "jeremylongshore--guidewire-core-workflow-b",
         "score": 2.134576,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "guidewire-core-workflow-b",
         "owner": "jeremylongshore",
         "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 3,
+        "skill_id": "benchflow-ai--sympy",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "sympy",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "dy9759--skill-forge",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "skill-forge",
+        "owner": "dy9759",
+        "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "hoodini--vercel",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "vercel",
+        "owner": "hoodini",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "inference-sh--linkedin-content",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "linkedin-content",
+        "owner": "inference-sh",
+        "repo": "skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "ivan-magda--plugin-authoring",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "plugin-authoring",
+        "owner": "ivan-magda",
+        "repo": "claude-code-plugin-template"
+      },
+      {
+        "rank": 8,
+        "skill_id": "ohzw--roblox-design-consultant",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "roblox-design-consultant",
+        "owner": "ohzw",
+        "repo": "roblox-dev-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "tech-leads-club--perf-web-optimization",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "perf-web-optimization",
+        "owner": "tech-leads-club",
+        "repo": ""
+      },
+      {
+        "rank": 10,
+        "skill_id": "thinkfleetai--local-whisper",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "local-whisper",
+        "owner": "thinkfleetai",
+        "repo": "thinkfleet-engine"
       }
     ]
   },
@@ -218,6 +774,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--pcap-analysis",
         "score": 9.96857,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "pcap-analysis",
         "owner": "benchflow-ai",
         "repo": ""
@@ -226,6 +784,8 @@
         "rank": 2,
         "skill_id": "melodic-software--gemini-delegation-patterns",
         "score": 2.04135,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "gemini-delegation-patterns",
         "owner": "melodic-software",
         "repo": "claude-code-plugins"
@@ -234,6 +794,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--threat-detection",
         "score": 1.876292,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "threat-detection",
         "owner": "benchflow-ai",
         "repo": ""
@@ -242,9 +804,71 @@
         "rank": 4,
         "skill_id": "synapsync--universal-planner",
         "score": 1.385673,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "universal-planner",
         "owner": "synapsync",
         "repo": "synapse_registry"
+      },
+      {
+        "rank": 5,
+        "skill_id": "boshu2--flywheel",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "flywheel",
+        "owner": "boshu2",
+        "repo": "agentops"
+      },
+      {
+        "rank": 6,
+        "skill_id": "davila7--information-security-manager-iso27001",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "information-security-manager-iso27001",
+        "owner": "davila7",
+        "repo": "claude-code-templates"
+      },
+      {
+        "rank": 7,
+        "skill_id": "jkeskikangas--writing-skills",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "writing-skills",
+        "owner": "jkeskikangas",
+        "repo": "skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "lubusin--frappe-app-development",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "frappe-app-development",
+        "owner": "lubusin",
+        "repo": "agent-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "partme-ai--react",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "react",
+        "owner": "partme-ai",
+        "repo": "full-stack-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "secondsky--progressive-web-app",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "progressive-web-app",
+        "owner": "secondsky",
+        "repo": ""
       }
     ]
   },
@@ -258,6 +882,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--d3js-visualization",
         "score": 6.955588,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "d3js-visualization",
         "owner": "benchflow-ai",
         "repo": ""
@@ -266,9 +892,91 @@
         "rank": 2,
         "skill_id": "yanko-belov--input-validation",
         "score": 2.326159,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "input-validation",
         "owner": "yanko-belov",
         "repo": "code-craft"
+      },
+      {
+        "rank": 3,
+        "skill_id": "aniketpanjwani--newsletter-events-list-sources",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "newsletter-events-list-sources",
+        "owner": "aniketpanjwani",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "bytedance--material-component-doc",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "material-component-doc",
+        "owner": "bytedance",
+        "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "eyadsibai--nemo-evaluator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "nemo-evaluator",
+        "owner": "eyadsibai",
+        "repo": "ltk"
+      },
+      {
+        "rank": 6,
+        "skill_id": "jeremylongshore--status-code-recommender",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "status-code-recommender",
+        "owner": "jeremylongshore",
+        "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "miles990--cloud-platforms",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "cloud-platforms",
+        "owner": "miles990",
+        "repo": "claude-software-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "mindrally--systemverilog",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "systemverilog",
+        "owner": "mindrally",
+        "repo": "skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "s-hiraoku--vscode-bug-hunter",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "vscode-bug-hunter",
+        "owner": "s-hiraoku",
+        "repo": "vscode-sidebar-terminal"
+      },
+      {
+        "rank": 10,
+        "skill_id": "wisewong6--omega-prompt-forge",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "omega-prompt-forge",
+        "owner": "wisewong6",
+        "repo": "prompt-skills"
       }
     ]
   },
@@ -282,6 +990,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--dialogue-graph",
         "score": 6.743364,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "dialogue-graph",
         "owner": "benchflow-ai",
         "repo": ""
@@ -290,6 +1000,8 @@
         "rank": 2,
         "skill_id": "oocx--website-devtools",
         "score": 1.62965,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "website-devtools",
         "owner": "oocx",
         "repo": "tfplan2md"
@@ -298,8 +1010,80 @@
         "rank": 3,
         "skill_id": "marcusgoll--clarification-phase",
         "score": 1.525102,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "clarification-phase",
         "owner": "marcusgoll",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "Prorise-cool--devops-specialist",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "devops-specialist",
+        "owner": "Prorise-cool",
+        "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "chaterm--monitoring",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "monitoring",
+        "owner": "chaterm",
+        "repo": "terminal-skills"
+      },
+      {
+        "rank": 6,
+        "skill_id": "geeksfino--high-dividend-strategy",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "high-dividend-strategy",
+        "owner": "geeksfino",
+        "repo": "finskills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "jeremylongshore--cross-validation-setup",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "cross-validation-setup",
+        "owner": "jeremylongshore",
+        "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "miles990--content-platforms",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "content-platforms",
+        "owner": "miles990",
+        "repo": "claude-software-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "nesnilnehc--review-powershell",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "review-powershell",
+        "owner": "nesnilnehc",
+        "repo": "ai-cortex"
+      },
+      {
+        "rank": 10,
+        "skill_id": "vamseeachanta--brand-guidelines",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "brand-guidelines",
+        "owner": "vamseeachanta",
         "repo": ""
       }
     ]
@@ -317,6 +1101,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--egomotion-estimation",
         "score": 12.332971,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "egomotion-estimation",
         "owner": "benchflow-ai",
         "repo": ""
@@ -325,6 +1111,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--dyn-object-masks",
         "score": 4.449503,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "dyn-object-masks",
         "owner": "benchflow-ai",
         "repo": ""
@@ -333,6 +1121,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--sampling-and-indexing",
         "score": 3.940018,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "sampling-and-indexing",
         "owner": "benchflow-ai",
         "repo": ""
@@ -341,9 +1131,71 @@
         "rank": 4,
         "skill_id": "benchflow-ai--output-validation",
         "score": 1.897622,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "output-validation",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "avifenesh--enhance-orchestrator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "enhance-orchestrator",
+        "owner": "avifenesh",
+        "repo": "agentsys"
+      },
+      {
+        "rank": 6,
+        "skill_id": "charleswiltgen--axiom-ios-games",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "axiom-ios-games",
+        "owner": "charleswiltgen",
+        "repo": "axiom"
+      },
+      {
+        "rank": 7,
+        "skill_id": "eachlabs--invoice-generation",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "invoice-generation",
+        "owner": "eachlabs",
+        "repo": "skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "freestylefly--canghe-image-gen",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "canghe-image-gen",
+        "owner": "freestylefly",
+        "repo": "canghe-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "kevintsengtw--dotnet-testing-advanced-webapi-integration-testing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "dotnet-testing-advanced-webapi-integration-testing",
+        "owner": "kevintsengtw",
+        "repo": "dotnet-testing-agent-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "omer-metin--forms-validation",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "forms-validation",
+        "owner": "omer-metin",
+        "repo": "skills-for-antigravity"
       }
     ]
   },
@@ -360,6 +1212,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--seisbench-model-api",
         "score": 7.851932,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "seisbench-model-api",
         "owner": "benchflow-ai",
         "repo": ""
@@ -368,6 +1222,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--seismic-picker-selection",
         "score": 4.183354,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "seismic-picker-selection",
         "owner": "benchflow-ai",
         "repo": ""
@@ -376,9 +1232,81 @@
         "rank": 3,
         "skill_id": "benchflow-ai--obspy-data-api",
         "score": 3.645843,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "obspy-data-api",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "anysiteio--skill-audit",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "skill-audit",
+        "owner": "anysiteio",
+        "repo": "agent-skills"
+      },
+      {
+        "rank": 5,
+        "skill_id": "assimovt--prd-writing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "prd-writing",
+        "owner": "assimovt",
+        "repo": "productskills"
+      },
+      {
+        "rank": 6,
+        "skill_id": "benchflow-ai--gamma-phase-associator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "gamma-phase-associator",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 7,
+        "skill_id": "benchflow-ai--powerlifting",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "powerlifting",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 8,
+        "skill_id": "elizaos--openai-image-gen",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "openai-image-gen",
+        "owner": "elizaos",
+        "repo": "eliza"
+      },
+      {
+        "rank": 9,
+        "skill_id": "jmagly--llms-txt-support",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "llms-txt-support",
+        "owner": "jmagly",
+        "repo": ""
+      },
+      {
+        "rank": 10,
+        "skill_id": "simota--nexus",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "nexus",
+        "owner": "simota",
+        "repo": "agent-skills"
       }
     ]
   },
@@ -392,9 +1320,101 @@
         "rank": 1,
         "skill_id": "benchflow-ai--geospatial-analysis",
         "score": 10.501159,
+        "positive_score": true,
+        "positive_score_count": 1,
         "name": "geospatial-analysis",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 2,
+        "skill_id": "bahayonghang--rust-cli-tui-developer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "rust-cli-tui-developer",
+        "owner": "bahayonghang",
+        "repo": "my-claude-code-settings"
+      },
+      {
+        "rank": 3,
+        "skill_id": "cloudflare--cloudflare",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "cloudflare",
+        "owner": "cloudflare",
+        "repo": "skills"
+      },
+      {
+        "rank": 4,
+        "skill_id": "eyadsibai--nemo-evaluator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "nemo-evaluator",
+        "owner": "eyadsibai",
+        "repo": "ltk"
+      },
+      {
+        "rank": 5,
+        "skill_id": "petekp--dead-code-sweep",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "dead-code-sweep",
+        "owner": "petekp",
+        "repo": "agent-skills"
+      },
+      {
+        "rank": 6,
+        "skill_id": "ratacat--agent-native-reviewer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "agent-native-reviewer",
+        "owner": "ratacat",
+        "repo": "claude-skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "sickn33--loki-mode",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "loki-mode",
+        "owner": "sickn33",
+        "repo": ""
+      },
+      {
+        "rank": 8,
+        "skill_id": "thebushidocollective--professional-honesty",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "professional-honesty",
+        "owner": "thebushidocollective",
+        "repo": "han"
+      },
+      {
+        "rank": 9,
+        "skill_id": "udecode--update-app-design",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "update-app-design",
+        "owner": "udecode",
+        "repo": "plate"
+      },
+      {
+        "rank": 10,
+        "skill_id": "yangsonhung--multi-lang-readme",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "multi-lang-readme",
+        "owner": "yangsonhung",
+        "repo": "awesome-agent-skills"
       }
     ]
   },
@@ -408,9 +1428,101 @@
         "rank": 1,
         "skill_id": "benchflow-ai--timeseries-detrending",
         "score": 1.816318,
+        "positive_score": true,
+        "positive_score_count": 1,
         "name": "timeseries-detrending",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 2,
+        "skill_id": "callstackincubator--react-native-best-practices",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "react-native-best-practices",
+        "owner": "callstackincubator",
+        "repo": ""
+      },
+      {
+        "rank": 3,
+        "skill_id": "dangeles--researcher",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "researcher",
+        "owner": "dangeles",
+        "repo": "claude"
+      },
+      {
+        "rank": 4,
+        "skill_id": "dauquangthanh--system-migration",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "system-migration",
+        "owner": "dauquangthanh",
+        "repo": "hanoi-rainbow"
+      },
+      {
+        "rank": 5,
+        "skill_id": "gtmagents--value-messaging",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "value-messaging",
+        "owner": "gtmagents",
+        "repo": "gtm-agents"
+      },
+      {
+        "rank": 6,
+        "skill_id": "lidessen--validation",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "validation",
+        "owner": "lidessen",
+        "repo": "skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "mastra-ai--smoke-test",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "smoke-test",
+        "owner": "mastra-ai",
+        "repo": "mastra"
+      },
+      {
+        "rank": 8,
+        "skill_id": "octavehq--one-pager",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "one-pager",
+        "owner": "octavehq",
+        "repo": "lfgtm"
+      },
+      {
+        "rank": 9,
+        "skill_id": "skillcreatorai--web-design-guidelines",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "web-design-guidelines",
+        "owner": "skillcreatorai",
+        "repo": "ai-agent-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "tondevrel--opencv",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "opencv",
+        "owner": "tondevrel",
+        "repo": "scientific-agent-skills"
       }
     ]
   },
@@ -426,6 +1538,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--ac-branch-pi-model",
         "score": 7.659961,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "ac-branch-pi-model",
         "owner": "benchflow-ai",
         "repo": ""
@@ -434,6 +1548,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--power-flow-data",
         "score": 6.821073,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "power-flow-data",
         "owner": "benchflow-ai",
         "repo": ""
@@ -442,6 +1558,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--casadi-ipopt-nlp",
         "score": 5.700463,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "casadi-ipopt-nlp",
         "owner": "benchflow-ai",
         "repo": ""
@@ -450,6 +1568,8 @@
         "rank": 4,
         "skill_id": "srstomp--performance-optimization",
         "score": 2.419896,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "performance-optimization",
         "owner": "srstomp",
         "repo": "pokayokay"
@@ -458,9 +1578,61 @@
         "rank": 5,
         "skill_id": "curiositech--panic-room-finder",
         "score": 1.046786,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "panic-room-finder",
         "owner": "curiositech",
         "repo": "some_claude_skills"
+      },
+      {
+        "rank": 6,
+        "skill_id": "RefoundAI--managing-up",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "managing-up",
+        "owner": "RefoundAI",
+        "repo": ""
+      },
+      {
+        "rank": 7,
+        "skill_id": "aaronvanston--presentation-pitch-deck",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "presentation-pitch-deck",
+        "owner": "aaronvanston",
+        "repo": "skills-presentations"
+      },
+      {
+        "rank": 8,
+        "skill_id": "davila7--fluidsim",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "fluidsim",
+        "owner": "davila7",
+        "repo": "claude-code-templates"
+      },
+      {
+        "rank": 9,
+        "skill_id": "gravito-framework--skill-creator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "skill-creator",
+        "owner": "gravito-framework",
+        "repo": "gravito"
+      },
+      {
+        "rank": 10,
+        "skill_id": "oimiragieo--archive",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "archive",
+        "owner": "oimiragieo",
+        "repo": "agent-studio"
       }
     ]
   },
@@ -477,6 +1649,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--locational-marginal-prices",
         "score": 5.39756,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "locational-marginal-prices",
         "owner": "benchflow-ai",
         "repo": ""
@@ -485,6 +1659,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--power-flow-data",
         "score": 3.855481,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "power-flow-data",
         "owner": "benchflow-ai",
         "repo": ""
@@ -493,6 +1669,8 @@
         "rank": 3,
         "skill_id": "sickn33--network-engineer",
         "score": 2.491428,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "network-engineer",
         "owner": "sickn33",
         "repo": "antigravity-awesome-skills"
@@ -501,8 +1679,70 @@
         "rank": 4,
         "skill_id": "benchflow-ai--dc-power-flow",
         "score": 2.348581,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "dc-power-flow",
         "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "benchflow-ai--economic-dispatch",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "economic-dispatch",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "jmerta--branch-cleaner",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "branch-cleaner",
+        "owner": "jmerta",
+        "repo": "codex-skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "lekt9--foundry",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "foundry",
+        "owner": "lekt9",
+        "repo": "openclaw-foundry"
+      },
+      {
+        "rank": 8,
+        "skill_id": "marcoshaber99--slidev",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "slidev",
+        "owner": "marcoshaber99",
+        "repo": "slidev-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "personamanagmentlayer--qa-expert",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "qa-expert",
+        "owner": "personamanagmentlayer",
+        "repo": "pcl"
+      },
+      {
+        "rank": 10,
+        "skill_id": "tech-leads-club--react-composition-patterns",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "react-composition-patterns",
+        "owner": "tech-leads-club",
         "repo": ""
       }
     ]
@@ -517,6 +1757,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--enterprise-artifact-search",
         "score": 4.473575,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "enterprise-artifact-search",
         "owner": "benchflow-ai",
         "repo": ""
@@ -525,9 +1767,91 @@
         "rank": 2,
         "skill_id": "jeremylongshore--kpi-dashboard-template",
         "score": 2.014506,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "kpi-dashboard-template",
         "owner": "jeremylongshore",
         "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 3,
+        "skill_id": "BbgnsurfTech--emitting-api-events",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "emitting-api-events",
+        "owner": "BbgnsurfTech",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "harlan-zw--vueuse-core-skilld",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "vueuse-core-skilld",
+        "owner": "harlan-zw",
+        "repo": "vue-ecosystem-skills"
+      },
+      {
+        "rank": 5,
+        "skill_id": "jeremylongshore--argocd-app-deployer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "argocd-app-deployer",
+        "owner": "jeremylongshore",
+        "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 6,
+        "skill_id": "jeremylongshore--posthog-incident-runbook",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "posthog-incident-runbook",
+        "owner": "jeremylongshore",
+        "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "jeremylongshore--posthog-observability",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "posthog-observability",
+        "owner": "jeremylongshore",
+        "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "mickume--dndtale",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "dndtale",
+        "owner": "mickume",
+        "repo": "dndtale"
+      },
+      {
+        "rank": 9,
+        "skill_id": "mindrally--pixi-js",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "pixi-js",
+        "owner": "mindrally",
+        "repo": "skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "petekp--record-todos",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "record-todos",
+        "owner": "petekp",
+        "repo": "agent-skills"
       }
     ]
   },
@@ -542,6 +1866,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--pptx",
         "score": 7.40555,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "pptx",
         "owner": "benchflow-ai",
         "repo": ""
@@ -550,9 +1876,91 @@
         "rank": 2,
         "skill_id": "benchflow-ai--xlsx-1",
         "score": 1.09535,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "xlsx-1",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 3,
+        "skill_id": "AojdevStudio--retirement-syncing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "retirement-syncing",
+        "owner": "AojdevStudio",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "andrelandgraf--stripe-subscriptions",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "stripe-subscriptions",
+        "owner": "andrelandgraf",
+        "repo": "fullstackrecipes"
+      },
+      {
+        "rank": 5,
+        "skill_id": "borghei--growth-marketer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "growth-marketer",
+        "owner": "borghei",
+        "repo": "claude-skills"
+      },
+      {
+        "rank": 6,
+        "skill_id": "composiohq--canvas-automation",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "canvas-automation",
+        "owner": "composiohq",
+        "repo": "awesome-claude-skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "curiouslearner--log-analyzer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "log-analyzer",
+        "owner": "curiouslearner",
+        "repo": "devkit"
+      },
+      {
+        "rank": 8,
+        "skill_id": "florianbuetow--outdated-deps",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "outdated-deps",
+        "owner": "florianbuetow",
+        "repo": "claude-code"
+      },
+      {
+        "rank": 9,
+        "skill_id": "jackspace--network-diagnostics",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "network-diagnostics",
+        "owner": "jackspace",
+        "repo": ""
+      },
+      {
+        "rank": 10,
+        "skill_id": "thongdn-it--typescript",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "typescript",
+        "owner": "thongdn-it",
+        "repo": "react-agent-skills"
       }
     ]
   },
@@ -570,6 +1978,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--box-least-squares",
         "score": 5.126124,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "box-least-squares",
         "owner": "benchflow-ai",
         "repo": ""
@@ -578,6 +1988,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--exoplanet-workflows",
         "score": 4.489477,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "exoplanet-workflows",
         "owner": "benchflow-ai",
         "repo": ""
@@ -586,6 +1998,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--light-curve-preprocessing",
         "score": 3.37446,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "light-curve-preprocessing",
         "owner": "benchflow-ai",
         "repo": ""
@@ -594,9 +2008,71 @@
         "rank": 4,
         "skill_id": "benchflow-ai--transit-least-squares",
         "score": 2.413294,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "transit-least-squares",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "benchflow-ai--lomb-scargle-periodogram",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "lomb-scargle-periodogram",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "duc01226--cook-auto",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "cook-auto",
+        "owner": "duc01226",
+        "repo": "easyplatform"
+      },
+      {
+        "rank": 7,
+        "skill_id": "florianbuetow--linking",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "linking",
+        "owner": "florianbuetow",
+        "repo": "claude-code"
+      },
+      {
+        "rank": 8,
+        "skill_id": "howells--suggest",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "suggest",
+        "owner": "howells",
+        "repo": ""
+      },
+      {
+        "rank": 9,
+        "skill_id": "mohitmishra786--bazel",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "bazel",
+        "owner": "mohitmishra786",
+        "repo": "low-level-dev-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "ruchernchong--sync-docs",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "sync-docs",
+        "owner": "ruchernchong",
+        "repo": "claude-kit"
       }
     ]
   },
@@ -611,6 +2087,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--pdf-1",
         "score": 3.257696,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "pdf-1",
         "owner": "benchflow-ai",
         "repo": ""
@@ -619,8 +2097,90 @@
         "rank": 2,
         "skill_id": "benchflow-ai--xlsx-2",
         "score": 2.450427,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "xlsx-2",
         "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 3,
+        "skill_id": "Prorise-cool--testing-specialist",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "testing-specialist",
+        "owner": "Prorise-cool",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "hiroro-work--ask-copilot",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "ask-copilot",
+        "owner": "hiroro-work",
+        "repo": "claude-plugins"
+      },
+      {
+        "rank": 5,
+        "skill_id": "jmsktm--budget-planner",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "budget-planner",
+        "owner": "jmsktm",
+        "repo": "claude-settings"
+      },
+      {
+        "rank": 6,
+        "skill_id": "maragudk--gomponents",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "gomponents",
+        "owner": "maragudk",
+        "repo": "skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "sickn33--html-injection-testing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "html-injection-testing",
+        "owner": "sickn33",
+        "repo": "antigravity-awesome-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "sickn33--wiki-page-writer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "wiki-page-writer",
+        "owner": "sickn33",
+        "repo": "antigravity-awesome-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "simota--reel",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "reel",
+        "owner": "simota",
+        "repo": "agent-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "vstorm-co--code-review",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "code-review",
+        "owner": "vstorm-co",
         "repo": ""
       }
     ]
@@ -637,6 +2197,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--rdkit",
         "score": 11.472095,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "rdkit",
         "owner": "benchflow-ai",
         "repo": ""
@@ -645,8 +2207,90 @@
         "rank": 2,
         "skill_id": "benchflow-ai--pubchem-database",
         "score": 8.717857,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "pubchem-database",
         "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 3,
+        "skill_id": "benchflow-ai--pdf-2",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "pdf-2",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "brianrwagner--linkedin-authority-builder",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "linkedin-authority-builder",
+        "owner": "brianrwagner",
+        "repo": "ai-marketing-skills"
+      },
+      {
+        "rank": 5,
+        "skill_id": "davila7--iterate-pr",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "iterate-pr",
+        "owner": "davila7",
+        "repo": "claude-code-templates"
+      },
+      {
+        "rank": 6,
+        "skill_id": "djankies--composing-components",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "composing-components",
+        "owner": "djankies",
+        "repo": ""
+      },
+      {
+        "rank": 7,
+        "skill_id": "eachlabs--brochure-design-generation",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "brochure-design-generation",
+        "owner": "eachlabs",
+        "repo": "skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "ewanyuan--skill-evolution-driver",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "skill-evolution-driver",
+        "owner": "ewanyuan",
+        "repo": "cox-coding"
+      },
+      {
+        "rank": 9,
+        "skill_id": "kluless13--dan-koe",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "dan-koe",
+        "owner": "kluless13",
+        "repo": "claude-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "sergiodxa--frontend-testing-best-practices",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "frontend-testing-best-practices",
+        "owner": "sergiodxa",
         "repo": ""
       }
     ]
@@ -664,6 +2308,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--testing-python",
         "score": 2.761892,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "testing-python",
         "owner": "benchflow-ai",
         "repo": ""
@@ -672,6 +2318,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--temporal-python-testing",
         "score": 2.240476,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "temporal-python-testing",
         "owner": "benchflow-ai",
         "repo": ""
@@ -680,6 +2328,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--uv-package-manager",
         "score": 2.048435,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "uv-package-manager",
         "owner": "benchflow-ai",
         "repo": ""
@@ -688,8 +2338,70 @@
         "rank": 4,
         "skill_id": "greyhaven-ai--grey-haven-smart-debugging",
         "score": 1.789787,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "grey-haven-smart-debugging",
         "owner": "greyhaven-ai",
+        "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "benchflow-ai--analyze-ci",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "analyze-ci",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "bybren-llc--dialogue-craft",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "dialogue-craft",
+        "owner": "bybren-llc",
+        "repo": "story-systems-template"
+      },
+      {
+        "rank": 7,
+        "skill_id": "guia-matthieu--account-health",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "account-health",
+        "owner": "guia-matthieu",
+        "repo": "clawfu-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "mintlify--doc-reader",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "doc-reader",
+        "owner": "mintlify",
+        "repo": ""
+      },
+      {
+        "rank": 9,
+        "skill_id": "nweii--lookup",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "lookup",
+        "owner": "nweii",
+        "repo": "agent-stuff"
+      },
+      {
+        "rank": 10,
+        "skill_id": "sickn33--bash-pro",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "bash-pro",
+        "owner": "sickn33",
         "repo": ""
       }
     ]
@@ -706,6 +2418,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--maven-build-lifecycle",
         "score": 9.405326,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "maven-build-lifecycle",
         "owner": "benchflow-ai",
         "repo": ""
@@ -714,6 +2428,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--maven-dependency-management",
         "score": 3.807659,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "maven-dependency-management",
         "owner": "benchflow-ai",
         "repo": ""
@@ -722,6 +2438,8 @@
         "rank": 3,
         "skill_id": "oakoss--accessibility",
         "score": 2.218445,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "accessibility",
         "owner": "oakoss",
         "repo": "agent-skills"
@@ -730,9 +2448,71 @@
         "rank": 4,
         "skill_id": "benchflow-ai--maven-plugin-configuration",
         "score": 1.908554,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "maven-plugin-configuration",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "aws-geospatial--amazon-location-service",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "amazon-location-service",
+        "owner": "aws-geospatial",
+        "repo": "amazon-location-agent-context"
+      },
+      {
+        "rank": 6,
+        "skill_id": "colonyops--docs-update",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "docs-update",
+        "owner": "colonyops",
+        "repo": "hive"
+      },
+      {
+        "rank": 7,
+        "skill_id": "jinfanzheng--data-files",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "data-files",
+        "owner": "jinfanzheng",
+        "repo": "kode-sdk-csharp"
+      },
+      {
+        "rank": 8,
+        "skill_id": "ljagiello--ctf-misc",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "ctf-misc",
+        "owner": "ljagiello",
+        "repo": "ctf-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "sruthir28--scpr-framework",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "scpr-framework",
+        "owner": "sruthir28",
+        "repo": "mckinsey-claude-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "umbraco--umbraco-example-generator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "umbraco-example-generator",
+        "owner": "umbraco",
+        "repo": "umbraco-cms-backoffice-skills"
       }
     ]
   },
@@ -747,6 +2527,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--jackson-security",
         "score": 2.29823,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "jackson-security",
         "owner": "benchflow-ai",
         "repo": ""
@@ -755,9 +2537,91 @@
         "rank": 2,
         "skill_id": "benchflow-ai--senior-java",
         "score": 1.220498,
+        "positive_score": true,
+        "positive_score_count": 2,
         "name": "senior-java",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 3,
+        "skill_id": "ToruAI--openspec-workflow",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "openspec-workflow",
+        "owner": "ToruAI",
+        "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "ariegoldkin--code-review-playbook",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "code-review-playbook",
+        "owner": "ariegoldkin",
+        "repo": "ai-agent-hub"
+      },
+      {
+        "rank": 5,
+        "skill_id": "basher83--coderabbit",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "coderabbit",
+        "owner": "basher83",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "haibaraaiaptx--download-openapi",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "download-openapi",
+        "owner": "haibaraaiaptx",
+        "repo": "frontend-openapi-skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "jeremylongshore--cursor-model-selection",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "cursor-model-selection",
+        "owner": "jeremylongshore",
+        "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "mindrally--mongodb-development",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "mongodb-development",
+        "owner": "mindrally",
+        "repo": "skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "neversight--python-async-patterns",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "python-async-patterns",
+        "owner": "neversight",
+        "repo": "skills_feed"
+      },
+      {
+        "rank": 10,
+        "skill_id": "ruvnet--agent-pr-manager",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 2,
+        "name": "agent-pr-manager",
+        "owner": "ruvnet",
+        "repo": "claude-flow"
       }
     ]
   },
@@ -776,6 +2640,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--ssh-penetration-testing",
         "score": 8.277378,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "ssh-penetration-testing",
         "owner": "benchflow-ai",
         "repo": ""
@@ -784,6 +2650,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--erlang-otp-behaviors",
         "score": 4.509143,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "erlang-otp-behaviors",
         "owner": "benchflow-ai",
         "repo": ""
@@ -792,6 +2660,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--erlang-distribution",
         "score": 1.750846,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "erlang-distribution",
         "owner": "benchflow-ai",
         "repo": ""
@@ -800,9 +2670,71 @@
         "rank": 4,
         "skill_id": "benchflow-ai--erlang-concurrency",
         "score": 1.735014,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "erlang-concurrency",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "bbeierle12--shader-router",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "shader-router",
+        "owner": "bbeierle12",
+        "repo": "skill-mcp-claude"
+      },
+      {
+        "rank": 6,
+        "skill_id": "benchflow-ai--find-bugs",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "find-bugs",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 7,
+        "skill_id": "benchflow-ai--senior-security",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "senior-security",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 8,
+        "skill_id": "rysweet--political-scientist-analyst",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "political-scientist-analyst",
+        "owner": "rysweet",
+        "repo": ""
+      },
+      {
+        "rank": 9,
+        "skill_id": "sotayamashita--feature-writing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "feature-writing",
+        "owner": "sotayamashita",
+        "repo": "dotfiles"
+      },
+      {
+        "rank": 10,
+        "skill_id": "tencentblueking--skill-writer",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "skill-writer",
+        "owner": "tencentblueking",
+        "repo": "bk-ci"
       }
     ]
   },
@@ -818,6 +2750,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--react-best-practices-1",
         "score": 11.242596,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "react-best-practices-1",
         "owner": "benchflow-ai",
         "repo": ""
@@ -826,6 +2760,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--browser-testing-1",
         "score": 2.086269,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "browser-testing-1",
         "owner": "benchflow-ai",
         "repo": ""
@@ -834,6 +2770,8 @@
         "rank": 3,
         "skill_id": "jeremylongshore--analyzing-database-indexes",
         "score": 1.952714,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "analyzing-database-indexes",
         "owner": "jeremylongshore",
         "repo": "claude-code-plugins-plus-skills"
@@ -842,9 +2780,71 @@
         "rank": 4,
         "skill_id": "djankies--following-the-rules-of-hooks",
         "score": 1.902387,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "following-the-rules-of-hooks",
         "owner": "djankies",
         "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "arvindand--ui-ux-design",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "ui-ux-design",
+        "owner": "arvindand",
+        "repo": ""
+      },
+      {
+        "rank": 6,
+        "skill_id": "benchflow-ai--web-interface-guidelines",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "web-interface-guidelines",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 7,
+        "skill_id": "getaero-io--build-tam",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "build-tam",
+        "owner": "getaero-io",
+        "repo": "gtm-eng-skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "jeremylongshore--n8n-workflow-generator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "n8n-workflow-generator",
+        "owner": "jeremylongshore",
+        "repo": "claude-code-plugins-plus-skills"
+      },
+      {
+        "rank": 9,
+        "skill_id": "r3bl-org--organize-modules",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "organize-modules",
+        "owner": "r3bl-org",
+        "repo": ""
+      },
+      {
+        "rank": 10,
+        "skill_id": "wix--wix-cli-dashboard-page",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "wix-cli-dashboard-page",
+        "owner": "wix",
+        "repo": "skills"
       }
     ]
   },
@@ -859,9 +2859,101 @@
         "rank": 1,
         "skill_id": "benchflow-ai--senior-data-engineer",
         "score": 1.198555,
+        "positive_score": true,
+        "positive_score_count": 1,
         "name": "senior-data-engineer",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 2,
+        "skill_id": "benchflow-ai--pdf-1",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "pdf-1",
+        "owner": "benchflow-ai",
+        "repo": ""
+      },
+      {
+        "rank": 3,
+        "skill_id": "driangle--list-tasks",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "list-tasks",
+        "owner": "driangle",
+        "repo": "taskmd"
+      },
+      {
+        "rank": 4,
+        "skill_id": "elizaos--voice-call",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "voice-call",
+        "owner": "elizaos",
+        "repo": "eliza"
+      },
+      {
+        "rank": 5,
+        "skill_id": "eyadsibai--e2e-testing",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "e2e-testing",
+        "owner": "eyadsibai",
+        "repo": "ltk"
+      },
+      {
+        "rank": 6,
+        "skill_id": "matthewharwood--ux-spacing-layout",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "ux-spacing-layout",
+        "owner": "matthewharwood",
+        "repo": "fantasy-phonics"
+      },
+      {
+        "rank": 7,
+        "skill_id": "melodic-software--gameday-planning",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "gameday-planning",
+        "owner": "melodic-software",
+        "repo": "claude-code-plugins"
+      },
+      {
+        "rank": 8,
+        "skill_id": "multigres--development-tools",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "development-tools",
+        "owner": "multigres",
+        "repo": ""
+      },
+      {
+        "rank": 9,
+        "skill_id": "ruvnet--agent-coder",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "agent-coder",
+        "owner": "ruvnet",
+        "repo": "claude-flow"
+      },
+      {
+        "rank": 10,
+        "skill_id": "zhanghandong--makepad-event-action",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 1,
+        "name": "makepad-event-action",
+        "owner": "zhanghandong",
+        "repo": "makepad-skills"
       }
     ]
   },
@@ -877,6 +2969,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--usgs-data-download",
         "score": 5.574931,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "usgs-data-download",
         "owner": "benchflow-ai",
         "repo": ""
@@ -885,6 +2979,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--nws-flood-thresholds",
         "score": 4.098647,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "nws-flood-thresholds",
         "owner": "benchflow-ai",
         "repo": ""
@@ -893,6 +2989,8 @@
         "rank": 3,
         "skill_id": "benchflow-ai--flood-detection",
         "score": 3.521018,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "flood-detection",
         "owner": "benchflow-ai",
         "repo": ""
@@ -901,6 +2999,8 @@
         "rank": 4,
         "skill_id": "jmsktm--financial-analyst",
         "score": 1.500864,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "financial-analyst",
         "owner": "jmsktm",
         "repo": "claude-settings"
@@ -909,9 +3009,61 @@
         "rank": 5,
         "skill_id": "guia-matthieu--web-scraper",
         "score": 1.338337,
+        "positive_score": true,
+        "positive_score_count": 5,
         "name": "web-scraper",
         "owner": "guia-matthieu",
         "repo": "clawfu-skills"
+      },
+      {
+        "rank": 6,
+        "skill_id": "ar4mirez--symfony",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "symfony",
+        "owner": "ar4mirez",
+        "repo": "samuel"
+      },
+      {
+        "rank": 7,
+        "skill_id": "ruvnet--agent-production-validator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "agent-production-validator",
+        "owner": "ruvnet",
+        "repo": "claude-flow"
+      },
+      {
+        "rank": 8,
+        "skill_id": "tai-ch0802--parallel-agents",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "parallel-agents",
+        "owner": "tai-ch0802",
+        "repo": "skills-bundle"
+      },
+      {
+        "rank": 9,
+        "skill_id": "workleap--workleap-react-best-practices",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "workleap-react-best-practices",
+        "owner": "workleap",
+        "repo": "wl-web-configs"
+      },
+      {
+        "rank": 10,
+        "skill_id": "zenobi-us--vue-expert",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 5,
+        "name": "vue-expert",
+        "owner": "zenobi-us",
+        "repo": ""
       }
     ]
   },
@@ -925,6 +3077,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--gh-cli",
         "score": 9.761735,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "gh-cli",
         "owner": "benchflow-ai",
         "repo": ""
@@ -933,6 +3087,8 @@
         "rank": 2,
         "skill_id": "arvindand--github-navigator",
         "score": 6.144548,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "github-navigator",
         "owner": "arvindand",
         "repo": ""
@@ -941,6 +3097,8 @@
         "rank": 3,
         "skill_id": "zenobi-us--api-documenter",
         "score": 3.266279,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "api-documenter",
         "owner": "zenobi-us",
         "repo": ""
@@ -949,9 +3107,71 @@
         "rank": 4,
         "skill_id": "flux-point-studios--cardano-cli-doctor",
         "score": 1.900635,
+        "positive_score": true,
+        "positive_score_count": 4,
         "name": "cardano-cli-doctor",
         "owner": "flux-point-studios",
         "repo": "cardano-agent-skills"
+      },
+      {
+        "rank": 5,
+        "skill_id": "elizaos--skill-creator",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "skill-creator",
+        "owner": "elizaos",
+        "repo": "eliza"
+      },
+      {
+        "rank": 6,
+        "skill_id": "onehorizonai--list-my-teams",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "list-my-teams",
+        "owner": "onehorizonai",
+        "repo": "skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "patricio0312rev--animation-micro-interaction-pack",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "animation-micro-interaction-pack",
+        "owner": "patricio0312rev",
+        "repo": "skills"
+      },
+      {
+        "rank": 8,
+        "skill_id": "u9401066--roadmap-updater",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "roadmap-updater",
+        "owner": "u9401066",
+        "repo": "med-paper-assistant"
+      },
+      {
+        "rank": 9,
+        "skill_id": "webdevtodayjason--debugging-methodology",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "debugging-methodology",
+        "owner": "webdevtodayjason",
+        "repo": ""
+      },
+      {
+        "rank": 10,
+        "skill_id": "xuanwo--xurl",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 4,
+        "name": "xurl",
+        "owner": "xuanwo",
+        "repo": "xurl"
       }
     ]
   },
@@ -967,6 +3187,8 @@
         "rank": 1,
         "skill_id": "benchflow-ai--glm-basics",
         "score": 8.378553,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "glm-basics",
         "owner": "benchflow-ai",
         "repo": ""
@@ -975,6 +3197,8 @@
         "rank": 2,
         "skill_id": "benchflow-ai--glm-calibration",
         "score": 5.249676,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "glm-calibration",
         "owner": "benchflow-ai",
         "repo": ""
@@ -983,9 +3207,81 @@
         "rank": 3,
         "skill_id": "benchflow-ai--glm-output",
         "score": 4.023838,
+        "positive_score": true,
+        "positive_score_count": 3,
         "name": "glm-output",
         "owner": "benchflow-ai",
         "repo": ""
+      },
+      {
+        "rank": 4,
+        "skill_id": "DNYoussef--when-optimizing-prompts-use-prompt-architect",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "when-optimizing-prompts-use-prompt-architect",
+        "owner": "DNYoussef",
+        "repo": ""
+      },
+      {
+        "rank": 5,
+        "skill_id": "coreyhaines31--site-architecture",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "site-architecture",
+        "owner": "coreyhaines31",
+        "repo": "marketingskills"
+      },
+      {
+        "rank": 6,
+        "skill_id": "inference-sh--prompt-engineering",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "prompt-engineering",
+        "owner": "inference-sh",
+        "repo": "skills"
+      },
+      {
+        "rank": 7,
+        "skill_id": "majiayu000--tool-use",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "tool-use",
+        "owner": "majiayu000",
+        "repo": ""
+      },
+      {
+        "rank": 8,
+        "skill_id": "melodic-software--data-modeling",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "data-modeling",
+        "owner": "melodic-software",
+        "repo": "claude-code-plugins"
+      },
+      {
+        "rank": 9,
+        "skill_id": "team-telnyx--telnyx-numbers-compliance-python",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "telnyx-numbers-compliance-python",
+        "owner": "team-telnyx",
+        "repo": "telnyx-ext-agent-skills"
+      },
+      {
+        "rank": 10,
+        "skill_id": "vamseeachanta--git-advanced",
+        "score": 0.0,
+        "positive_score": false,
+        "positive_score_count": 3,
+        "name": "git-advanced",
+        "owner": "vamseeachanta",
+        "repo": "workspace-hub"
       }
     ]
   }

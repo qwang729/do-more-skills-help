@@ -211,6 +211,10 @@ def summarize(rows: list[dict]) -> dict:
     summary = {key: mean(row[key] for row in rows) for key in SUMMARY_METRICS}
     summary["top1_error_rate"] = 1.0 - summary["top1_accuracy"]
     summary["hit10_miss_rate"] = 1.0 - summary["hit@10"]
+    summary["total_fallback_distractors"] = sum(row["fallback_distractors"] for row in rows)
+    summary["rows_with_fallback"] = sum(1 for row in rows if row["fallback_distractors"] > 0)
+    summary["mean_fallback_distractors"] = mean(row["fallback_distractors"] for row in rows)
+    summary["mean_hard_negative_purity"] = mean(row["hard_negative_purity"] for row in rows)
     summary["n"] = len(rows)
     return summary
 
@@ -385,6 +389,18 @@ def main() -> None:
                     )
                     ranked = bm25_rank(query, candidates, docs, args.top_k)
                     ranked_ids = [row["skill_id"] for row in ranked]
+                    distractor_count = len(candidates) - len([sid for sid in gold if sid in docs])
+                    hard_negative_count = (
+                        max(distractor_count - fallback_count, 0)
+                        if distractor_type != "random"
+                        else 0
+                    )
+                    hard_negative_purity = (
+                        hard_negative_count / distractor_count
+                        if distractor_count and distractor_type != "random"
+                        else 0.0
+                    )
+                    positive_score_count = ranked[0]["positive_score_count"] if ranked else 0
                     row = {
                         "task": task,
                         "distractor_type": distractor_type,
@@ -392,7 +408,12 @@ def main() -> None:
                         "actual_pool_size": len(candidates),
                         "repeat": repeat,
                         "gold_count": len(gold),
+                        "distractor_count": distractor_count,
+                        "hard_negative_count": hard_negative_count,
+                        "hard_negative_purity": hard_negative_purity,
                         "fallback_distractors": fallback_count,
+                        "returned_count": len(ranked),
+                        "positive_score_count": positive_score_count,
                         "top1_accuracy": 1.0 if ranked_ids and ranked_ids[0] in gold else 0.0,
                         "hit@3": hit_at_k(ranked_ids, gold, 3),
                         "hit@5": hit_at_k(ranked_ids, gold, 5),

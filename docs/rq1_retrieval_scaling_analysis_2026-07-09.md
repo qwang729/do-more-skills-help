@@ -14,8 +14,8 @@
 主要结果：
 
 - Top-1 Accuracy 从 **0.964** 下降到 **0.414**，绝对下降 **0.550**。
-- Hit@10 从 **0.989** 下降到 **0.667**，说明即使允许 Top-10，full library 下仍有约三分之一任务找不到任何 gold skill。
-- Recall@10 从 **0.880** 下降到 **0.449**，说明多 gold-skill 任务中，Top-10 对完整 gold set 的覆盖率也显著下降。
+- Hit@10 从 **1.000** 下降到 **0.667**，说明即使允许 Top-10，full library 下仍有约三分之一任务找不到任何 gold skill。
+- Recall@10 从 **1.000** 下降到 **0.449**，说明多 gold-skill 任务中，Top-10 对完整 gold set 的覆盖率也显著下降。
 - Full library 下，87 个任务中只有 **36 个**任务 Top-1 命中；有 **29 个**任务 Top-10 内没有任何 gold skill。
 
 因此，RQ1 的当前答案是：**是的，在随机 distractor 设置下，skill library 规模增大会显著降低检索准确率。**
@@ -60,6 +60,8 @@ skill name + skill description
 
 这个设置刻意保持简单，目的是先观察 library size 本身对基础 retrieval 的影响。后续 RQ3 会比较 dense retriever、hybrid retriever 和 reranker。
 
+BM25 ranking 会返回 Top-K 个候选，包括零分候选。这样可以避免小 candidate pool 中因为只有少量正分文档而低估 Hit@K / Recall@K。脚本同时在 per-query 输出中记录 `positive_score_count` 和 `returned_count`，用于区分“真正有词重叠的候选数”和“补齐后的 Top-K 返回数”。
+
 ### Metrics
 
 - **Top-1 Accuracy**：排名第一的 skill 是否命中任一 gold skill。
@@ -78,8 +80,8 @@ skill name + skill description
 
 | Pool size | Top-1 | Hit@10 | Recall@10 | MRR@10 | NDCG@10 |
 |---:|---:|---:|---:|---:|---:|
-| 10 | 0.964 | 0.989 | 0.880 | 0.976 | 0.898 |
-| 50 | 0.907 | 0.989 | 0.878 | 0.941 | 0.864 |
+| 10 | 0.964 | 1.000 | 1.000 | 0.980 | 0.970 |
+| 50 | 0.907 | 0.994 | 0.909 | 0.942 | 0.877 |
 | 100 | 0.880 | 0.989 | 0.870 | 0.921 | 0.840 |
 | 500 | 0.774 | 0.951 | 0.788 | 0.842 | 0.748 |
 | 1000 | 0.730 | 0.934 | 0.752 | 0.802 | 0.704 |
@@ -94,12 +96,12 @@ skill name + skill description
 | Metric | Pool=10 | Full | Absolute drop | Full / Pool=10 |
 |---|---:|---:|---:|---:|
 | Top-1 Accuracy | 0.964 | 0.414 | 0.550 | 0.429 |
-| Hit@10 | 0.989 | 0.667 | 0.322 | 0.674 |
-| Recall@10 | 0.880 | 0.449 | 0.431 | 0.511 |
-| MRR@10 | 0.976 | 0.507 | 0.468 | 0.520 |
-| NDCG@10 | 0.898 | 0.406 | 0.492 | 0.452 |
+| Hit@10 | 1.000 | 0.667 | 0.333 | 0.667 |
+| Recall@10 | 1.000 | 0.449 | 0.551 | 0.449 |
+| MRR@10 | 0.980 | 0.507 | 0.473 | 0.518 |
+| NDCG@10 | 0.970 | 0.406 | 0.564 | 0.418 |
 
-Top-1 保留率只有 42.9%，说明 full library 下第一名结果经常被 random distractor 挤掉。Hit@10 的保留率更高，为 67.4%，说明 Top-10 仍能缓解部分检索失败，但不能完全解决大规模候选池带来的噪声。
+Top-1 保留率只有 42.9%，说明 full library 下第一名结果经常被 random distractor 挤掉。Hit@10 的保留率更高，为 66.7%，说明 Top-10 仍能缓解部分检索失败，但不能完全解决大规模候选池带来的噪声。
 
 ---
 
