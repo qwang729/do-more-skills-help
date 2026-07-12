@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+<rect width="100%" height="100%" fill="white"/>
+<text x="70" y="22" font-family="Arial" font-size="18" font-weight="700">RQ4 (free proxy): skill content relevance to oracle+verifier, by condition</text>
+<line x1="70" y1="40" x2="70" y2="310" stroke="#333"/>
+<line x1="70" y1="310" x2="870" y2="310" stroke="#333"/>
+<line x1="70" y1="310.00" x2="870" y2="310.00" stroke="#e5e5e5"/>
+<text x="60" y="314.00" text-anchor="end" font-family="Arial" font-size="12">0.00</text>
+<line x1="70" y1="242.50" x2="870" y2="242.50" stroke="#e5e5e5"/>
+<text x="60" y="246.50" text-anchor="end" font-family="Arial" font-size="12">0.25</text>
+<line x1="70" y1="175.00" x2="870" y2="175.00" stroke="#e5e5e5"/>
+<text x="60" y="179.00" text-anchor="end" font-family="Arial" font-size="12">0.50</text>
+<line x1="70" y1="107.50" x2="870" y2="107.50" stroke="#e5e5e5"/>
+<text x="60" y="111.50" text-anchor="end" font-family="Arial" font-size="12">0.75</text>
+<line x1="70" y1="40.00" x2="870" y2="40.00" stroke="#e5e5e5"/>
+<text x="60" y="44.00" text-anchor="end" font-family="Arial" font-size="12">1.00</text>
+<rect x="114.00" y="310.00" width="72.00" height="0.00" fill="#2ca02c"/>
+<text x="150.00" y="328" text-anchor="middle" font-family="Arial" font-size="11" transform="rotate(28 150.00,328)">no_skill (n=261)</text>
+<rect x="274.00" y="229.31" width="72.00" height="80.69" fill="#2ca02c"/>
+<text x="310.00" y="328" text-anchor="middle" font-family="Arial" font-size="11" transform="rotate(28 310.00,328)">gold_skill (n=261)</text>
+<rect x="434.00" y="257.24" width="72.00" height="52.76" fill="#2ca02c"/>
+<text x="470.00" y="328" text-anchor="middle" font-family="Arial" font-size="11" transform="rotate(28 470.00,328)">retrieved_top1_full (n=261)</text>
+<rect x="594.00" y="297.59" width="72.00" height="12.41" fill="#2ca02c"/>
+<text x="630.00" y="328" text-anchor="middle" font-family="Arial" font-size="11" transform="rotate(28 630.00,328)">hard_distractor (n=261)</text>
+<rect x="754.00" y="310.00" width="72.00" height="0.00" fill="#2ca02c"/>
+<text x="790.00" y="328" text-anchor="middle" font-family="Arial" font-size="11" transform="rotate(28 790.00,328)">random_wrong (n=261)</text>
+<text x="18" y="175.00" transform="rotate(-90 18,175.00)" text-anchor="middle" font-family="Arial" font-size="13">Top-10 relevant rate</text>
+</svg>
