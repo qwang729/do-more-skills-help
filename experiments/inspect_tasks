@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+"""Free diagnostic for RQ4. Run this BEFORE rq4_downstream_task_performance.py.
+
+It does not call any API and costs nothing. It checks:
+  1. How many task_queries.json / task_skill_mapping.json tasks have a
+     matching folder under --tasks-root.
+  2. For a few sample tasks, what files exist inside (task.md, oracle/,
+     verifier/, or whatever the real layout turns out to be).
+  3. How many tasks would actually produce non-empty oracle/verifier text
+     with the current heuristics in rq4_downstream_task_performance.py.
+
+Run it, read the printed report, and only then run the real experiment.
+If matching looks bad, paste the report back and the heuristics in
+find_task_dir / load_task_bundle can be adjusted to fit the real layout.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+from rq1_retrieval_scaling import load_json
+from rq4_downstream_task_performance import find_task_dir, load_task_bundle
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skill-usage-root", default="data/raw/Skill-Usage")
+    parser.add_argument("--tasks-root", default="", help="Defaults to <skill-usage-root>/tasks")
+    parser.add_argument("--n-samples", type=int, default=5)
+    args = parser.parse_args()
+
+    root = Path(args.skill_usage_root)
+    tasks_root = Path(args.tasks_root) if args.tasks_root else root / "tasks"
+
+    print(f"skill-usage-root : {root}  (exists={root.exists()})")
+    print(f"tasks-root       : {tasks_root}  (exists={tasks_root.exists()})")
+
+    if not tasks_root.exists():
+        print("\n!! tasks-root does not exist. Fix --tasks-root / --skill-usage-root and rerun.")
+        return
+
+    subdirs = sorted(p.name for p in tasks_root.iterdir() if p.is_dir())
+    print(f"\nFound {len(subdirs)} subdirectories under tasks-root.")
+    print("First 10 folder names:")
+    for name in subdirs[:10]:
+        print(f"  - {name}")
+
+    queries = load_json(root / "data" / "task_queries.json")
+    gt = load_json(root / "data" / "task_skill_mapping.json")
+    task_ids = sorted(set(queries) & set(gt))
+    print(f"\ntask_queries.json ∩ task_skill_mapping.json: {len(task_ids)} tasks")
+    print("First 10 task ids:")
+    for tid in task_ids[:10]:
+        print(f"  - {tid}")
+
+    matched = 0
+    unmatched_examples = []
+    usable_bundle = 0
+    bundle_examples = []
+    for tid in task_ids:
+        task_dir = find_task_dir(tasks_root, tid)
+        if task_dir is None:
+            if len(unmatched_examples) < 10:
+                unmatched_examples.append(tid)
+            continue
+        matched += 1
+        bundle = load_task_bundle(task_dir)
+        has_oracle = bool(bundle["oracle_text"].strip())
+        has_verifier = bool(bundle["verifier_text"].strip())
+        if has_oracle or has_verifier:
+            usable_bundle += 1
+        if len(bundle_examples) < args.n_samples:
+            bundle_examples.append((tid, task_dir, bundle))
+
+    print(f"\nMatched a task folder for {matched}/{len(task_ids)} tasks.")
+    if unmatched_examples:
+        print("Examples of task ids with NO matching folder (first 10):")
+        for tid in unmatched_examples:
+            print(f"  - {tid}")
+
+    print(f"\nOf matched tasks, {usable_bundle}/{matched} produced non-empty oracle_text or verifier_text.")
+
+    print("\n--- Sample task bundles ---")
+    for tid, task_dir, bundle in bundle_examples:
+        print(f"\n[{tid}]  ->  {task_dir}")
+        print("  contents:")
+        try:
+            for p in sorted(task_dir.rglob("*")):
+                if p.is_file():
+                    print(f"    {p.relative_to(task_dir)}")
+        except Exception as exc:
+            print(f"    (could not list: {exc})")
+        print(f"  instructions_text (first 200 chars): {bundle['instructions_text'][:200]!r}")
+        print(f"  oracle_text       (first 200 chars): {bundle['oracle_text'][:200]!r}")
+        print(f"  verifier_text     (first 200 chars): {bundle['verifier_text'][:200]!r}")
+
+    print("\nIf 'Matched' is low or oracle/verifier text mostly empty, the real folder")
+    print("layout differs from the assumed one (task.md + oracle/ + verifier/).")
+    print("Share this printout and the file layout of one real task folder so the")
+    print("heuristics in find_task_dir()/load_task_bundle() can be adjusted.")
+
+
+if __name__ == "__main__":
+    main()
