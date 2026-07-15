@@ -1,0 +1,651 @@
+#!/usr/bin/env python3
+"""RQ4 (paid, LLM-judged): does retrieving the right skill actually improve
+downstream task performance?
+
+This is the paid counterpart to rq4_free_lexical_proxy.py. Where the free
+proxy asks a zero-cost lexical question ("does the injected skill's text
+even look relevant to the oracle solution?"), this script asks the real
+question by actually calling an LLM to (a) attempt the task under each
+retrieval condition and (b) judge, against the task's oracle solution and
+verifier criteria, whether that attempt would pass.
+
+Design choices, and why:
+
+- Conditions match rq4_free_lexical_proxy.py's DEFAULT_CONDITIONS exactly
+  (no_skill, gold_skill, retrieved_top1_full, hard_distractor, random_wrong)
+  so the two experiments are directly comparable.
+- Retrieval always ranks over the FULL 34k-skill library (not a sampled
+  pool), matching the user's requirement and mirroring how RQ1 treats the
+  "full" pool size.
+- repeats defaults to 1. This mirrors RQ1's own convention: RQ1 already
+  drops to a single repeat once the pool size is "full", because at full
+  library size there is nothing left to resample except random_wrong. RQ4
+  always operates at full-library size, so repeats=1 is the consistent
+  choice, and it is also the affordable choice under a small token budget.
+  Raise --repeats later (e.g. to match RQ3's 3) once budget allows; only
+  random_wrong actually changes across repeats.
+- Skill context given to the solver is name + description only (the same
+  fields RQ1-RQ3's primary bm25_desc condition used), NOT the full
+  SKILL.md body. This means skills-34k/skills.zip does NOT need to be
+  unzipped for this script -- skills_meta.jsonl is enough. It also keeps
+  the prompt (and therefore token cost) small.
+- Because there is no sandboxed execution environment here, "does it pass"
+  is approximated by an LLM judge that reads the task's oracle solution
+  and verifier text and grades the solver's proposed solution against
+  them. This is a judged-pass proxy for real task pass/fail, not a
+  replacement for actually running SkillsBench/Terminal-Bench tasks in a
+  sandbox. State this limitation whenever reporting results from this
+  script, the same way rq4_downstream_skill_exposure.py documents its own
+  "not actual agent pass rate" boundary.
+
+Cost control:
+- --limit-tasks defaults to 5. You must pass a larger number (or 0 for all
+  tasks) explicitly once you're happy with a small-scale test.
+- --dry-run builds every prompt and estimates token counts WITHOUT calling
+  the API, so you can sanity check cost before spending anything.
+- A running token counter is persisted to <output-dir>/token_usage_state.json
+  and checked against --token-budget before every pair of calls, so a
+  multi-session run can't blow through your budget even if you forget to
+  raise the limit.
+- Results are written incrementally to per_task_results.jsonl (append mode)
+  so a killed/interrupted run doesn't lose progress; rerun with
+  --resume to skip (task, condition, repeat) rows already recorded.
+
+Usage (PowerShell), small scale:
+  $env:DASHSCOPE_API_KEY = "sk-xxxx"
+  python rq4_downstream_task_performance.py --limit-tasks 3 --dry-run
+  python rq4_downstream_task_performance.py --limit-tasks 3 --model qwen-plus
+"""
+
+from __future__ import annotations
+
+import argparse
+import functools
+import json
+import random
+import re
+import time
+from pathlib import Path
+from statistics import mean
+
+import requests
+
+from rq1_retrieval_scaling import bm25_rank, load_json, load_skill_docs, normalize_gt, tokenize
+from rq2_distractor_types import rank_by_query_overlap
+
+
+DEFAULT_CONDITIONS = ["no_skill", "gold_skill", "retrieved_top1_full", "hard_distractor", "random_wrong"]
+
+INSTRUCTION_FILENAMES = ["task.md", "task.txt", "instructions.md", "prompt.md", "README.md"]
+ORACLE_DIR_NAMES = ["oracle", "solution", "gold"]
+ORACLE_FLAT_NAMES = ["oracle.md", "solution.md", "solve.sh", "solve.py"]
+VERIFIER_DIR_NAMES = ["verifier", "verify", "tests", "test"]
+VERIFIER_FLAT_NAMES = ["verifier.md", "test_outputs.py", "test.sh", "test.py"]
+TEXT_SUFFIXES = {".md", ".txt", ".sh", ".py", ".yaml", ".yml", ".json", ".cfg", ".ini"}
+
+DASHSCOPE_COMPATIBLE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions"
+
+
+# --------------------------------------------------------------------------
+# Task-folder discovery. If your real tasks/ layout differs from
+# task.md + oracle/ + verifier/, run inspect_tasks.py first and adjust the
+# constants/heuristics above and find_task_dir()/load_task_bundle() below.
+# --------------------------------------------------------------------------
+
+@functools.lru_cache(maxsize=8)
+def _list_task_dirs(tasks_root_str: str) -> tuple[str, ...]:
+    root = Path(tasks_root_str)
+    if not root.exists():
+        return tuple()
+    return tuple(sorted(p.name for p in root.iterdir() if p.is_dir()))
+
+
+def find_task_dir(tasks_root: Path, task_id: str) -> Path | None:
+    root = Path(tasks_root)
+    direct = root / task_id
+    if direct.is_dir():
+        return direct
+
+    names = _list_task_dirs(str(root))
+    if not names:
+        return None
+
+    candidates = {task_id, task_id.replace("/", "__"), task_id.replace("/", "--")}
+    if "/" in task_id:
+        candidates.add(task_id.split("/")[-1])
+    if "--" in task_id:
+        candidates.add(task_id.split("--")[-1])
+
+    lower_names = {n.lower(): n for n in names}
+    for cand in candidates:
+        if cand in names:
+            return root / cand
+        if cand.lower() in lower_names:
+            return root / lower_names[cand.lower()]
+
+    for n in names:
+        if task_id in n or n in task_id:
+            return root / n
+    return None
+
+
+def _read_text(path: Path, cap: int) -> str:
+    try:
+        return path.read_text(errors="replace")[:cap]
+    except Exception:
+        return ""
+
+
+def _concat_dir_text(dir_path: Path, cap: int) -> str:
+    if not dir_path.exists():
+        return ""
+    chunks: list[str] = []
+    total = 0
+    for p in sorted(dir_path.rglob("*")):
+        if not p.is_file() or p.suffix.lower() not in TEXT_SUFFIXES:
+            continue
+        text = _read_text(p, cap)
+        if not text.strip():
+            continue
+        chunks.append(f"# {p.name}\n{text}")
+        total += len(text)
+        if total >= cap:
+            break
+    return "\n\n".join(chunks)[:cap]
+
+
+def load_task_bundle(task_dir: Path, cap: int = 6000) -> dict:
+    task_dir = Path(task_dir)
+
+    instructions_text = ""
+    for name in INSTRUCTION_FILENAMES:
+        p = task_dir / name
+        if p.exists():
+            instructions_text = _read_text(p, cap)
+            break
+
+    oracle_text = ""
+    for name in ORACLE_DIR_NAMES:
+        d = task_dir / name
+        if d.exists():
+            oracle_text = _concat_dir_text(d, cap)
+            if oracle_text:
+                break
+    if not oracle_text:
+        for name in ORACLE_FLAT_NAMES:
+            p = task_dir / name
+            if p.exists():
+                oracle_text = _read_text(p, cap)
+                break
+
+    verifier_text = ""
+    for name in VERIFIER_DIR_NAMES:
+        d = task_dir / name
+        if d.exists():
+            verifier_text = _concat_dir_text(d, cap)
+            if verifier_text:
+                break
+    if not verifier_text:
+        for name in VERIFIER_FLAT_NAMES:
+            p = task_dir / name
+            if p.exists():
+                verifier_text = _read_text(p, cap)
+                break
+
+    return {
+        "task_dir": str(task_dir),
+        "instructions_text": instructions_text,
+        "oracle_text": oracle_text,
+        "verifier_text": verifier_text,
+    }
+
+
+def find_task_dir_for(tasks_root: Path, task_id: str) -> Path | None:
+    return find_task_dir(tasks_root, task_id)
+
+
+# --------------------------------------------------------------------------
+# Condition construction -- same logic/semantics as rq4_free_lexical_proxy's
+# build_conditions_for_task, kept in sync deliberately so both scripts
+# expose identical conditions over the identical full 34k-skill library.
+# --------------------------------------------------------------------------
+
+def build_conditions_for_task(query: str, gold: set, all_skill_ids: list[str], docs: dict, rng: random.Random) -> dict:
+    gold_sorted = sorted(gold & set(all_skill_ids))
+    gold_id = gold_sorted[0] if gold_sorted else None
+
+    ranked_full = bm25_rank(query, all_skill_ids, docs, 1)
+    retrieved_id = ranked_full[0]["skill_id"] if ranked_full else None
+    retrieval_correct = bool(retrieved_id and retrieved_id in gold)
+
+    non_gold_ids = [sid for sid in all_skill_ids if sid not in gold]
+    hard_ranked = rank_by_query_overlap(query, non_gold_ids, docs)
+    hard_id = hard_ranked[0] if hard_ranked else rng.choice(non_gold_ids)
+
+    random_id = rng.choice(non_gold_ids)
+
+    return {
+        "no_skill": {"skill_id": None, "retrieval_correct": None},
+        "gold_skill": {"skill_id": gold_id, "retrieval_correct": True},
+        "retrieved_top1_full": {"skill_id": retrieved_id, "retrieval_correct": retrieval_correct},
+        "hard_distractor": {"skill_id": hard_id, "retrieval_correct": False},
+        "random_wrong": {"skill_id": random_id, "retrieval_correct": False},
+    }
+
+
+# --------------------------------------------------------------------------
+# Qwen / DashScope calls
+# --------------------------------------------------------------------------
+
+def estimate_tokens(text: str) -> int:
+    """Rough, conservative estimate for mixed CJK/English text. Not exact --
+    use only for pre-flight budget planning in --dry-run."""
+    if not text:
+        return 0
+    non_ascii = sum(1 for ch in text if ord(ch) > 127)
+    ascii_chars = len(text) - non_ascii
+    return int(non_ascii * 0.6 + ascii_chars / 3.2)
+
+
+class TokenBudget:
+    def __init__(self, state_path: Path, budget: int):
+        self.state_path = state_path
+        self.budget = budget
+        if state_path.exists():
+            try:
+                self.spent = json.loads(state_path.read_text()).get("total_tokens", 0)
+            except Exception:
+                self.spent = 0
+        else:
+            self.spent = 0
+
+    def remaining(self) -> int:
+        return self.budget - self.spent
+
+    def add(self, n_tokens: int) -> None:
+        self.spent += n_tokens
+        self.state_path.write_text(json.dumps({"total_tokens": self.spent}, indent=2) + "\n")
+
+
+def call_qwen(
+    messages: list[dict],
+    model: str,
+    api_key: str,
+    base_url: str,
+    temperature: float,
+    max_tokens: int,
+    max_retries: int = 5,
+    timeout: int = 120,
+) -> tuple[str, dict]:
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+    payload = {
+        "model": model,
+        "messages": messages,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+    }
+    last_err = None
+    for attempt in range(max_retries):
+        try:
+            resp = requests.post(base_url, headers=headers, json=payload, timeout=timeout)
+        except requests.RequestException as exc:
+            last_err = exc
+            time.sleep(min(2 ** attempt, 20))
+            continue
+        if resp.status_code == 200:
+            data = resp.json()
+            text = data["choices"][0]["message"]["content"]
+            usage = data.get("usage", {})
+            return text, usage
+        if resp.status_code in (429, 500, 502, 503):
+            last_err = RuntimeError(f"HTTP {resp.status_code}: {resp.text[:300]}")
+            time.sleep(min(2 ** attempt, 20))
+            continue
+        raise RuntimeError(f"Qwen API error {resp.status_code}: {resp.text[:500]}")
+    raise RuntimeError(f"Qwen API call failed after {max_retries} retries: {last_err}")
+
+
+SOLVER_SYSTEM = (
+    "You are an AI agent attempting a software/technical task. "
+    "If a skill guide is provided, use it. Respond with a concrete, actionable "
+    "solution (steps, commands, or code) that would accomplish the task. "
+    "Do not ask clarifying questions; make reasonable assumptions and commit to an answer."
+)
+
+JUDGE_SYSTEM = (
+    "You are a strict grader. You will be shown a task, its reference oracle "
+    "solution, its verifier/pass criteria, and an agent's proposed solution. "
+    "Decide whether the agent's proposed solution would satisfy the verifier "
+    "criteria and matches the essential approach of the oracle solution. "
+    "Respond with STRICT JSON ONLY, no markdown fences, no extra text: "
+    '{"pass": true or false, "score": integer 0-5, "reason": "one short sentence"}'
+)
+
+
+def build_solver_messages(instructions: str, skill_name: str | None, skill_desc: str | None) -> list[dict]:
+    if skill_name:
+        skill_block = f"\n\nYou have access to this skill guide:\nName: {skill_name}\nDescription: {skill_desc or ''}\n"
+    else:
+        skill_block = "\n\n(No skill guide is provided for this attempt.)\n"
+    user = f"Task:\n{instructions}\n{skill_block}\nProvide your solution now."
+    return [
+        {"role": "system", "content": SOLVER_SYSTEM},
+        {"role": "user", "content": user},
+    ]
+
+
+def build_judge_messages(instructions: str, oracle_text: str, verifier_text: str, solution_text: str) -> list[dict]:
+    user = (
+        f"Task instructions:\n{instructions}\n\n"
+        f"Reference oracle solution:\n{oracle_text or '(not available)'}\n\n"
+        f"Verifier / pass criteria:\n{verifier_text or '(not available)'}\n\n"
+        f"Agent's proposed solution:\n{solution_text}\n\n"
+        "Grade now. JSON only."
+    )
+    return [
+        {"role": "system", "content": JUDGE_SYSTEM},
+        {"role": "user", "content": user},
+    ]
+
+
+def parse_judge_json(text: str) -> dict:
+    match = re.search(r"\{.*\}", text, re.DOTALL)
+    if not match:
+        return {"pass": False, "score": 0, "reason": "unparsable judge output"}
+    try:
+        obj = json.loads(match.group(0))
+    except Exception:
+        return {"pass": False, "score": 0, "reason": "unparsable judge JSON"}
+    return {
+        "pass": bool(obj.get("pass", False)),
+        "score": int(obj.get("score", 0)) if str(obj.get("score", 0)).lstrip("-").isdigit() else 0,
+        "reason": str(obj.get("reason", ""))[:300],
+    }
+
+
+# --------------------------------------------------------------------------
+# Output helpers
+# --------------------------------------------------------------------------
+
+def write_csv(path: Path, rows: list[dict]) -> None:
+    import csv
+
+    if not rows:
+        path.write_text("")
+        return
+    with path.open("w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def write_bar_svg(summary_rows: list[dict], path: Path) -> None:
+    width, height = 900, 420
+    left, right, top, bottom = 70, 30, 40, 110
+    plot_w = width - left - right
+    plot_h = height - top - bottom
+    n = len(summary_rows)
+    gap = plot_w / max(n, 1)
+    bar_w = gap * 0.45
+
+    def sy(v: float) -> float:
+        return top + (1.0 - v) * plot_h
+
+    lines = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<rect width="100%" height="100%" fill="white"/>',
+        f'<text x="{left}" y="22" font-family="Arial" font-size="18" font-weight="700">RQ4 (LLM-judged): downstream task pass rate by condition</text>',
+        f'<line x1="{left}" y1="{top}" x2="{left}" y2="{top + plot_h}" stroke="#333"/>',
+        f'<line x1="{left}" y1="{top + plot_h}" x2="{left + plot_w}" y2="{top + plot_h}" stroke="#333"/>',
+    ]
+    for tick in [0, 0.25, 0.5, 0.75, 1.0]:
+        y = sy(tick)
+        lines.append(f'<line x1="{left}" y1="{y:.2f}" x2="{left + plot_w}" y2="{y:.2f}" stroke="#e5e5e5"/>')
+        lines.append(f'<text x="{left - 10}" y="{y + 4:.2f}" text-anchor="end" font-family="Arial" font-size="12">{tick:.2f}</text>')
+
+    for i, row in enumerate(summary_rows):
+        cx = left + gap * i + gap / 2
+        h = plot_h * min(row.get("pass_rate", 0.0), 1.0)
+        x = cx - bar_w / 2
+        lines.append(f'<rect x="{x:.2f}" y="{top + plot_h - h:.2f}" width="{bar_w:.2f}" height="{h:.2f}" fill="#1f77b4"/>')
+        lines.append(
+            f'<text x="{cx:.2f}" y="{top + plot_h + 18}" text-anchor="middle" font-family="Arial" '
+            f'font-size="11" transform="rotate(28 {cx:.2f},{top + plot_h + 18})">{row["condition"]} (n={row["n"]})</text>'
+        )
+    lines.append(f'<text x="18" y="{top + plot_h / 2:.2f}" transform="rotate(-90 18,{top + plot_h / 2:.2f})" text-anchor="middle" font-family="Arial" font-size="13">Judged pass rate</text>')
+    lines.append("</svg>")
+    path.write_text("\n".join(lines) + "\n")
+
+
+# --------------------------------------------------------------------------
+# Main
+# --------------------------------------------------------------------------
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skill-usage-root", default="data/raw/Skill-Usage")
+    parser.add_argument("--tasks-root", default="", help="Defaults to <skill-usage-root>/tasks")
+    parser.add_argument("--output-dir", default="data/experiments/rq4_downstream_task_performance")
+    parser.add_argument("--conditions", nargs="+", default=DEFAULT_CONDITIONS)
+    parser.add_argument("--repeats", type=int, default=1, help="1 is consistent with RQ1's 'full pool' convention; raise later if budget allows.")
+    parser.add_argument("--seed", type=int, default=6002)
+    parser.add_argument("--limit-tasks", type=int, default=5, help="Safety default. Pass 0 for all tasks once you trust the setup.")
+
+    parser.add_argument("--model", default="qwen-plus", help="Exact Aliyun DashScope model id, e.g. qwen-plus / qwen-max / your deployed model name.")
+    parser.add_argument("--api-key-env", default="DASHSCOPE_API_KEY")
+    parser.add_argument("--base-url", default=DASHSCOPE_COMPATIBLE_URL)
+    parser.add_argument("--temperature", type=float, default=0.0)
+    parser.add_argument("--max-tokens-solver", type=int, default=500)
+    parser.add_argument("--max-tokens-judge", type=int, default=300)
+    parser.add_argument("--instructions-cap", type=int, default=3000, help="Chars of task instructions sent to the solver.")
+    parser.add_argument("--oracle-cap", type=int, default=1500, help="Chars of oracle text sent to the judge.")
+    parser.add_argument("--verifier-cap", type=int, default=1500, help="Chars of verifier text sent to the judge.")
+    parser.add_argument("--token-budget", type=int, default=900000, help="Stops (with partial results saved) once cumulative tokens would exceed this.")
+    parser.add_argument("--sleep-between-calls", type=float, default=0.3)
+    parser.add_argument("--dry-run", action="store_true", help="Build all prompts and estimate tokens; make NO API calls.")
+    parser.add_argument("--resume", action="store_true", help="Skip (task, condition, repeat) rows already present in per_task_results.jsonl.")
+    args = parser.parse_args()
+
+    import os
+
+    root = Path(args.skill_usage_root)
+    tasks_root = Path(args.tasks_root) if args.tasks_root else root / "tasks"
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    api_key = os.environ.get(args.api_key_env, "")
+    if not args.dry_run and not api_key:
+        raise SystemExit(
+            f"No API key found in environment variable {args.api_key_env}. "
+            f"Set it first, e.g. in PowerShell: $env:{args.api_key_env} = 'sk-xxxx' "
+            f"or run with --dry-run to test without calling the API."
+        )
+
+    queries = load_json(root / "data" / "task_queries.json")
+    gt = normalize_gt(load_json(root / "data" / "task_skill_mapping.json"))
+    docs = load_skill_docs(root / "skills-34k" / "skills_meta.jsonl")
+    all_skill_ids = sorted(docs)
+
+    tasks = sorted(set(queries) & set(gt))
+    if args.limit_tasks:
+        tasks = tasks[: args.limit_tasks]
+
+    print(f"Loaded {len(docs)} skills, {len(tasks)} tasks (limit-tasks={args.limit_tasks or 'all'}).")
+
+    results_path = output_dir / "per_task_results.jsonl"
+    already_done: set[tuple[str, str, int]] = set()
+    if args.resume and results_path.exists():
+        for line in results_path.read_text().splitlines():
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            already_done.add((row["task"], row["condition"], row["repeat"]))
+        print(f"Resuming: {len(already_done)} rows already recorded, will be skipped.")
+
+    budget = TokenBudget(output_dir / "token_usage_state.json", args.token_budget)
+    print(f"Token budget: {budget.remaining()} remaining of {args.token_budget} (persisted across runs).")
+
+    missing_task_dirs = []
+    missing_bundle = []
+    est_total_tokens = 0
+    stopped_early = False
+
+    results_file = results_path.open("a")
+
+    try:
+        for task in tasks:
+            task_dir = find_task_dir(tasks_root, task)
+            if task_dir is None:
+                missing_task_dirs.append(task)
+                continue
+            bundle = load_task_bundle(task_dir)
+            instructions = bundle["instructions_text"] or " ".join(queries[task])
+            oracle_text = bundle["oracle_text"][: args.oracle_cap]
+            verifier_text = bundle["verifier_text"][: args.verifier_cap]
+            instructions = instructions[: args.instructions_cap]
+            if not oracle_text and not verifier_text:
+                missing_bundle.append(task)
+                # We can still attempt it, but the judge will have nothing
+                # to grade against, so skip rather than waste tokens.
+                continue
+
+            gold = gt[task]
+            query = " ".join(queries[task])
+
+            for repeat in range(args.repeats):
+                rng = random.Random(args.seed + repeat + hash(task) % 100000)
+                conditions = build_conditions_for_task(query, gold, all_skill_ids, docs, rng)
+
+                for cond_name in args.conditions:
+                    if cond_name not in conditions:
+                        continue
+                    key = (task, cond_name, repeat)
+                    if key in already_done:
+                        continue
+
+                    skill_id = conditions[cond_name]["skill_id"]
+                    skill_name = docs[skill_id]["name"] if skill_id else None
+                    skill_desc = docs[skill_id]["description"] if skill_id else None
+
+                    solver_messages = build_solver_messages(instructions, skill_name, skill_desc)
+
+                    if args.dry_run:
+                        est_total_tokens += estimate_tokens(json.dumps(solver_messages))
+                        # Rough placeholder judge estimate reusing capped oracle/verifier text.
+                        placeholder_solution = "x" * 400
+                        judge_messages = build_judge_messages(instructions, oracle_text, verifier_text, placeholder_solution)
+                        est_total_tokens += estimate_tokens(json.dumps(judge_messages))
+                        continue
+
+                    if budget.remaining() <= 0:
+                        print("Token budget exhausted; stopping early. Partial results are saved.")
+                        stopped_early = True
+                        break
+
+                    solution_text, solver_usage = call_qwen(
+                        solver_messages, args.model, api_key, args.base_url,
+                        args.temperature, args.max_tokens_solver,
+                    )
+                    time.sleep(args.sleep_between_calls)
+
+                    judge_messages = build_judge_messages(instructions, oracle_text, verifier_text, solution_text)
+                    judge_raw, judge_usage = call_qwen(
+                        judge_messages, args.model, api_key, args.base_url,
+                        0.0, args.max_tokens_judge,
+                    )
+                    time.sleep(args.sleep_between_calls)
+                    verdict = parse_judge_json(judge_raw)
+
+                    solver_tokens = solver_usage.get("total_tokens", estimate_tokens(solution_text))
+                    judge_tokens = judge_usage.get("total_tokens", estimate_tokens(judge_raw))
+                    budget.add(solver_tokens + judge_tokens)
+
+                    row = {
+                        "task": task,
+                        "condition": cond_name,
+                        "repeat": repeat,
+                        "skill_id": skill_id,
+                        "retrieval_correct": conditions[cond_name]["retrieval_correct"],
+                        "judged_pass": verdict["pass"],
+                        "judged_score": verdict["score"],
+                        "judge_reason": verdict["reason"],
+                        "solver_tokens": solver_tokens,
+                        "judge_tokens": judge_tokens,
+                        "solution_text": solution_text[:2000],
+                    }
+                    results_file.write(json.dumps(row) + "\n")
+                    results_file.flush()
+
+                if stopped_early:
+                    break
+            if stopped_early:
+                break
+    finally:
+        results_file.close()
+
+    if missing_task_dirs:
+        print(f"\nWARNING: no task directory found for {len(missing_task_dirs)} tasks: {missing_task_dirs[:10]}")
+    if missing_bundle:
+        print(f"WARNING: {len(missing_bundle)} tasks had no oracle/verifier text, skipped: {missing_bundle[:10]}")
+
+    if args.dry_run:
+        n_calls = sum(
+            1 for _t in tasks for _c in args.conditions for _r in range(args.repeats)
+        ) * 2
+        print(f"\n[DRY RUN] Estimated ~{est_total_tokens} tokens across ~{n_calls} API calls (rough estimate, not exact).")
+        print("No API calls were made. Remove --dry-run to actually run.")
+        return
+
+    # ---- Summarize from the JSONL (source of truth, survives resumes) ----
+    all_rows = [json.loads(line) for line in results_path.read_text().splitlines() if line.strip()]
+    conditions_seen = []
+    for row in all_rows:
+        if row["condition"] not in conditions_seen:
+            conditions_seen.append(row["condition"])
+
+    summary_rows = []
+    for cond in conditions_seen:
+        rows = [r for r in all_rows if r["condition"] == cond]
+        n = len(rows)
+        summary_rows.append({
+            "condition": cond,
+            "n": n,
+            "pass_rate": mean(1.0 if r["judged_pass"] else 0.0 for r in rows) if n else 0.0,
+            "mean_score": mean(r["judged_score"] for r in rows) if n else 0.0,
+            "mean_solver_tokens": mean(r["solver_tokens"] for r in rows) if n else 0.0,
+            "mean_judge_tokens": mean(r["judge_tokens"] for r in rows) if n else 0.0,
+        })
+
+    write_csv(output_dir / "summary.csv", summary_rows)
+    (output_dir / "summary.json").write_text(json.dumps({
+        "metadata": {
+            "tasks_requested": len(tasks),
+            "tasks_missing_dir": len(missing_task_dirs),
+            "tasks_missing_bundle": len(missing_bundle),
+            "model": args.model,
+            "repeats": args.repeats,
+            "conditions": args.conditions,
+            "important_boundary": (
+                "judged_pass is an LLM-judge proxy grading a text solution against "
+                "the task's oracle solution and verifier text, NOT execution in a "
+                "real sandbox. Treat as a necessary-condition-style signal, not a "
+                "ground-truth pass rate."
+            ),
+        },
+        "summary": summary_rows,
+    }, indent=2) + "\n")
+    write_bar_svg(summary_rows, output_dir / "condition_pass_rate_bar.svg")
+
+    print(f"\nWrote {results_path}")
+    print(f"Wrote {output_dir / 'summary.csv'}")
+    print(f"Wrote {output_dir / 'summary.json'}")
+    print(f"Wrote {output_dir / 'condition_pass_rate_bar.svg'}")
+    print(f"\nTokens spent so far (persisted): {budget.spent} / {args.token_budget}")
+    print()
+    print(f"{'condition':>24} {'n':>5} {'pass_rate':>10} {'mean_score':>11}")
+    for row in summary_rows:
+        print(f"{row['condition']:>24} {row['n']:>5} {row['pass_rate']:>10.3f} {row['mean_score']:>11.2f}")
+
+
+if __name__ == "__main__":
+    main()
