@@ -1,0 +1,252 @@
+#!/usr/bin/env python3
+"""Reconcile the two "gold skill" definitions used across the RQ4 branches.
+
+Branch A/B (this project's own RQ4 scripts) use Skill-Usage's own retrieval
+benchmark labels: `data/task_skill_mapping.json`, pointing into the 34,396-
+skill `skills-34k` library.
+
+Branch C (`rq4_downstream_skill_exposure.py`) uses SkillsBench's task-local
+curated skills: `tasks/<task-id>/environment/skills/*/SKILL.md`, drawn from
+a much smaller, task-bundled ~202-skill pool.
+
+Both are called "the gold skill set for this task", but nothing so far has
+verified whether they actually point at the same underlying skills. This
+script answers exactly that, for every task that exists in both systems:
+
+    For task T, how much do "Skill-Usage's gold set" and "SkillsBench's
+    gold set" overlap?
+
+Matching is necessarily fuzzy because the two systems use different ID
+schemes (Skill-Usage: `owner--repo` style `skill_id`; SkillsBench: a content
+hash keyed by the literal SKILL.md file, with a human-readable folder name).
+So this script matches on skill *name* similarity first, falling back to
+description/content token overlap when names look structurally different
+but might still describe the same skill. Every match records the score it
+was matched on, so results are auditable rather than a black box.
+
+No API calls, no model calls -- pure local text comparison.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import re
+from difflib import SequenceMatcher
+from pathlib import Path
+from statistics import mean
+
+from rq1_retrieval_scaling import load_json, load_skill_docs, normalize_gt, tokenize
+from rq4_downstream_skill_exposure import first_heading, load_skillsbench_tasks, parse_front_matter
+
+NAME_MATCH_THRESHOLD = 0.5  # combined score above this counts as "matched". Tune this: lower it if
+# you see obviously-same skills falling into the unmatched lists in per_task_reconciliation.csv;
+# raise it if you see obviously-different skills getting matched.
+
+STOPWORDS = {
+    "a", "an", "the", "of", "to", "for", "and", "or", "in", "on", "with",
+    "as", "is", "are", "this", "that", "by", "from", "using", "use", "your",
+    "skill", "task", "than", "s",
+}
+
+
+def content_tokens(text: str) -> set[str]:
+    return {t for t in tokenize(text) if t not in STOPWORDS}
+
+
+def normalize_name(name: str) -> str:
+    name = name.lower().strip()
+    # strip a leading "owner--" or "owner/" prefix if present
+    name = re.sub(r"^[a-z0-9_.\-]+(--|/)", "", name)
+    name = re.sub(r"[_\s]+", "-", name)
+    name = re.sub(r"[^a-z0-9\-]", "", name)
+    return name.strip("-")
+
+
+def name_similarity(a: str, b: str) -> float:
+    return SequenceMatcher(None, normalize_name(a), normalize_name(b)).ratio()
+
+
+def content_jaccard(a_tokens: set[str], b_tokens: set[str]) -> float:
+    if not a_tokens or not b_tokens:
+        return 0.0
+    return len(a_tokens & b_tokens) / len(a_tokens | b_tokens)
+
+
+def best_match_score(su_name: str, su_text: str, sb_name: str, sb_text: str) -> float:
+    ns = name_similarity(su_name, sb_name)
+    cs = content_jaccard(content_tokens(su_text), content_tokens(sb_text))
+    return max(ns, cs)
+
+
+def greedy_match(su_items: list[dict], sb_items: list[dict]) -> list[dict]:
+    """su_items / sb_items: [{"key":..., "name":..., "text":...}, ...]
+    Returns list of match records, highest-score-first, one-to-one.
+    """
+    candidates = []
+    for su in su_items:
+        for sb in sb_items:
+            score = best_match_score(su["name"], su["text"], sb["name"], sb["text"])
+            candidates.append((score, su, sb))
+    candidates.sort(key=lambda c: c[0], reverse=True)
+
+    used_su, used_sb = set(), set()
+    matches = []
+    for score, su, sb in candidates:
+        if su["key"] in used_su or sb["key"] in used_sb:
+            continue
+        if score < NAME_MATCH_THRESHOLD:
+            continue
+        used_su.add(su["key"])
+        used_sb.add(sb["key"])
+        matches.append({"skill_usage_name": su["name"], "skillsbench_name": sb["name"], "score": round(score, 3)})
+    return matches
+
+
+def load_skill_usage_gold(root: Path) -> dict[str, list[dict]]:
+    gt = normalize_gt(load_json(root / "data" / "task_skill_mapping.json"))
+    docs = load_skill_docs(root / "skills-34k" / "skills_meta.jsonl")
+    out: dict[str, list[dict]] = {}
+    for task, skill_ids in gt.items():
+        items = []
+        for skill_id in sorted(skill_ids):
+            doc = docs.get(skill_id)
+            if doc is None:
+                items.append({"key": skill_id, "name": skill_id, "text": skill_id})
+                continue
+            items.append({"key": skill_id, "name": doc["name"], "text": f"{doc['name']} {doc['description']}"})
+        out[task] = items
+    return out
+
+
+def load_skillsbench_gold(tasks_root: Path) -> dict[str, list[dict]]:
+    tasks, _skills = load_skillsbench_tasks(tasks_root)
+    out: dict[str, list[dict]] = {}
+    for task in tasks:
+        items = []
+        seen = set()
+        for path_str in task["gold_skill_paths"]:
+            folder_name = Path(path_str).parent.name
+            if folder_name in seen:
+                continue
+            seen.add(folder_name)
+            try:
+                raw = Path(path_str).read_text(errors="replace")
+            except OSError:
+                raw = ""
+            meta, body = parse_front_matter(raw)
+            name = meta.get("name") if isinstance(meta, dict) else None
+            description = meta.get("description") if isinstance(meta, dict) else None
+            name = name or folder_name
+            description = description or first_heading(body, name)
+            items.append({"key": path_str, "name": name, "text": f"{name} {description} {body}"})
+        out[task["task_id"]] = items
+    return out
+
+
+def summarize(rows: list[dict]) -> dict:
+    if not rows:
+        return {"n_tasks": 0}
+    jaccards = [r["jaccard"] for r in rows]
+    full = sum(1 for r in rows if r["jaccard"] >= 0.999)
+    none_ = sum(1 for r in rows if r["jaccard"] <= 0.001)
+    partial = len(rows) - full - none_
+    return {
+        "n_tasks": len(rows),
+        "mean_jaccard": round(mean(jaccards), 3),
+        "full_overlap_tasks": full,
+        "full_overlap_rate": round(full / len(rows), 3),
+        "partial_overlap_tasks": partial,
+        "partial_overlap_rate": round(partial / len(rows), 3),
+        "no_overlap_tasks": none_,
+        "no_overlap_rate": round(none_ / len(rows), 3),
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skill-usage-root", default="data/raw/Skill-Usage")
+    parser.add_argument("--skillsbench-root", default="data/raw/skillsbench")
+    parser.add_argument("--output-dir", default="data/experiments/rq4_gold_reconciliation")
+    args = parser.parse_args()
+
+    su_root = Path(args.skill_usage_root)
+    sb_root = Path(args.skillsbench_root)
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    su_gold = load_skill_usage_gold(su_root)
+    sb_gold = load_skillsbench_gold(sb_root / "tasks")
+
+    su_only_tasks = sorted(set(su_gold) - set(sb_gold))
+    sb_only_tasks = sorted(set(sb_gold) - set(su_gold))
+    common_tasks = sorted(set(su_gold) & set(sb_gold))
+
+    print(f"Skill-Usage tasks: {len(su_gold)}, SkillsBench tasks: {len(sb_gold)}, common: {len(common_tasks)}")
+    if su_only_tasks:
+        print(f"  only in Skill-Usage ({len(su_only_tasks)}): {su_only_tasks[:10]}{' ...' if len(su_only_tasks) > 10 else ''}")
+    if sb_only_tasks:
+        print(f"  only in SkillsBench ({len(sb_only_tasks)}): {sb_only_tasks[:10]}{' ...' if len(sb_only_tasks) > 10 else ''}")
+
+    per_task_rows = []
+    for task in common_tasks:
+        su_items = su_gold[task]
+        sb_items = sb_gold[task]
+        matches = greedy_match(su_items, sb_items)
+
+        union_size = len(su_items) + len(sb_items) - len(matches)
+        jaccard = len(matches) / union_size if union_size else 0.0
+
+        matched_su_names = {m["skill_usage_name"] for m in matches}
+        matched_sb_names = {m["skillsbench_name"] for m in matches}
+        su_unmatched = [it["name"] for it in su_items if it["name"] not in matched_su_names]
+        sb_unmatched = [it["name"] for it in sb_items if it["name"] not in matched_sb_names]
+
+        per_task_rows.append(
+            {
+                "task": task,
+                "skill_usage_gold_count": len(su_items),
+                "skillsbench_gold_count": len(sb_items),
+                "matched_count": len(matches),
+                "jaccard": round(jaccard, 3),
+                "matches": matches,
+                "skill_usage_unmatched": su_unmatched,
+                "skillsbench_unmatched": sb_unmatched,
+            }
+        )
+
+    summary = summarize(per_task_rows)
+    summary["skill_usage_only_tasks"] = su_only_tasks
+    summary["skillsbench_only_tasks"] = sb_only_tasks
+    summary["match_threshold"] = NAME_MATCH_THRESHOLD
+
+    (output_dir / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n")
+    (output_dir / "per_task_reconciliation.json").write_text(json.dumps(per_task_rows, indent=2, ensure_ascii=False) + "\n")
+
+    csv_rows = [
+        {
+            "task": r["task"],
+            "skill_usage_gold_count": r["skill_usage_gold_count"],
+            "skillsbench_gold_count": r["skillsbench_gold_count"],
+            "matched_count": r["matched_count"],
+            "jaccard": r["jaccard"],
+            "skill_usage_unmatched": "; ".join(r["skill_usage_unmatched"]),
+            "skillsbench_unmatched": "; ".join(r["skillsbench_unmatched"]),
+        }
+        for r in per_task_rows
+    ]
+    with (output_dir / "per_task_reconciliation.csv").open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=list(csv_rows[0]) if csv_rows else [], lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(csv_rows)
+
+    print(f"\nWrote {output_dir / 'summary.json'}")
+    print(f"Wrote {output_dir / 'per_task_reconciliation.json'}")
+    print(f"Wrote {output_dir / 'per_task_reconciliation.csv'}")
+    print()
+    print(json.dumps(summary, indent=2, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()
