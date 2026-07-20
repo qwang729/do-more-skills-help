@@ -61,8 +61,43 @@ task x distractor_type x noise_count
    - `data/task_queries.json`
    - `data/task_skill_mapping.json`
    - `skills-34k/skills_meta.jsonl`
-2. **MiniLM cache** (only needed for `hard` distractors): `sentence-transformers/all-MiniLM-L6-v2` must be cached locally (same as RQ3 enhanced). Document embeddings are cached at `data/experiments/rq5_llm_router/neural_doc_embeddings.npy`.
-3. **API key**: set `DASHSCOPE_API_KEY` or use `--api-key-prompt` (hidden terminal input). The key is never written to experiment files.
+
+  ```bash
+  mkdir -p data/raw
+
+  git clone \
+    --depth 1 \
+    --filter=blob:none \
+    --sparse \
+    https://github.com/UCSB-NLP-Chang/Skill-Usage.git \
+    data/raw/Skill-Usage
+
+  git -C data/raw/Skill-Usage sparse-checkout set data
+
+  mkdir -p data/raw/Skill-Usage/skills-34k
+
+  curl -L --fail --retry 3 \
+    "https://huggingface.co/datasets/Shiyu-Lab/Skill-Usage/resolve/main/skills-34k/skills_meta.jsonl?download=true" \
+    -o data/raw/Skill-Usage/skills-34k/skills_meta.jsonl
+  ```
+
+  Validation:
+  ```bash
+  test -s data/raw/Skill-Usage/data/task_queries.json &&
+  test -s data/raw/Skill-Usage/data/task_skill_mapping.json &&
+  test -s data/raw/Skill-Usage/skills-34k/skills_meta.jsonl &&
+  echo "RQ5 raw data restored successfully"
+  ```
+  
+2. **API key**: set `DASHSCOPE_API_KEY` or use `--api-key-prompt` (hidden terminal input). The key is never written to experiment files.
+
+3. **Base URL** (optional): set `DASHSCOPE_BASE_URL` or use `--base-url`. If neither is provided, the shared endpoint `https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions` is used. For better performance and stability, Aliyun recommends the workspace-dedicated domain:
+
+   ```bash
+   export DASHSCOPE_BASE_URL="https://{WorkspaceId}.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"
+   ```
+
+   Replace `{WorkspaceId}` with your workspace ID from the Bailian console. Prefer the env var over `--base-url` to keep the workspace ID out of shell history. Requests use the full URL, but `experiment_metadata.json` / `summary.json` only store a redacted form (`<workspace>` placeholder), so the workspace ID is never written to tracked experiment files.
 
 ### Step 1: dry run (no API calls)
 
@@ -71,6 +106,8 @@ python3 experiments/rq5_llm_router_decision_budget.py --dry-run
 ```
 
 Writes `experiment_metadata.json`, `experiment_plan.csv`, and `candidate_menus.jsonl`, then prints the first five router prompts for manual inspection.
+
+**MiniLM cache** (only needed for `hard` distractors): `sentence-transformers/all-MiniLM-L6-v2` must be cached locally (same as RQ3 enhanced). Document embeddings are cached at `data/experiments/rq5_llm_router/neural_doc_embeddings.npy`.
 
 ### Step 2: 10-task pilot
 
@@ -86,7 +123,21 @@ After the pilot, apply the noise-grid adjustment rule (proposal Section 6) to th
 | 0.85 - 0.95 | `{0, 2, 5, 10, 20, 50}` |
 | otherwise | keep `{0, 2, 5, 10, 20}` |
 
-Record the decision in `experiment_metadata.json` once and never revise it after full-run calls begin. Pilot calls under a superseded grid are reported separately as pilot data.
+Record the decision once in `data/experiments/rq5_llm_router/noise_grid_decision.json` **by hand** (fields: `decided_on`, `pilot_macro_f1_hard_n20`, `rule_branch`, `final_grid`) and never revise it after full-run calls begin. 
+
+Example content:
+
+```json
+{
+  "decided_on": "2026-07-20",
+  "pilot_command": "python3 experiments/rq5_llm_router_decision_budget.py --limit-tasks 10 --api-key-prompt",
+  "pilot_macro_f1_hard_n20": 0.421,
+  "rule_branch": "otherwise (< 0.85)",
+  "final_grid": [0, 2, 5, 10, 20]
+}
+```
+
+On every subsequent run the script merges this file into `experiment_metadata.json` (`noise_grid_status: frozen_by_pilot_decision`) and aborts if `--noise-counts` deviates from the frozen grid. Pilot calls under a superseded grid are reported separately as pilot data.
 
 ### Step 3: full run
 
@@ -108,7 +159,7 @@ python3 experiments/rq5_llm_router_decision_budget.py --resume --api-key-prompt 
 | `--skill-usage-root` | `data/raw/Skill-Usage` | Raw dataset root |
 | `--output-dir` | `data/experiments/rq5_llm_router` | All outputs |
 | `--model` | `qwen3.7-plus` | Fixed for the whole run; do not mix model IDs |
-| `--base-url` | DashScope compatible-mode endpoint | OpenAI-compatible Chat Completions |
+| `--base-url` | `$DASHSCOPE_BASE_URL` or DashScope compatible-mode endpoint | OpenAI-compatible Chat Completions. For workspace-dedicated URLs (`https://{WorkspaceId}.cn-beijing.maas.aliyuncs.com/...`), set the `DASHSCOPE_BASE_URL` env var instead of passing the flag to keep the workspace ID out of shell history; metadata files store a redacted URL (`<workspace>` placeholder) |
 | `--noise-counts` | `0 2 5 10 20` | Overridden by the frozen post-pilot grid |
 | `--distractor-types` | `random hard` | Distractor sources |
 | `--seed` | `6002` | All deterministic sampling and ordering |
