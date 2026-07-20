@@ -976,6 +976,11 @@ def main() -> None:
 
     calls_made = 0
     stopped_early = False
+    total_conditions = len(plan)
+    pending_at_start = total_conditions - len(completed)
+    run_started = time.monotonic()
+    if pending_at_start:
+        print(f"Progress: {len(completed)}/{total_conditions} done, {pending_at_start} pending this run.")
     for row in plan:
         if row["condition_id"] in completed:
             continue
@@ -1022,7 +1027,16 @@ def main() -> None:
         }
         append_jsonl(responses_path, record)
         completed[row["condition_id"]] = record
+        done = len(completed)
+        pct = done / total_conditions * 100
+        rate = (time.monotonic() - run_started) / calls_made
+        eta_seconds = rate * (total_conditions - done)
+        eta = f"{int(eta_seconds // 3600)}h{int(eta_seconds % 3600 // 60):02d}m" if eta_seconds >= 3600 else f"{int(eta_seconds // 60)}m{int(eta_seconds % 60):02d}s"
+        bar_width = 24
+        filled = int(bar_width * done / total_conditions)
+        bar = "#" * filled + "-" * (bar_width - filled)
         print(
+            f"[{bar}] {done}/{total_conditions} {pct:5.1f}% ETA {eta} | "
             f"{row['condition_id']}: parse={parsed['parse_status']} "
             f"selected={len(parsed['selected_indices'])}/{row['menu_size']} "
             f"tokens={result['total_tokens']} calls={calls_made}/{args.max_api_calls}"
