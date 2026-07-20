@@ -1,0 +1,160 @@
+# 实验研究报告：RQ4 关键技能的影响分析
+
+基于实验框架中 `RQ4`（研究问题 4）的定义，本报告专门评估**关键技能（Gold Skill / Domain Skill）在特定领域任务中的重要性与影响**。
+
+---
+
+## 1. 实验设计与问题背景 (Research Question Definition)
+
+### 1.1 RQ4 问题说明
+
+* **研究问题 (RQ4)**：提供专属/领域技能（Domain Skills）是否能够显著提升 Agent 在复杂任务上的表现？当缺少领域技能时，Agent 是否会因缺乏关键知识而失败？
+
+
+* **评估指标**：
+* **Pass Rate / Judged Score**：任务是否通过裁判模块（Oracle）判定。
+
+
+* **Token 消耗与效率**：Solver 与 Judge 的 Token 使用量。
+
+
+* **归因分析**：无技能（`no_skill`）与有技能（`gold_skill`）条件下的失败原因比对。
+
+
+
+
+
+---
+
+## 2. 实验条件与数据对比 (Experimental Conditions & Results)
+
+在本次针对 **3D 扫描计算任务 (`3d-scan-calc`)** 的实验中，对比了 `no_skill`（未提供技能）与 `gold_skill`（提供针对性技能 `benchflow-ai--mesh-analysis`）以及混淆技能条件下的表现：
+
+### 2.1 数据汇总表
+
+| 实验条件 (`condition`) | 检索/技能匹配 | 判决结果 (`judged_pass`) | 得分 (`judged_score`) | Solver Tokens | Judge Tokens | 失败主因 (`judge_reason`)
+
+ |
+| --- | --- | --- | --- | --- | --- | --- |
+| **`no_skill`**<br> | N/A | **False**<br> | **2** / 5
+
+ | 4,447
+
+ | 4,751
+
+ | 提供了完整的 STL 分析，但未按要求根据 Material ID 和 Density Table 计算质量（Mass）。
+
+ |
+| **`gold_skill`**<br> | True
+
+ | **False**<br> | **1** / 5
+
+ | 2,952
+
+ | 2,230
+
+ | 未按 Oracle 预期提取 Mesh Attributes 中的 Material ID 并通过 Density Table 计算质量。
+
+ |
+| **`retrieved_top1_full`**<br> | True
+
+ | **False**<br> | **1** / 5
+
+ | 2,952
+
+ | 2,232
+
+ | 未结合 Material ID 和密度表计算质量，且未按要求的 JSON 格式输出。
+
+ |
+| **`hard_distractor`**<br> | False
+
+ | **False**<br> | **1** / 5
+
+ | 4,567
+
+ | 2,201
+
+ | 忽略了材料密度表，且未将结果输出至指定文件。
+
+ |
+| **`random_wrong`**<br> | False
+
+ | **False**<br> | **1** / 5
+
+ | 5,852
+
+ | 2,458
+
+ | 未使用 `MeshAnalyzer` 模块，缺失质量与密度查找逻辑。
+
+ |
+
+---
+
+## 3. 详细分析与讨论 (Key Findings & Discussion)
+
+### 3.1 技能提供对 Token 效率的影响
+
+1. **输入/生成 Token 显著减少**：
+* 在提供 `gold_skill` 或 `retrieved_top1_full` 条件下，Solver 的 Token 消耗从 `no_skill` 的 **4,447** 降至 **2,952**。
+
+
+* 技能文件为 Agent 提供了现成的代码范式（如使用 `trimesh` 库），降低了 Agent 自行从零推导基础算法（如手动解析二进制文件、计算离散 Divergence Theorem）的生成开销。
+
+
+
+
+
+### 3.2 技能对任务成功率（Judged Pass）的影响
+
+1. **通用技能 vs. 专属业务逻辑的断层**：
+* 尽管提供了网格分析技能（`benchflow-ai--mesh-analysis`），Agent 在所有条件下**均未成功通过测试（Pass Rate = 0%）**。
+
+
+* **根因分析**：
+* 提供的标准 `mesh-analysis` 技能主要涵盖**几何拓扑分析（网格解析、连通分量提取、体积计算、碎片过滤）**。
+
+
+* 然而，基准测试的 Oracle 判定标准隐含了**材料属性映射逻辑（Material ID -> Density Table -> Mass Calculation）**。
+
+
+* Agent 过于依赖通用网格库（如 `trimesh` 或纯数学体积积分），忽略了上下文/ Prompt 中关于材料密度和质量计算的隐式约束。
+
+
+
+
+
+
+
+### 3.3 干扰技能（Distractor）的负面效应
+
+* 在引入强干扰技能（如 `hard_distractor`: `power-flow-data`）或随机错误技能（`random_wrong`: `trivy-offline-vulnerability-scanning`）时：
+
+
+* **Token 消耗激增**：`random_wrong` 的 Solver Tokens 达到了 **5,852**。
+
+
+* **注意力分散**：Agent 在尝试解析无用技能文档或试图在无关背景下解决问题时，丢失了输出格式控制（如文件输出路径、JSON 结构格式等）。
+
+
+
+
+
+---
+
+## 4. RQ4 结论与建议 (Conclusions & Recommendations)
+
+### 4.1 研究结论 (RQ4 Conclusion)
+
+1. **技能能有效提升求解效率，但不能完全替代业务隐式逻辑**：引入黄金技能能够降低约 33% 的 Token 消耗，使 Agent 快速构建高质量的范例代码。
+
+
+2. **技能覆盖度不足会导致“局部正确、全局失败”**：如果关键技能仅包含“几何网格分析”而不包含“领域材料计算”，Agent 容易产生定势思维，停留在通用几何层面的解答，从而无法满足 Oracle 的特定考核点。
+
+
+
+### 4.2 优化建议
+
+1. **补全技能定义（Skill Enrichment）**：针对 `3d-scan-calc` 类任务，技能包应补充包含“Mesh 属性提取与领域物理量（Mass/Density）映射”的标准处理范式。
+2. **Prompt 强化领域约束**：在任务提示词中显式提示“需导出特定属性（如 Material ID）并执行二次物理量计算”，避免 Agent 因仅看到 STL 几何数据而忽视质量计算逻辑。
