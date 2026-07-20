@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="440" viewBox="0 0 860 440">
+<rect width="100%" height="100%" fill="white"/>
+<text x="82" y="24" font-family="Arial" font-size="17" font-weight="700">RQ5: macro selection F1 vs distractor count</text>
+<line x1="82" y1="40" x2="82" y2="370" stroke="#333"/>
+<line x1="82" y1="370" x2="690" y2="370" stroke="#333"/>
+<line x1="82" y1="370.00" x2="690" y2="370.00" stroke="#e5e5e5"/>
+<text x="72" y="374.00" text-anchor="end" font-family="Arial" font-size="12">0.00</text>
+<line x1="82" y1="287.50" x2="690" y2="287.50" stroke="#e5e5e5"/>
+<text x="72" y="291.50" text-anchor="end" font-family="Arial" font-size="12">0.25</text>
+<line x1="82" y1="205.00" x2="690" y2="205.00" stroke="#e5e5e5"/>
+<text x="72" y="209.00" text-anchor="end" font-family="Arial" font-size="12">0.50</text>
+<line x1="82" y1="122.50" x2="690" y2="122.50" stroke="#e5e5e5"/>
+<text x="72" y="126.50" text-anchor="end" font-family="Arial" font-size="12">0.75</text>
+<line x1="82" y1="40.00" x2="690" y2="40.00" stroke="#e5e5e5"/>
+<text x="72" y="44.00" text-anchor="end" font-family="Arial" font-size="12">1.00</text>
+<line x1="82.00" y1="370" x2="82.00" y2="376" stroke="#333"/>
+<text x="82.00" y="394" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+<line x1="142.80" y1="370" x2="142.80" y2="376" stroke="#333"/>
+<text x="142.80" y="394" text-anchor="middle" font-family="Arial" font-size="12">2</text>
+<line x1="234.00" y1="370" x2="234.00" y2="376" stroke="#333"/>
+<text x="234.00" y="394" text-anchor="middle" font-family="Arial" font-size="12">5</text>
+<line x1="386.00" y1="370" x2="386.00" y2="376" stroke="#333"/>
+<text x="386.00" y="394" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<line x1="690.00" y1="370" x2="690.00" y2="376" stroke="#333"/>
+<text x="690.00" y="394" text-anchor="middle" font-family="Arial" font-size="12">20</text>
+<polyline fill="none" stroke="#d62728" stroke-width="3" points="82.00,100.07 142.80,181.13 234.00,202.57 386.00,212.96 690.00,243.53"/>
+<circle cx="82.00" cy="100.07" r="4" fill="#d62728"/>
+<circle cx="142.80" cy="181.13" r="4" fill="#d62728"/>
+<circle cx="234.00" cy="202.57" r="4" fill="#d62728"/>
+<circle cx="386.00" cy="212.96" r="4" fill="#d62728"/>
+<circle cx="690.00" cy="243.53" r="4" fill="#d62728"/>
+<polyline fill="none" stroke="#1f77b4" stroke-width="3" points="82.00,100.07 142.80,84.33 234.00,81.07 386.00,78.07 690.00,78.92"/>
+<circle cx="82.00" cy="100.07" r="4" fill="#1f77b4"/>
+<circle cx="142.80" cy="84.33" r="4" fill="#1f77b4"/>
+<circle cx="234.00" cy="81.07" r="4" fill="#1f77b4"/>
+<circle cx="386.00" cy="78.07" r="4" fill="#1f77b4"/>
+<circle cx="690.00" cy="78.92" r="4" fill="#1f77b4"/>
+<line x1="714" y1="58" x2="740" y2="58" stroke="#d62728" stroke-width="3"/>
+<text x="748" y="62" font-family="Arial" font-size="13">hard</text>
+<line x1="714" y1="82" x2="740" y2="82" stroke="#1f77b4" stroke-width="3"/>
+<text x="748" y="86" font-family="Arial" font-size="13">random</text>
+<text x="386.00" y="424" text-anchor="middle" font-family="Arial" font-size="13">Distractor count (noise_count)</text>
+<text x="18" y="205.00" transform="rotate(-90 18,205.00)" text-anchor="middle" font-family="Arial" font-size="13">Macro selection F1</text>
+</svg>

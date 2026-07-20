@@ -1,0 +1,47 @@
+{
+  "model": "qwen3.7-plus",
+  "base_url": "https://<workspace>.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "temperature": 0.0,
+  "max_completion_tokens": 256,
+  "enable_thinking": false,
+  "seed": 6002,
+  "noise_counts": [
+    0,
+    2,
+    5,
+    10,
+    20
+  ],
+  "noise_grid_status": "frozen_by_pilot_decision",
+  "distractor_types": [
+    "random",
+    "hard"
+  ],
+  "hard_distractor_definition": "RQ3 hybrid BM25 + MiniLM (reciprocal-rank fusion) top non-gold skills",
+  "task_count": 87,
+  "gold_count_distribution": {
+    "1": 26,
+    "2": 20,
+    "3": 18,
+    "4": 12,
+    "5": 6,
+    "6": 4,
+    "7": 1
+  },
+  "planned_conditions": 783,
+  "skill_library_size": 34396,
+  "boundary": "RQ5 measures multi-label routing selection quality with guaranteed gold visibility. Selected skills are not executed; results are not downstream task success.",
+  "noise_grid_decision": {
+    "decided_on": "2026-07-20",
+    "pilot_command": "python3 experiments/rq5_llm_router_decision_budget.py --limit-tasks 10 --api-key-prompt",
+    "pilot_macro_f1_hard_n20": 0.421,
+    "rule_branch": "otherwise (< 0.85)",
+    "final_grid": [
+      0,
+      2,
+      5,
+      10,
+      20
+    ]
+  }
+}

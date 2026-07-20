@@ -1,0 +1,3118 @@
+[
+  {
+    "condition_id": "financial-modeling-qa|hard|n20",
+    "query": "pandas Excel analysis PDF parsing extraction",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-2",
+        "name": "xlsx-2"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "404kidwiz--pdf-skill",
+        "name": "pdf-skill"
+      },
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "K-Dense-AI--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "Peiiii--claude-office-pack",
+        "name": "claude-office-pack"
+      },
+      {
+        "skill_id": "aliceisjustplaying--pdf-to-markdown",
+        "name": "pdf-to-markdown"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-3",
+        "name": "pdf-3"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-2",
+        "name": "xlsx-2"
+      },
+      {
+        "skill_id": "davila7--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "daymade--excel-automation",
+        "name": "excel-automation"
+      },
+      {
+        "skill_id": "dirnbauer--document-processing",
+        "name": "document-processing"
+      },
+      {
+        "skill_id": "famaoai-creator--doc-to-text",
+        "name": "doc-to-text"
+      },
+      {
+        "skill_id": "harryoung--excel-parser",
+        "name": "excel-parser"
+      },
+      {
+        "skill_id": "jimmc414--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "manutej--pandas",
+        "name": "pandas"
+      },
+      {
+        "skill_id": "mindrally--pandas-best-practices",
+        "name": "pandas-best-practices"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      },
+      {
+        "skill_id": "vstorm-co--data-analysis",
+        "name": "data-analysis"
+      },
+      {
+        "skill_id": "wwwzhouhui--excel-report-generator",
+        "name": "excel-report-generator"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "harryoung--excel-parser",
+        "name": "excel-parser"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-3",
+        "name": "pdf-3"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "famaoai-creator--doc-to-text",
+        "name": "doc-to-text"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "wwwzhouhui--excel-report-generator",
+        "name": "excel-report-generator"
+      },
+      {
+        "skill_id": "dirnbauer--document-processing",
+        "name": "document-processing"
+      },
+      {
+        "skill_id": "manutej--pandas",
+        "name": "pandas"
+      },
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "vstorm-co--data-analysis",
+        "name": "data-analysis"
+      },
+      {
+        "skill_id": "daymade--excel-automation",
+        "name": "excel-automation"
+      },
+      {
+        "skill_id": "aliceisjustplaying--pdf-to-markdown",
+        "name": "pdf-to-markdown"
+      },
+      {
+        "skill_id": "davila7--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "404kidwiz--pdf-skill",
+        "name": "pdf-skill"
+      },
+      {
+        "skill_id": "Peiiii--claude-office-pack",
+        "name": "claude-office-pack"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      },
+      {
+        "skill_id": "mindrally--pandas-best-practices",
+        "name": "pandas-best-practices"
+      },
+      {
+        "skill_id": "K-Dense-AI--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "jimmc414--pdf",
+        "name": "pdf"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 20
+  },
+  {
+    "condition_id": "pg-essay-to-audiobook|hard|n20",
+    "query": "text-to-speech TTS web scraping essays",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--audiobook",
+        "name": "audiobook"
+      },
+      {
+        "skill_id": "benchflow-ai--elevenlabs-tts",
+        "name": "elevenlabs-tts"
+      },
+      {
+        "skill_id": "benchflow-ai--gtts",
+        "name": "gtts"
+      },
+      {
+        "skill_id": "benchflow-ai--openai-tts",
+        "name": "openai-tts"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "aahl--edge-tts",
+        "name": "edge-tts"
+      },
+      {
+        "skill_id": "aahl--zai-tts",
+        "name": "zai-tts"
+      },
+      {
+        "skill_id": "alsk1992--tts",
+        "name": "tts"
+      },
+      {
+        "skill_id": "benchflow-ai--audiobook",
+        "name": "audiobook"
+      },
+      {
+        "skill_id": "benchflow-ai--elevenlabs-tts",
+        "name": "elevenlabs-tts"
+      },
+      {
+        "skill_id": "benchflow-ai--gtts",
+        "name": "gtts"
+      },
+      {
+        "skill_id": "benchflow-ai--openai-tts",
+        "name": "openai-tts"
+      },
+      {
+        "skill_id": "cowork-os--sherpa-onnx-tts",
+        "name": "sherpa-onnx-tts"
+      },
+      {
+        "skill_id": "elizaos--sherpa-onnx-tts",
+        "name": "sherpa-onnx-tts"
+      },
+      {
+        "skill_id": "fal-ai-community--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "heygen-com--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "ilkerzg--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "itechmeat--inworld",
+        "name": "inworld"
+      },
+      {
+        "skill_id": "ivanvza--web-scraper",
+        "name": "web-scraper"
+      },
+      {
+        "skill_id": "jamditis--web-scraping",
+        "name": "web-scraping"
+      },
+      {
+        "skill_id": "krishagel--local-tts",
+        "name": "local-tts"
+      },
+      {
+        "skill_id": "mindrally--web-scraping",
+        "name": "web-scraping"
+      },
+      {
+        "skill_id": "mofa-org--web-scraping",
+        "name": "web-scraping"
+      },
+      {
+        "skill_id": "openclaw--sherpa-onnx-tts",
+        "name": "sherpa-onnx-tts"
+      },
+      {
+        "skill_id": "sanjay3290--google-tts",
+        "name": "google-tts"
+      },
+      {
+        "skill_id": "tul-sh--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "wlzh--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "xdrshjr--doubao-open-tts",
+        "name": "doubao-open-tts"
+      },
+      {
+        "skill_id": "zainhas--together-audio",
+        "name": "together-audio"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "wlzh--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "sanjay3290--google-tts",
+        "name": "google-tts"
+      },
+      {
+        "skill_id": "itechmeat--inworld",
+        "name": "inworld"
+      },
+      {
+        "skill_id": "tul-sh--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "ivanvza--web-scraper",
+        "name": "web-scraper"
+      },
+      {
+        "skill_id": "fal-ai-community--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "heygen-com--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "ilkerzg--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "jamditis--web-scraping",
+        "name": "web-scraping"
+      },
+      {
+        "skill_id": "mofa-org--web-scraping",
+        "name": "web-scraping"
+      },
+      {
+        "skill_id": "aahl--zai-tts",
+        "name": "zai-tts"
+      },
+      {
+        "skill_id": "aahl--edge-tts",
+        "name": "edge-tts"
+      },
+      {
+        "skill_id": "mindrally--web-scraping",
+        "name": "web-scraping"
+      },
+      {
+        "skill_id": "krishagel--local-tts",
+        "name": "local-tts"
+      },
+      {
+        "skill_id": "zainhas--together-audio",
+        "name": "together-audio"
+      },
+      {
+        "skill_id": "cowork-os--sherpa-onnx-tts",
+        "name": "sherpa-onnx-tts"
+      },
+      {
+        "skill_id": "elizaos--sherpa-onnx-tts",
+        "name": "sherpa-onnx-tts"
+      },
+      {
+        "skill_id": "alsk1992--tts",
+        "name": "tts"
+      },
+      {
+        "skill_id": "openclaw--sherpa-onnx-tts",
+        "name": "sherpa-onnx-tts"
+      },
+      {
+        "skill_id": "xdrshjr--doubao-open-tts",
+        "name": "doubao-open-tts"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 20
+  },
+  {
+    "condition_id": "video-filler-word-remover|hard|n20",
+    "query": "speech recognition whisper ffmpeg video editing",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--ffmpeg-video-editing",
+        "name": "ffmpeg-video-editing"
+      },
+      {
+        "skill_id": "benchflow-ai--filler-word-processing",
+        "name": "filler-word-processing"
+      },
+      {
+        "skill_id": "benchflow-ai--whisper-transcription",
+        "name": "whisper-transcription"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "MadAppGang--ffmpeg-core",
+        "name": "ffmpeg-core"
+      },
+      {
+        "skill_id": "benchflow-ai--Automatic Speech Recognition (ASR)",
+        "name": "Automatic Speech Recognition (ASR)"
+      },
+      {
+        "skill_id": "benchflow-ai--FFmpeg Video Editing",
+        "name": "FFmpeg Video Editing"
+      },
+      {
+        "skill_id": "benchflow-ai--ffmpeg-video-editing",
+        "name": "ffmpeg-video-editing"
+      },
+      {
+        "skill_id": "benchflow-ai--filler-word-processing",
+        "name": "filler-word-processing"
+      },
+      {
+        "skill_id": "benchflow-ai--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "benchflow-ai--whisper-transcription",
+        "name": "whisper-transcription"
+      },
+      {
+        "skill_id": "ckorhonen--video-editor",
+        "name": "video-editor"
+      },
+      {
+        "skill_id": "clawdbot--openai-whisper",
+        "name": "openai-whisper"
+      },
+      {
+        "skill_id": "cowork-os--openai-whisper",
+        "name": "openai-whisper"
+      },
+      {
+        "skill_id": "curiositech--video-processing-editing",
+        "name": "video-processing-editing"
+      },
+      {
+        "skill_id": "digitalsamba--ffmpeg",
+        "name": "ffmpeg"
+      },
+      {
+        "skill_id": "elevenlabs--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "guia-matthieu--whisper-transcription",
+        "name": "whisper-transcription"
+      },
+      {
+        "skill_id": "iamzhihuix--video-processor",
+        "name": "video-processor"
+      },
+      {
+        "skill_id": "inferencesh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "maxgent-ai--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "plurigrid--ffmpeg-media",
+        "name": "ffmpeg-media"
+      },
+      {
+        "skill_id": "simonlee2--ffmpeg-toolkit",
+        "name": "ffmpeg-toolkit"
+      },
+      {
+        "skill_id": "thinkfleetai--local-whisper",
+        "name": "local-whisper"
+      },
+      {
+        "skill_id": "tul-sh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "zainhas--together-audio",
+        "name": "together-audio"
+      },
+      {
+        "skill_id": "zechenzhangagi--whisper",
+        "name": "whisper"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "benchflow-ai--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "maxgent-ai--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "iamzhihuix--video-processor",
+        "name": "video-processor"
+      },
+      {
+        "skill_id": "benchflow-ai--Automatic Speech Recognition (ASR)",
+        "name": "Automatic Speech Recognition (ASR)"
+      },
+      {
+        "skill_id": "guia-matthieu--whisper-transcription",
+        "name": "whisper-transcription"
+      },
+      {
+        "skill_id": "inferencesh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "tul-sh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "plurigrid--ffmpeg-media",
+        "name": "ffmpeg-media"
+      },
+      {
+        "skill_id": "zechenzhangagi--whisper",
+        "name": "whisper"
+      },
+      {
+        "skill_id": "curiositech--video-processing-editing",
+        "name": "video-processing-editing"
+      },
+      {
+        "skill_id": "thinkfleetai--local-whisper",
+        "name": "local-whisper"
+      },
+      {
+        "skill_id": "benchflow-ai--FFmpeg Video Editing",
+        "name": "FFmpeg Video Editing"
+      },
+      {
+        "skill_id": "simonlee2--ffmpeg-toolkit",
+        "name": "ffmpeg-toolkit"
+      },
+      {
+        "skill_id": "clawdbot--openai-whisper",
+        "name": "openai-whisper"
+      },
+      {
+        "skill_id": "cowork-os--openai-whisper",
+        "name": "openai-whisper"
+      },
+      {
+        "skill_id": "MadAppGang--ffmpeg-core",
+        "name": "ffmpeg-core"
+      },
+      {
+        "skill_id": "digitalsamba--ffmpeg",
+        "name": "ffmpeg"
+      },
+      {
+        "skill_id": "ckorhonen--video-editor",
+        "name": "video-editor"
+      },
+      {
+        "skill_id": "zainhas--together-audio",
+        "name": "together-audio"
+      },
+      {
+        "skill_id": "elevenlabs--speech-to-text",
+        "name": "speech-to-text"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 20
+  },
+  {
+    "condition_id": "weighted-gdp-calc|hard|n20",
+    "query": "openpyxl excel formulas xlsx spreadsheet manipulation",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--xlsx-1",
+        "name": "xlsx-1"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "K-Dense-AI--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "apetta--agent-xlsx",
+        "name": "agent-xlsx"
+      },
+      {
+        "skill_id": "autumnsgrove--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-1",
+        "name": "xlsx-1"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-3",
+        "name": "xlsx-3"
+      },
+      {
+        "skill_id": "bobmatnyc--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "composiohq--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "davila7--spreadsheet",
+        "name": "spreadsheet"
+      },
+      {
+        "skill_id": "daymade--excel-automation",
+        "name": "excel-automation"
+      },
+      {
+        "skill_id": "dedalus-erp-pas--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "eyadsibai--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "fergana-labs--excel",
+        "name": "excel"
+      },
+      {
+        "skill_id": "henkisdabro--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "jd-opensource--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "jimmc414--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "krishagel--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "sickn33--xlsx-official",
+        "name": "xlsx-official"
+      },
+      {
+        "skill_id": "skillcreatorai--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "snyk--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "vamseeachanta--openpyxl",
+        "name": "openpyxl"
+      },
+      {
+        "skill_id": "vasilyu1983--document-xlsx",
+        "name": "document-xlsx"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "vasilyu1983--document-xlsx",
+        "name": "document-xlsx"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-3",
+        "name": "xlsx-3"
+      },
+      {
+        "skill_id": "davila7--spreadsheet",
+        "name": "spreadsheet"
+      },
+      {
+        "skill_id": "vamseeachanta--openpyxl",
+        "name": "openpyxl"
+      },
+      {
+        "skill_id": "sickn33--xlsx-official",
+        "name": "xlsx-official"
+      },
+      {
+        "skill_id": "K-Dense-AI--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "jimmc414--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "composiohq--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "fergana-labs--excel",
+        "name": "excel"
+      },
+      {
+        "skill_id": "dedalus-erp-pas--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "autumnsgrove--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "apetta--agent-xlsx",
+        "name": "agent-xlsx"
+      },
+      {
+        "skill_id": "daymade--excel-automation",
+        "name": "excel-automation"
+      },
+      {
+        "skill_id": "eyadsibai--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "henkisdabro--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "jd-opensource--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "skillcreatorai--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "bobmatnyc--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "krishagel--xlsx",
+        "name": "xlsx"
+      },
+      {
+        "skill_id": "snyk--xlsx",
+        "name": "xlsx"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 20
+  },
+  {
+    "condition_id": "multilingual-video-dubbing|hard|n20",
+    "query": "text-to-speech TTS ffmpeg audio video",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--FFmpeg Audio Processing",
+        "name": "FFmpeg Audio Processing"
+      },
+      {
+        "skill_id": "benchflow-ai--FFmpeg Format Conversion",
+        "name": "FFmpeg Format Conversion"
+      },
+      {
+        "skill_id": "benchflow-ai--FFmpeg Media Info",
+        "name": "FFmpeg Media Info"
+      },
+      {
+        "skill_id": "benchflow-ai--FFmpeg Video Editing",
+        "name": "FFmpeg Video Editing"
+      },
+      {
+        "skill_id": "benchflow-ai--FFmpeg Video Filters",
+        "name": "FFmpeg Video Filters"
+      },
+      {
+        "skill_id": "benchflow-ai--TTS Audio Mastering",
+        "name": "TTS Audio Mastering"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "aahl--edge-tts",
+        "name": "edge-tts"
+      },
+      {
+        "skill_id": "aahl--zai-tts",
+        "name": "zai-tts"
+      },
+      {
+        "skill_id": "akrindev--gemini-tts",
+        "name": "gemini-tts"
+      },
+      {
+        "skill_id": "alsk1992--tts",
+        "name": "tts"
+      },
+      {
+        "skill_id": "benchflow-ai--FFmpeg Audio Processing",
+        "name": "FFmpeg Audio Processing"
+      },
+      {
+        "skill_id": "benchflow-ai--FFmpeg Format Conversion",
+        "name": "FFmpeg Format Conversion"
+      },
+      {
+        "skill_id": "benchflow-ai--TTS Audio Mastering",
+        "name": "TTS Audio Mastering"
+      },
+      {
+        "skill_id": "benchflow-ai--openai-tts",
+        "name": "openai-tts"
+      },
+      {
+        "skill_id": "fal-ai-community--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "heygen-com--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "ilkerzg--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "itechmeat--inworld",
+        "name": "inworld"
+      },
+      {
+        "skill_id": "krishagel--local-tts",
+        "name": "local-tts"
+      },
+      {
+        "skill_id": "michaelboeding--voice-generation",
+        "name": "voice-generation"
+      },
+      {
+        "skill_id": "sanjay3290--google-tts",
+        "name": "google-tts"
+      },
+      {
+        "skill_id": "sickn33--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "tul-sh--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "xdrshjr--doubao-open-tts",
+        "name": "doubao-open-tts"
+      },
+      {
+        "skill_id": "zainhas--together-audio",
+        "name": "together-audio"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "sanjay3290--google-tts",
+        "name": "google-tts"
+      },
+      {
+        "skill_id": "fal-ai-community--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "heygen-com--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "ilkerzg--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "maxgent-ai--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "zainhas--together-audio",
+        "name": "together-audio"
+      },
+      {
+        "skill_id": "tul-sh--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "elevenlabs--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "akrindev--gemini-tts",
+        "name": "gemini-tts"
+      },
+      {
+        "skill_id": "aahl--edge-tts",
+        "name": "edge-tts"
+      },
+      {
+        "skill_id": "sickn33--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "aahl--zai-tts",
+        "name": "zai-tts"
+      },
+      {
+        "skill_id": "itechmeat--inworld",
+        "name": "inworld"
+      },
+      {
+        "skill_id": "michaelboeding--voice-generation",
+        "name": "voice-generation"
+      },
+      {
+        "skill_id": "alsk1992--tts",
+        "name": "tts"
+      },
+      {
+        "skill_id": "benchflow-ai--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "xdrshjr--doubao-open-tts",
+        "name": "doubao-open-tts"
+      },
+      {
+        "skill_id": "krishagel--local-tts",
+        "name": "local-tts"
+      },
+      {
+        "skill_id": "benchflow-ai--whisper-transcription",
+        "name": "whisper-transcription"
+      },
+      {
+        "skill_id": "benchflow-ai--openai-tts",
+        "name": "openai-tts"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 3,
+    "extra_skill_count": 16
+  },
+  {
+    "condition_id": "video-tutorial-indexer|hard|n20",
+    "query": "video scene detection speech-to-text whisper",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--speech-to-text",
+        "name": "speech-to-text"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "benchflow-ai--Automatic Speech Recognition (ASR)",
+        "name": "Automatic Speech Recognition (ASR)"
+      },
+      {
+        "skill_id": "benchflow-ai--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "benchflow-ai--whisper-transcription",
+        "name": "whisper-transcription"
+      },
+      {
+        "skill_id": "clawdbot--openai-whisper",
+        "name": "openai-whisper"
+      },
+      {
+        "skill_id": "cowork-os--openai-whisper",
+        "name": "openai-whisper"
+      },
+      {
+        "skill_id": "davila7--transcribe",
+        "name": "transcribe"
+      },
+      {
+        "skill_id": "elevenlabs--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "eyadsibai--multimodal-models",
+        "name": "multimodal-models"
+      },
+      {
+        "skill_id": "guia-matthieu--whisper-transcription",
+        "name": "whisper-transcription"
+      },
+      {
+        "skill_id": "inferencesh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "infquest--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "maxgent-ai--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "nicepkg--transcribe-and-analyze",
+        "name": "transcribe-and-analyze"
+      },
+      {
+        "skill_id": "thinkfleetai--local-whisper",
+        "name": "local-whisper"
+      },
+      {
+        "skill_id": "trpc-group--whisper",
+        "name": "whisper"
+      },
+      {
+        "skill_id": "tul-sh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "zainhas--together-audio",
+        "name": "together-audio"
+      },
+      {
+        "skill_id": "zechenzhangagi--whisper",
+        "name": "whisper"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "benchflow-ai--whisper-transcription",
+        "name": "whisper-transcription"
+      },
+      {
+        "skill_id": "maxgent-ai--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "clawdbot--openai-whisper",
+        "name": "openai-whisper"
+      },
+      {
+        "skill_id": "guia-matthieu--whisper-transcription",
+        "name": "whisper-transcription"
+      },
+      {
+        "skill_id": "cowork-os--openai-whisper",
+        "name": "openai-whisper"
+      },
+      {
+        "skill_id": "inferencesh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "thinkfleetai--local-whisper",
+        "name": "local-whisper"
+      },
+      {
+        "skill_id": "tul-sh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "trpc-group--whisper",
+        "name": "whisper"
+      },
+      {
+        "skill_id": "elevenlabs--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "benchflow-ai--Automatic Speech Recognition (ASR)",
+        "name": "Automatic Speech Recognition (ASR)"
+      },
+      {
+        "skill_id": "eyadsibai--multimodal-models",
+        "name": "multimodal-models"
+      },
+      {
+        "skill_id": "zechenzhangagi--whisper",
+        "name": "whisper"
+      },
+      {
+        "skill_id": "infquest--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "elevenlabs--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "nicepkg--transcribe-and-analyze",
+        "name": "transcribe-and-analyze"
+      },
+      {
+        "skill_id": "davila7--transcribe",
+        "name": "transcribe"
+      },
+      {
+        "skill_id": "tul-sh--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "sickn33--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "zainhas--together-audio",
+        "name": "together-audio"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 17
+  },
+  {
+    "condition_id": "court-form-filling|hard|n20",
+    "query": "PDF form filling court form automation",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "404kidwiz--pdf-skill",
+        "name": "pdf-skill"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      },
+      {
+        "skill_id": "composiohq--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "curiositech--document-generation-pdf",
+        "name": "document-generation-pdf"
+      },
+      {
+        "skill_id": "dedalus-erp-pas--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "ederheisler--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "eyadsibai--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "instavm--pdf-text-replace",
+        "name": "pdf-text-replace"
+      },
+      {
+        "skill_id": "krafton-ai--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "oakoss--pdf-tools",
+        "name": "pdf-tools"
+      },
+      {
+        "skill_id": "rafaelcalleja--pdf-form-processor",
+        "name": "pdf-form-processor"
+      },
+      {
+        "skill_id": "rohunj--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "sickn33--pdf-official",
+        "name": "pdf-official"
+      },
+      {
+        "skill_id": "skillcreatorai--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "vamseeachanta--pypdf",
+        "name": "pypdf"
+      },
+      {
+        "skill_id": "vibery-studio--pdf",
+        "name": "pdf"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "curiositech--document-generation-pdf",
+        "name": "document-generation-pdf"
+      },
+      {
+        "skill_id": "github--playwright-automation-fill-in-form",
+        "name": "playwright-automation-fill-in-form"
+      },
+      {
+        "skill_id": "rafaelcalleja--pdf-form-processor",
+        "name": "pdf-form-processor"
+      },
+      {
+        "skill_id": "instavm--pdf-text-replace",
+        "name": "pdf-text-replace"
+      },
+      {
+        "skill_id": "404kidwiz--pdf-skill",
+        "name": "pdf-skill"
+      },
+      {
+        "skill_id": "vamseeachanta--pypdf",
+        "name": "pypdf"
+      },
+      {
+        "skill_id": "oakoss--pdf-tools",
+        "name": "pdf-tools"
+      },
+      {
+        "skill_id": "ynulihao--browser-automation",
+        "name": "browser-automation"
+      },
+      {
+        "skill_id": "sickn33--pdf-official",
+        "name": "pdf-official"
+      },
+      {
+        "skill_id": "composiohq--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "dedalus-erp-pas--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "ederheisler--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "eyadsibai--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "krafton-ai--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "rohunj--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "skillcreatorai--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "vibery-studio--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "aktsmm--browser-max-automation",
+        "name": "browser-max-automation"
+      },
+      {
+        "skill_id": "inference-sh--agent-browser",
+        "name": "agent-browser"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 16
+  },
+  {
+    "condition_id": "lake-warming-attribution|hard|n20",
+    "query": "climate trend analysis regression feature importance",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--contribution-analysis",
+        "name": "contribution-analysis"
+      },
+      {
+        "skill_id": "benchflow-ai--meteorology-driver-classification",
+        "name": "meteorology-driver-classification"
+      },
+      {
+        "skill_id": "benchflow-ai--pca-decomposition",
+        "name": "pca-decomposition"
+      },
+      {
+        "skill_id": "benchflow-ai--trend-analysis",
+        "name": "trend-analysis"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "BbgnsurfTech--engineering-features-for-machine-learning",
+        "name": "engineering-features-for-machine-learning"
+      },
+      {
+        "skill_id": "BbgnsurfTech--explaining-machine-learning-models",
+        "name": "explaining-machine-learning-models"
+      },
+      {
+        "skill_id": "BbgnsurfTech--performing-regression-analysis",
+        "name": "performing-regression-analysis"
+      },
+      {
+        "skill_id": "aj-geddes--ml-model-explanation",
+        "name": "ml-model-explanation"
+      },
+      {
+        "skill_id": "aj-geddes--regression-modeling",
+        "name": "regression-modeling"
+      },
+      {
+        "skill_id": "aj-geddes--time-series-analysis",
+        "name": "time-series-analysis"
+      },
+      {
+        "skill_id": "benchflow-ai--contribution-analysis",
+        "name": "contribution-analysis"
+      },
+      {
+        "skill_id": "benchflow-ai--trend-analysis",
+        "name": "trend-analysis"
+      },
+      {
+        "skill_id": "eyadsibai--shap",
+        "name": "shap"
+      },
+      {
+        "skill_id": "jeremylongshore--engineering-features-for-machine-learning",
+        "name": "engineering-features-for-machine-learning"
+      },
+      {
+        "skill_id": "jeremylongshore--feature-importance-analyzer",
+        "name": "feature-importance-analyzer"
+      },
+      {
+        "skill_id": "liangdabiao--regression-analysis-modeling",
+        "name": "regression-analysis-modeling"
+      },
+      {
+        "skill_id": "omer-metin--climate-modeling",
+        "name": "climate-modeling"
+      },
+      {
+        "skill_id": "tondevrel--xgboost-lightgbm",
+        "name": "xgboost-lightgbm"
+      },
+      {
+        "skill_id": "vamseeachanta--statistical-analysis",
+        "name": "statistical-analysis"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "omer-metin--climate-modeling",
+        "name": "climate-modeling"
+      },
+      {
+        "skill_id": "aj-geddes--regression-modeling",
+        "name": "regression-modeling"
+      },
+      {
+        "skill_id": "jeremylongshore--feature-importance-analyzer",
+        "name": "feature-importance-analyzer"
+      },
+      {
+        "skill_id": "aj-geddes--time-series-analysis",
+        "name": "time-series-analysis"
+      },
+      {
+        "skill_id": "liangdabiao--regression-analysis-modeling",
+        "name": "regression-analysis-modeling"
+      },
+      {
+        "skill_id": "jmsktm--trend-spotter",
+        "name": "trend-spotter"
+      },
+      {
+        "skill_id": "BbgnsurfTech--performing-regression-analysis",
+        "name": "performing-regression-analysis"
+      },
+      {
+        "skill_id": "zenobi-us--trend-analyst",
+        "name": "trend-analyst"
+      },
+      {
+        "skill_id": "BbgnsurfTech--explaining-machine-learning-models",
+        "name": "explaining-machine-learning-models"
+      },
+      {
+        "skill_id": "jeremylongshore--regression-analysis-helper",
+        "name": "regression-analysis-helper"
+      },
+      {
+        "skill_id": "aj-geddes--ml-model-explanation",
+        "name": "ml-model-explanation"
+      },
+      {
+        "skill_id": "vamseeachanta--statistical-analysis",
+        "name": "statistical-analysis"
+      },
+      {
+        "skill_id": "BbgnsurfTech--engineering-features-for-machine-learning",
+        "name": "engineering-features-for-machine-learning"
+      },
+      {
+        "skill_id": "eyadsibai--shap",
+        "name": "shap"
+      },
+      {
+        "skill_id": "jeremylongshore--engineering-features-for-machine-learning",
+        "name": "engineering-features-for-machine-learning"
+      },
+      {
+        "skill_id": "tondevrel--xgboost-lightgbm",
+        "name": "xgboost-lightgbm"
+      },
+      {
+        "skill_id": "rysweet--environmentalist-analyst",
+        "name": "environmentalist-analyst"
+      },
+      {
+        "skill_id": "vikiboss--weather-query",
+        "name": "weather-query"
+      },
+      {
+        "skill_id": "benchflow-ai--timeseries-detrending",
+        "name": "timeseries-detrending"
+      },
+      {
+        "skill_id": "matteocervelli--analysis",
+        "name": "analysis"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 2,
+    "extra_skill_count": 13
+  },
+  {
+    "condition_id": "gh-repo-analytics|hard|n20",
+    "query": "GitHub API analytics gh CLI pull requests",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--gh-cli",
+        "name": "gh-cli"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "benchflow-ai--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "bntvllnt--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "callstackincubator--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "cowork-os--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "dagster-io--gh",
+        "name": "gh"
+      },
+      {
+        "skill_id": "daymade--github-ops",
+        "name": "github-ops"
+      },
+      {
+        "skill_id": "dimillian--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "elizaos--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "fredrikaverpil--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "github--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "hairyf--github-cli",
+        "name": "github-cli"
+      },
+      {
+        "skill_id": "mathews-tom--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "oakoss--github-cli",
+        "name": "github-cli"
+      },
+      {
+        "skill_id": "oriolrius--github-cli",
+        "name": "github-cli"
+      },
+      {
+        "skill_id": "plurigrid--gh-cli",
+        "name": "gh-cli"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "oriolrius--github-cli",
+        "name": "github-cli"
+      },
+      {
+        "skill_id": "aidankinzett--github-pr-review",
+        "name": "github-pr-review"
+      },
+      {
+        "skill_id": "cowork-os--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "squirrel289--pull-request-tool",
+        "name": "pull-request-tool"
+      },
+      {
+        "skill_id": "mathews-tom--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "dimillian--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "elizaos--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "callstackincubator--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "github--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "daymade--github-ops",
+        "name": "github-ops"
+      },
+      {
+        "skill_id": "squirrel289--gh-pr-review",
+        "name": "gh-pr-review"
+      },
+      {
+        "skill_id": "hairyf--github-cli",
+        "name": "github-cli"
+      },
+      {
+        "skill_id": "bntvllnt--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "plurigrid--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "dagster-io--gh",
+        "name": "gh"
+      },
+      {
+        "skill_id": "davila7--address-github-comments",
+        "name": "address-github-comments"
+      },
+      {
+        "skill_id": "fredrikaverpil--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "oakoss--github-cli",
+        "name": "github-cli"
+      },
+      {
+        "skill_id": "sickn33--address-github-comments",
+        "name": "address-github-comments"
+      },
+      {
+        "skill_id": "Gentleman-Programming--github-pr",
+        "name": "github-pr"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 14
+  },
+  {
+    "condition_id": "organize-messy-files|hard|n10",
+    "query": "PDF text extraction document classification sorting",
+    "distractor_type": "hard",
+    "noise_count": 10,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--docx-2",
+        "name": "docx-2"
+      },
+      {
+        "skill_id": "benchflow-ai--file-organizer",
+        "name": "file-organizer"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      },
+      {
+        "skill_id": "benchflow-ai--planning-with-files",
+        "name": "planning-with-files"
+      },
+      {
+        "skill_id": "benchflow-ai--pptx",
+        "name": "pptx"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "K-Dense-AI--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-2",
+        "name": "pdf-2"
+      },
+      {
+        "skill_id": "davila7--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "jimmc414--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "jmagly--pdf-extractor",
+        "name": "pdf-extractor"
+      },
+      {
+        "skill_id": "mindmorass--pdf-harvester",
+        "name": "pdf-harvester"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "davila7--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      },
+      {
+        "skill_id": "K-Dense-AI--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "jimmc414--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "mindmorass--pdf-harvester",
+        "name": "pdf-harvester"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-2",
+        "name": "pdf-2"
+      },
+      {
+        "skill_id": "jmagly--pdf-extractor",
+        "name": "pdf-extractor"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 4,
+    "extra_skill_count": 10
+  },
+  {
+    "condition_id": "manufacturing-equipment-maintenance|hard|n20",
+    "query": "PDF parsing extraction CSV sensor data analysis thermocouple time series",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--reflow-profile-compliance-toolkit",
+        "name": "reflow-profile-compliance-toolkit"
+      },
+      {
+        "skill_id": "benchflow-ai--reflow_machine_maintenance_guidance",
+        "name": "reflow_machine_maintenance_guidance"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "benchflow-ai--csv-processing",
+        "name": "csv-processing"
+      },
+      {
+        "skill_id": "curiouslearner--csv-processor",
+        "name": "csv-processor"
+      },
+      {
+        "skill_id": "davila7--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "famaoai-creator--doc-to-text",
+        "name": "doc-to-text"
+      },
+      {
+        "skill_id": "guia-matthieu--pdf-extractor",
+        "name": "pdf-extractor"
+      },
+      {
+        "skill_id": "mindmorass--pdf-harvester",
+        "name": "pdf-harvester"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "benchflow-ai--csv-processing",
+        "name": "csv-processing"
+      },
+      {
+        "skill_id": "HeshamFS--post-processing",
+        "name": "post-processing"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      },
+      {
+        "skill_id": "guia-matthieu--pdf-extractor",
+        "name": "pdf-extractor"
+      },
+      {
+        "skill_id": "famaoai-creator--doc-to-text",
+        "name": "doc-to-text"
+      },
+      {
+        "skill_id": "vstorm-co--data-analysis",
+        "name": "data-analysis"
+      },
+      {
+        "skill_id": "artificialanalysis--data-analysis",
+        "name": "data-analysis"
+      },
+      {
+        "skill_id": "curiouslearner--csv-processor",
+        "name": "csv-processor"
+      },
+      {
+        "skill_id": "aj-geddes--time-series-analysis",
+        "name": "time-series-analysis"
+      },
+      {
+        "skill_id": "mindmorass--pdf-harvester",
+        "name": "pdf-harvester"
+      },
+      {
+        "skill_id": "benchflow-ai--timeseries-detrending",
+        "name": "timeseries-detrending"
+      },
+      {
+        "skill_id": "casper-studios--csv-analyzer",
+        "name": "csv-analyzer"
+      },
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "BbgnsurfTech--forecasting-time-series-data",
+        "name": "forecasting-time-series-data"
+      },
+      {
+        "skill_id": "davila7--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "EXboys--data-analysis",
+        "name": "data-analysis"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      },
+      {
+        "skill_id": "aws-samples--file-processing",
+        "name": "file-processing"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 2,
+    "extra_skill_count": 11
+  },
+  {
+    "condition_id": "organize-messy-files|hard|n20",
+    "query": "PDF text extraction document classification sorting",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--docx-2",
+        "name": "docx-2"
+      },
+      {
+        "skill_id": "benchflow-ai--file-organizer",
+        "name": "file-organizer"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      },
+      {
+        "skill_id": "benchflow-ai--planning-with-files",
+        "name": "planning-with-files"
+      },
+      {
+        "skill_id": "benchflow-ai--pptx",
+        "name": "pptx"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "aliceisjustplaying--pdf-to-markdown",
+        "name": "pdf-to-markdown"
+      },
+      {
+        "skill_id": "letta-ai--extracting-pdf-text",
+        "name": "extracting-pdf-text"
+      },
+      {
+        "skill_id": "oakoss--pdf-tools",
+        "name": "pdf-tools"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "vamseeachanta--document-rag-pipeline",
+        "name": "document-rag-pipeline"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "davila7--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      },
+      {
+        "skill_id": "K-Dense-AI--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "jimmc414--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "mindmorass--pdf-harvester",
+        "name": "pdf-harvester"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-2",
+        "name": "pdf-2"
+      },
+      {
+        "skill_id": "jmagly--pdf-extractor",
+        "name": "pdf-extractor"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      },
+      {
+        "skill_id": "vamseeachanta--document-rag-pipeline",
+        "name": "document-rag-pipeline"
+      },
+      {
+        "skill_id": "vasilyu1983--document-pdf",
+        "name": "document-pdf"
+      },
+      {
+        "skill_id": "letta-ai--extracting-pdf-text",
+        "name": "extracting-pdf-text"
+      },
+      {
+        "skill_id": "famaoai-creator--doc-to-text",
+        "name": "doc-to-text"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "oakoss--pdf-tools",
+        "name": "pdf-tools"
+      },
+      {
+        "skill_id": "guia-matthieu--pdf-extractor",
+        "name": "pdf-extractor"
+      },
+      {
+        "skill_id": "aliceisjustplaying--pdf-to-markdown",
+        "name": "pdf-to-markdown"
+      },
+      {
+        "skill_id": "henkisdabro--pdf-processing-pro",
+        "name": "pdf-processing-pro"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 5,
+    "extra_skill_count": 8
+  },
+  {
+    "condition_id": "speaker-diarization-subtitles|hard|n20",
+    "query": "speaker diarization pyannote speech-to-text transcription ASS subtitle generation",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--Automatic Speech Recognition (ASR)",
+        "name": "Automatic Speech Recognition (ASR)"
+      },
+      {
+        "skill_id": "benchflow-ai--Multimodal Fusion for Speaker Diarization",
+        "name": "Multimodal Fusion for Speaker Diarization"
+      },
+      {
+        "skill_id": "benchflow-ai--Speaker Clustering Methods",
+        "name": "Speaker Clustering Methods"
+      },
+      {
+        "skill_id": "benchflow-ai--Voice Activity Detection (VAD)",
+        "name": "Voice Activity Detection (VAD)"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "agntswrm--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "benchflow-ai--Automatic Speech Recognition (ASR)",
+        "name": "Automatic Speech Recognition (ASR)"
+      },
+      {
+        "skill_id": "benchflow-ai--Multimodal Fusion for Speaker Diarization",
+        "name": "Multimodal Fusion for Speaker Diarization"
+      },
+      {
+        "skill_id": "benchflow-ai--Speaker Clustering Methods",
+        "name": "Speaker Clustering Methods"
+      },
+      {
+        "skill_id": "benchflow-ai--Voice Activity Detection (VAD)",
+        "name": "Voice Activity Detection (VAD)"
+      },
+      {
+        "skill_id": "davila7--transcribe",
+        "name": "transcribe"
+      },
+      {
+        "skill_id": "eachlabs--subtitle-generation",
+        "name": "subtitle-generation"
+      },
+      {
+        "skill_id": "elevenlabs--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "fal-ai-community--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "ilkerzg--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "inferencesh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "maxgent-ai--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "sarvamai--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "sickn33--azure-ai-transcription-py",
+        "name": "azure-ai-transcription-py"
+      },
+      {
+        "skill_id": "sickn33--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "tul-sh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "vanman2024--stt-integration",
+        "name": "stt-integration"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "vanman2024--stt-integration",
+        "name": "stt-integration"
+      },
+      {
+        "skill_id": "davila7--transcribe",
+        "name": "transcribe"
+      },
+      {
+        "skill_id": "inferencesh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "tul-sh--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "agntswrm--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "sickn33--azure-ai-transcription-py",
+        "name": "azure-ai-transcription-py"
+      },
+      {
+        "skill_id": "eachlabs--subtitle-generation",
+        "name": "subtitle-generation"
+      },
+      {
+        "skill_id": "tul-sh--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "michaelboeding--voice-generation",
+        "name": "voice-generation"
+      },
+      {
+        "skill_id": "maxgent-ai--audio-transcribe",
+        "name": "audio-transcribe"
+      },
+      {
+        "skill_id": "sarvamai--speech-to-text",
+        "name": "speech-to-text"
+      },
+      {
+        "skill_id": "heygen-com--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "sickn33--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "fal-ai-community--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "badlogic--transcribe",
+        "name": "transcribe"
+      },
+      {
+        "skill_id": "benchflow-ai--elevenlabs-tts",
+        "name": "elevenlabs-tts"
+      },
+      {
+        "skill_id": "ilkerzg--fal-audio",
+        "name": "fal-audio"
+      },
+      {
+        "skill_id": "sugarforever--subtitle-correction",
+        "name": "subtitle-correction"
+      },
+      {
+        "skill_id": "elevenlabs--text-to-speech",
+        "name": "text-to-speech"
+      },
+      {
+        "skill_id": "elevenlabs--speech-to-text",
+        "name": "speech-to-text"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 13
+  },
+  {
+    "condition_id": "travel-planning|hard|n20",
+    "query": "travel itinerary planner POI database search budget trip optimization",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--search-accommodations",
+        "name": "search-accommodations"
+      },
+      {
+        "skill_id": "benchflow-ai--search-attractions",
+        "name": "search-attractions"
+      },
+      {
+        "skill_id": "benchflow-ai--search-cities",
+        "name": "search-cities"
+      },
+      {
+        "skill_id": "benchflow-ai--search-driving-distance",
+        "name": "search-driving-distance"
+      },
+      {
+        "skill_id": "benchflow-ai--search-flights",
+        "name": "search-flights"
+      },
+      {
+        "skill_id": "benchflow-ai--search-restaurants",
+        "name": "search-restaurants"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "ailabs-393--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "barneyjm--journey",
+        "name": "journey"
+      },
+      {
+        "skill_id": "barneyjm--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "benchflow-ai--search-attractions",
+        "name": "search-attractions"
+      },
+      {
+        "skill_id": "brave--local-pois",
+        "name": "local-pois"
+      },
+      {
+        "skill_id": "onewave-ai--itinerary-optimizer",
+        "name": "itinerary-optimizer"
+      },
+      {
+        "skill_id": "tdimino--travel-requirements-expert",
+        "name": "travel-requirements-expert"
+      },
+      {
+        "skill_id": "travisjneuman--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "trpc-group--recommend-poi",
+        "name": "recommend-poi"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "travisjneuman--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "barneyjm--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "ailabs-393--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "tdimino--travel-requirements-expert",
+        "name": "travel-requirements-expert"
+      },
+      {
+        "skill_id": "barneyjm--journey",
+        "name": "journey"
+      },
+      {
+        "skill_id": "skiplagged--skiplagged-travel-search",
+        "name": "skiplagged-travel-search"
+      },
+      {
+        "skill_id": "jmsktm--budget-planner",
+        "name": "budget-planner"
+      },
+      {
+        "skill_id": "trpc-group--recommend-poi",
+        "name": "recommend-poi"
+      },
+      {
+        "skill_id": "dylantarre--travel-hospitality",
+        "name": "travel-hospitality"
+      },
+      {
+        "skill_id": "ninehills--travel",
+        "name": "travel"
+      },
+      {
+        "skill_id": "onewave-ai--itinerary-optimizer",
+        "name": "itinerary-optimizer"
+      },
+      {
+        "skill_id": "gtmagents--budget-optimization",
+        "name": "budget-optimization"
+      },
+      {
+        "skill_id": "sickn33--postgresql-optimization",
+        "name": "postgresql-optimization"
+      },
+      {
+        "skill_id": "aj-geddes--database-query-optimization",
+        "name": "database-query-optimization"
+      },
+      {
+        "skill_id": "jg-chalk-io--moai-core-context-budget",
+        "name": "moai-core-context-budget"
+      },
+      {
+        "skill_id": "rohitg00--database-optimization",
+        "name": "database-optimization"
+      },
+      {
+        "skill_id": "brave--local-pois",
+        "name": "local-pois"
+      },
+      {
+        "skill_id": "indranilbanerjee--budget-optimizer",
+        "name": "budget-optimizer"
+      },
+      {
+        "skill_id": "mapbox--mapbox-search-patterns",
+        "name": "mapbox-search-patterns"
+      },
+      {
+        "skill_id": "jmsktm--project-planner",
+        "name": "project-planner"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 5,
+    "extra_skill_count": 8
+  },
+  {
+    "condition_id": "pdf-excel-diff|hard|n20",
+    "query": "PDF table extraction pandas Excel comparison",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-1",
+        "name": "xlsx-1"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-1",
+        "name": "pdf-1"
+      },
+      {
+        "skill_id": "benchflow-ai--pdf-3",
+        "name": "pdf-3"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-1",
+        "name": "xlsx-1"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-3",
+        "name": "xlsx-3"
+      },
+      {
+        "skill_id": "composiohq--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "dedalus-erp-pas--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "harryoung--excel-parser",
+        "name": "excel-parser"
+      },
+      {
+        "skill_id": "henkisdabro--pdf-processing-pro",
+        "name": "pdf-processing-pro"
+      },
+      {
+        "skill_id": "oakoss--pdf-tools",
+        "name": "pdf-tools"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      },
+      {
+        "skill_id": "wwwzhouhui--excel-report-generator",
+        "name": "excel-report-generator"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "benchflow-ai--pdf-3",
+        "name": "pdf-3"
+      },
+      {
+        "skill_id": "vamseeachanta--sweetviz",
+        "name": "sweetviz"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "harryoung--excel-parser",
+        "name": "excel-parser"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "89jobrien--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "mofa-org--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "davila7--pdf-processing",
+        "name": "pdf-processing"
+      },
+      {
+        "skill_id": "vamseeachanta--pdf-text-extractor",
+        "name": "pdf-text-extractor"
+      },
+      {
+        "skill_id": "oakoss--pdf-tools",
+        "name": "pdf-tools"
+      },
+      {
+        "skill_id": "wwwzhouhui--excel-report-generator",
+        "name": "excel-report-generator"
+      },
+      {
+        "skill_id": "benchflow-ai--xlsx-3",
+        "name": "xlsx-3"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      },
+      {
+        "skill_id": "aliceisjustplaying--pdf-to-markdown",
+        "name": "pdf-to-markdown"
+      },
+      {
+        "skill_id": "famaoai-creator--doc-to-text",
+        "name": "doc-to-text"
+      },
+      {
+        "skill_id": "henkisdabro--pdf-processing-pro",
+        "name": "pdf-processing-pro"
+      },
+      {
+        "skill_id": "composiohq--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "dedalus-erp-pas--pdf",
+        "name": "pdf"
+      },
+      {
+        "skill_id": "simota--morph",
+        "name": "morph"
+      },
+      {
+        "skill_id": "Peiiii--claude-office-pack",
+        "name": "claude-office-pack"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 12
+  },
+  {
+    "condition_id": "software-dependency-audit|hard|n20",
+    "query": "npm vulnerability scanner CVE security database package-lock.json audit",
+    "distractor_type": "hard",
+    "noise_count": 20,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--cvss-score-extraction",
+        "name": "cvss-score-extraction"
+      },
+      {
+        "skill_id": "benchflow-ai--trivy-offline-vulnerability-scanning",
+        "name": "trivy-offline-vulnerability-scanning"
+      },
+      {
+        "skill_id": "benchflow-ai--vulnerability-csv-reporting",
+        "name": "vulnerability-csv-reporting"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "BerryKuipers--audit-dependencies",
+        "name": "audit-dependencies"
+      },
+      {
+        "skill_id": "Dexploarer--dependency-vulnerability-scanner",
+        "name": "dependency-vulnerability-scanner"
+      },
+      {
+        "skill_id": "alirezarezvani--dependency-auditor",
+        "name": "dependency-auditor"
+      },
+      {
+        "skill_id": "armanzeroeight--dependency-audit",
+        "name": "dependency-audit"
+      },
+      {
+        "skill_id": "curiositech--security-auditor",
+        "name": "security-auditor"
+      },
+      {
+        "skill_id": "equinor--npm-research",
+        "name": "npm-research"
+      },
+      {
+        "skill_id": "fusengine--dependency-audit",
+        "name": "dependency-audit"
+      },
+      {
+        "skill_id": "patricio0312rev--dependency-vulnerability-triage",
+        "name": "dependency-vulnerability-triage"
+      },
+      {
+        "skill_id": "secondsky--vulnerability-scanning",
+        "name": "vulnerability-scanning"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "Dexploarer--dependency-vulnerability-scanner",
+        "name": "dependency-vulnerability-scanner"
+      },
+      {
+        "skill_id": "secondsky--vulnerability-scanning",
+        "name": "vulnerability-scanning"
+      },
+      {
+        "skill_id": "patricio0312rev--dependency-vulnerability-triage",
+        "name": "dependency-vulnerability-triage"
+      },
+      {
+        "skill_id": "alirezarezvani--dependency-auditor",
+        "name": "dependency-auditor"
+      },
+      {
+        "skill_id": "curiositech--security-auditor",
+        "name": "security-auditor"
+      },
+      {
+        "skill_id": "BerryKuipers--audit-dependencies",
+        "name": "audit-dependencies"
+      },
+      {
+        "skill_id": "BbgnsurfTech--scanning-for-vulnerabilities",
+        "name": "scanning-for-vulnerabilities"
+      },
+      {
+        "skill_id": "aj-geddes--vulnerability-scanning",
+        "name": "vulnerability-scanning"
+      },
+      {
+        "skill_id": "equinor--npm-research",
+        "name": "npm-research"
+      },
+      {
+        "skill_id": "armanzeroeight--vulnerability-scanner",
+        "name": "vulnerability-scanner"
+      },
+      {
+        "skill_id": "finos--vulnerability-resolver",
+        "name": "vulnerability-resolver"
+      },
+      {
+        "skill_id": "melodic-software--vulnerability-management",
+        "name": "vulnerability-management"
+      },
+      {
+        "skill_id": "parcadei--security",
+        "name": "security"
+      },
+      {
+        "skill_id": "armanzeroeight--dependency-audit",
+        "name": "dependency-audit"
+      },
+      {
+        "skill_id": "jeremylongshore--scanning-for-vulnerabilities",
+        "name": "scanning-for-vulnerabilities"
+      },
+      {
+        "skill_id": "fusengine--cve-research",
+        "name": "cve-research"
+      },
+      {
+        "skill_id": "vladm3105--security-audit",
+        "name": "security-audit"
+      },
+      {
+        "skill_id": "rightnow-ai--security-audit",
+        "name": "security-audit"
+      },
+      {
+        "skill_id": "transilienceai--cve-testing",
+        "name": "cve-testing"
+      },
+      {
+        "skill_id": "fusengine--dependency-audit",
+        "name": "dependency-audit"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 3,
+    "extra_skill_count": 9
+  },
+  {
+    "condition_id": "travel-planning|hard|n10",
+    "query": "travel itinerary planner POI database search budget trip optimization",
+    "distractor_type": "hard",
+    "noise_count": 10,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--search-accommodations",
+        "name": "search-accommodations"
+      },
+      {
+        "skill_id": "benchflow-ai--search-attractions",
+        "name": "search-attractions"
+      },
+      {
+        "skill_id": "benchflow-ai--search-cities",
+        "name": "search-cities"
+      },
+      {
+        "skill_id": "benchflow-ai--search-driving-distance",
+        "name": "search-driving-distance"
+      },
+      {
+        "skill_id": "benchflow-ai--search-flights",
+        "name": "search-flights"
+      },
+      {
+        "skill_id": "benchflow-ai--search-restaurants",
+        "name": "search-restaurants"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "ailabs-393--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "barneyjm--journey",
+        "name": "journey"
+      },
+      {
+        "skill_id": "barneyjm--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "benchflow-ai--search-attractions",
+        "name": "search-attractions"
+      },
+      {
+        "skill_id": "skiplagged--skiplagged-travel-search",
+        "name": "skiplagged-travel-search"
+      },
+      {
+        "skill_id": "tdimino--travel-requirements-expert",
+        "name": "travel-requirements-expert"
+      },
+      {
+        "skill_id": "travisjneuman--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "trpc-group--recommend-poi",
+        "name": "recommend-poi"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "travisjneuman--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "barneyjm--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "ailabs-393--travel-planner",
+        "name": "travel-planner"
+      },
+      {
+        "skill_id": "tdimino--travel-requirements-expert",
+        "name": "travel-requirements-expert"
+      },
+      {
+        "skill_id": "barneyjm--journey",
+        "name": "journey"
+      },
+      {
+        "skill_id": "skiplagged--skiplagged-travel-search",
+        "name": "skiplagged-travel-search"
+      },
+      {
+        "skill_id": "jmsktm--budget-planner",
+        "name": "budget-planner"
+      },
+      {
+        "skill_id": "trpc-group--recommend-poi",
+        "name": "recommend-poi"
+      },
+      {
+        "skill_id": "dylantarre--travel-hospitality",
+        "name": "travel-hospitality"
+      },
+      {
+        "skill_id": "ninehills--travel",
+        "name": "travel"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 5,
+    "extra_skill_count": 7
+  },
+  {
+    "condition_id": "manufacturing-equipment-maintenance|hard|n10",
+    "query": "PDF parsing extraction CSV sensor data analysis thermocouple time series",
+    "distractor_type": "hard",
+    "noise_count": 10,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--reflow-profile-compliance-toolkit",
+        "name": "reflow-profile-compliance-toolkit"
+      },
+      {
+        "skill_id": "benchflow-ai--reflow_machine_maintenance_guidance",
+        "name": "reflow_machine_maintenance_guidance"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "aj-geddes--time-series-analysis",
+        "name": "time-series-analysis"
+      },
+      {
+        "skill_id": "artificialanalysis--data-analysis",
+        "name": "data-analysis"
+      },
+      {
+        "skill_id": "benchflow-ai--csv-processing",
+        "name": "csv-processing"
+      },
+      {
+        "skill_id": "curiouslearner--csv-processor",
+        "name": "csv-processor"
+      },
+      {
+        "skill_id": "famaoai-creator--doc-to-text",
+        "name": "doc-to-text"
+      },
+      {
+        "skill_id": "guia-matthieu--pdf-extractor",
+        "name": "pdf-extractor"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      },
+      {
+        "skill_id": "vstorm-co--data-analysis",
+        "name": "data-analysis"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "benchflow-ai--csv-processing",
+        "name": "csv-processing"
+      },
+      {
+        "skill_id": "HeshamFS--post-processing",
+        "name": "post-processing"
+      },
+      {
+        "skill_id": "omer-metin--document-ai",
+        "name": "document-ai"
+      },
+      {
+        "skill_id": "vanman2024--document-parsers",
+        "name": "document-parsers"
+      },
+      {
+        "skill_id": "guia-matthieu--pdf-extractor",
+        "name": "pdf-extractor"
+      },
+      {
+        "skill_id": "famaoai-creator--doc-to-text",
+        "name": "doc-to-text"
+      },
+      {
+        "skill_id": "vstorm-co--data-analysis",
+        "name": "data-analysis"
+      },
+      {
+        "skill_id": "artificialanalysis--data-analysis",
+        "name": "data-analysis"
+      },
+      {
+        "skill_id": "curiouslearner--csv-processor",
+        "name": "csv-processor"
+      },
+      {
+        "skill_id": "aj-geddes--time-series-analysis",
+        "name": "time-series-analysis"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 2,
+    "extra_skill_count": 9
+  },
+  {
+    "condition_id": "find-topk-similiar-chemicals|hard|n10",
+    "query": "RDKit molecular fingerprints PubChem chemical SMILES Tanimoto similarity search",
+    "distractor_type": "hard",
+    "noise_count": 10,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--pdf-2",
+        "name": "pdf-2"
+      },
+      {
+        "skill_id": "benchflow-ai--pubchem-database",
+        "name": "pubchem-database"
+      },
+      {
+        "skill_id": "benchflow-ai--rdkit",
+        "name": "rdkit"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "K-Dense-AI--datamol",
+        "name": "datamol"
+      },
+      {
+        "skill_id": "K-Dense-AI--rdkit",
+        "name": "rdkit"
+      },
+      {
+        "skill_id": "aminoanalytica--rdkit",
+        "name": "rdkit"
+      },
+      {
+        "skill_id": "benchflow-ai--pubchem-database",
+        "name": "pubchem-database"
+      },
+      {
+        "skill_id": "benchflow-ai--rdkit",
+        "name": "rdkit"
+      },
+      {
+        "skill_id": "davila7--datamol",
+        "name": "datamol"
+      },
+      {
+        "skill_id": "davila7--molfeat",
+        "name": "molfeat"
+      },
+      {
+        "skill_id": "davila7--pubchem-database",
+        "name": "pubchem-database"
+      },
+      {
+        "skill_id": "davila7--rdkit",
+        "name": "rdkit"
+      },
+      {
+        "skill_id": "mims-harvard--tooluniverse-chemical-compound-retrieval",
+        "name": "tooluniverse-chemical-compound-retrieval"
+      },
+      {
+        "skill_id": "moosegoose0701--rdkit",
+        "name": "rdkit"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "aminoanalytica--rdkit",
+        "name": "rdkit"
+      },
+      {
+        "skill_id": "K-Dense-AI--rdkit",
+        "name": "rdkit"
+      },
+      {
+        "skill_id": "davila7--pubchem-database",
+        "name": "pubchem-database"
+      },
+      {
+        "skill_id": "davila7--rdkit",
+        "name": "rdkit"
+      },
+      {
+        "skill_id": "moosegoose0701--rdkit",
+        "name": "rdkit"
+      },
+      {
+        "skill_id": "davila7--datamol",
+        "name": "datamol"
+      },
+      {
+        "skill_id": "mims-harvard--tooluniverse-chemical-compound-retrieval",
+        "name": "tooluniverse-chemical-compound-retrieval"
+      },
+      {
+        "skill_id": "K-Dense-AI--datamol",
+        "name": "datamol"
+      },
+      {
+        "skill_id": "davila7--molfeat",
+        "name": "molfeat"
+      },
+      {
+        "skill_id": "davila7--zinc-database",
+        "name": "zinc-database"
+      }
+    ],
+    "error_type": "mixed",
+    "missing_gold_count": 1,
+    "extra_skill_count": 9
+  },
+  {
+    "condition_id": "gh-repo-analytics|hard|n10",
+    "query": "GitHub API analytics gh CLI pull requests",
+    "distractor_type": "hard",
+    "noise_count": 10,
+    "gold_skills": [
+      {
+        "skill_id": "benchflow-ai--gh-cli",
+        "name": "gh-cli"
+      }
+    ],
+    "selected_skills": [
+      {
+        "skill_id": "aidankinzett--github-pr-review",
+        "name": "github-pr-review"
+      },
+      {
+        "skill_id": "benchflow-ai--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "callstackincubator--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "cowork-os--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "daymade--github-ops",
+        "name": "github-ops"
+      },
+      {
+        "skill_id": "dimillian--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "elizaos--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "github--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "mathews-tom--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "oriolrius--github-cli",
+        "name": "github-cli"
+      },
+      {
+        "skill_id": "squirrel289--pull-request-tool",
+        "name": "pull-request-tool"
+      }
+    ],
+    "distractor_skills": [
+      {
+        "skill_id": "oriolrius--github-cli",
+        "name": "github-cli"
+      },
+      {
+        "skill_id": "aidankinzett--github-pr-review",
+        "name": "github-pr-review"
+      },
+      {
+        "skill_id": "cowork-os--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "squirrel289--pull-request-tool",
+        "name": "pull-request-tool"
+      },
+      {
+        "skill_id": "mathews-tom--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "dimillian--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "elizaos--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "callstackincubator--github",
+        "name": "github"
+      },
+      {
+        "skill_id": "github--gh-cli",
+        "name": "gh-cli"
+      },
+      {
+        "skill_id": "daymade--github-ops",
+        "name": "github-ops"
+      }
+    ],
+    "error_type": "over_selection",
+    "missing_gold_count": 0,
+    "extra_skill_count": 10
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "decided_on": "2026-07-20",
+  "pilot_command": "python3 experiments/rq5_llm_router_decision_budget.py --limit-tasks 10 --api-key-prompt",
+  "pilot_macro_f1_hard_n20": 0.421,
+  "rule_branch": "otherwise (< 0.85)",
+  "final_grid": [0, 2, 5, 10, 20]
+}
