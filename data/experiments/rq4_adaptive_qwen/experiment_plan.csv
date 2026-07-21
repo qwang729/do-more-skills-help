@@ -1,7 +1,0 @@
-task_id,selection_score,selection_reason,gold_skill_count,conditions,estimated_solver_tokens,estimated_judge_tokens,estimated_total_tokens
-video-silence-remover,19.571,7 gold skills; top1 underloads; retrieval coverage varies; tests noisy context,7,no_skill;oracle_gold_all;bm25_top1;hybrid_bm25_neural_top10;oracle_gold_plus_5_noise,25098,5744,30842
-travel-planning,18.0,6 gold skills; top1 underloads; retrieval coverage varies; tests noisy context,6,no_skill;oracle_gold_all;bm25_top1;hybrid_bm25_neural_top10;oracle_gold_plus_5_noise,20066,5858,25924
-drone-planning-control,17.5,6 gold skills; top1 underloads; retrieval coverage varies; tests noisy context,6,no_skill;oracle_gold_all;bm25_top1;hybrid_bm25_neural_top10;oracle_gold_plus_5_noise,26030,5996,32026
-fix-erlang-ssh-cve,17.5,6 gold skills; top1 underloads; retrieval coverage varies; tests noisy context,6,no_skill;oracle_gold_all;bm25_top1;hybrid_bm25_neural_top10;oracle_gold_plus_5_noise,22543,4012,26555
-multilingual-video-dubbing,17.5,6 gold skills; top1 underloads; retrieval coverage varies; tests noisy context,6,no_skill;oracle_gold_all;bm25_top1;hybrid_bm25_neural_top10;oracle_gold_plus_5_noise,23342,5774,29116
-python-scala-translation,17.5,6 gold skills; top1 underloads; retrieval coverage varies; tests noisy context,6,no_skill;oracle_gold_all;bm25_top1;hybrid_bm25_neural_top10;oracle_gold_plus_5_noise,23773,5593,29366
