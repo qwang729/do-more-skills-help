@@ -135,7 +135,44 @@ Source: `data/experiments/rq5_llm_router/case_studies.json` (20 worst failures, 
 
 ---
 
-## 5. Known Data Characteristics & Caveats
+## 5. Post-hoc Pipeline Diagnostics
+
+Source: `experiments/rq5_pipeline_diagnostics.py` (read-only recomputation from `raw_responses.jsonl` + `candidate_menus.jsonl`), outputs in `data/experiments/rq5_pipeline_diagnostics/`. All recomputed macro F1 / exact-match values match `summary.csv` cell-for-cell, independently validating the main scoring pipeline.
+
+### 5.1 RQ3 x RQ5 error decomposition (end-to-end correct routing)
+
+Stage 1 (RQ3, `hybrid_bm25_neural`, full 34k library): **complete gold coverage@10 = 0.345** over the same 87 tasks. Stage 2 is the RQ5 exact-set-match rate given guaranteed gold visibility. Their product estimates the end-to-end probability that a retrieve-then-route pipeline surfaces and selects exactly the right skill set:
+
+| type | n | routing exact match | est. end-to-end exact routing |
+|---|---|---|---|
+| random | 0 | 0.540 | 0.186 |
+| random | 20 | 0.621 | 0.214 |
+| hard | 2 | 0.115 | 0.040 |
+| hard | 20 | 0.069 | 0.024 |
+
+- **Both pipeline stages are severe bottlenecks at 34k scale**: even the best cell yields ~21% end-to-end exact routing; under realistic hard confusion it collapses to ~2-4%. This quantitatively ties RQ1-RQ3 (retrieval budget) and RQ5 (decision budget) into a single multiplicative chain.
+- The product assumes stage independence; the task-paired variant (per-task product, then averaged; see `pipeline_decomposition.json`) gives the same qualitative picture.
+
+### 5.2 Failure-mode composition
+
+Share of conditions by outcome (source: `failure_modes.csv`):
+
+| type | n | correct | under | over | mixed | refusal |
+|---|---|---|---|---|---|---|
+| random | 0 | 0.540 | 0.437 | 0.000 | 0.000 | 0.023 |
+| random | 20 | 0.621 | 0.310 | 0.035 | 0.035 | 0.000 |
+| hard | 2 | 0.115 | 0.126 | 0.368 | 0.379 | 0.011 |
+| hard | 20 | 0.069 | 0.035 | 0.402 | 0.494 | 0.000 |
+
+- **The failure mode switches with distractor hardness**: under random noise, essentially the only failure is under-selection on multi-gold tasks (and it *shrinks* as n grows, matching the recall improvement in 3.1); under hard noise, over-selection plus mixed errors take over ~90% of failures by n=20. This confirms H5.3 with a mechanism split rather than a single accuracy number.
+
+### 5.3 Gold-position bias (exploratory)
+
+Gold-skill selection rate by relative menu position (menus with >= 10 candidates, 5 bins; source: `position_bias.csv`): under hard noise, the rate declines from 0.669 in the first fifth of the menu to 0.515 in the [0.6, 0.8) bin before rebounding to 0.617 at the end; random menus show no such pattern (0.71-0.84, flat). With ~90-120 gold instances per bin the first-vs-[0.6, 0.8) gap is only weakly significant (two-proportion z ~= 2.3), so this is reported as suggestive evidence of a mid-to-late position disadvantage under hard confusion, not a confirmed effect. Menu order is hash-blinded by design, so the estimate is unconfounded but underpowered.
+
+---
+
+## 6. Known Data Characteristics & Caveats
 
 - **Near-duplicate skills in the 34k library**: some skill names appear multiple times from different source repos with nearly identical descriptions (e.g. `service-mesh-observability` appears 3 times). Menus deduplicate by skill ID, so near-duplicates can co-occur as distractors; under `hard` conditions this makes the menu effectively harder. Reported as a property of the real skill ecosystem, not corrected.
 - **Selection is not execution**: selected skills are not executed; results measure routing/selection quality, not downstream task success (see `experiment_metadata.json` disclaimer).
@@ -144,9 +181,10 @@ Source: `data/experiments/rq5_llm_router/case_studies.json` (20 worst failures, 
 
 ---
 
-## 6. Conclusions for RQ5
+## 7. Conclusions for RQ5
 
 - **Distractor hardness, not count, breaks LLM skill routing**. Up to 20 random distractors leave selection quality unchanged (F1 0.818 -> 0.882), while as few as 2 retrieval-hard distractors cut exact set match from 54% to 11% and 20 cut macro F1 to 0.383. All contrasts are significant with 95% CIs excluding zero.
 - **The failure mode is over-selection of near-duplicates**: the router keeps finding gold skills (recall stays 0.66-0.72 under hard noise) but cannot reject semantically equivalent alternatives, selecting +5.3 extras on average at n=20 and, in the worst cases, the entire menu.
 - **Implication for skill-library scaling**: as a library grows, the retriever surfaces increasingly similar candidates, so the router's decision budget is consumed by duplicate arbitration rather than relevance judgment. Guaranteed gold visibility is not sufficient; scaling requires deduplication/canonicalization of the library, richer skill metadata to break ties, or an explicit selection budget (e.g. cap k) at routing time.
 - **Cost scales linearly, value does not**: each hard distractor adds ~60 prompt tokens and negative accuracy value, so enlarging candidate menus past the point of retrieval precision is strictly wasteful.
+- **End-to-end, retrieval and routing bottlenecks multiply**: combining RQ3 full-library gold coverage@10 (0.345) with RQ5 routing exact match yields at best ~21% end-to-end exact skill routing, and ~2-4% under hard confusion — evidence that skill-library scaling must address both budgets, not either alone (Section 5.1).

@@ -1,0 +1,108 @@
+{
+  "run_status": {
+    "completed_conditions": 783,
+    "planned_conditions": 783,
+    "is_partial": false
+  },
+  "note": "Stage 1 = P(all gold skills retrieved into top-10, full 34k library, RQ3). Stage 2 = P(exact correct skill set selected | all gold visible, RQ5). est_end_to_end multiplies the two macro rates (independence approximation); task_paired_end_to_end multiplies per task, then averages.",
+  "stage1_retrieval": {
+    "retriever": "hybrid_bm25_neural",
+    "library": "full (34k)",
+    "n_tasks": 87,
+    "complete_gold_coverage_at_10": 0.3448,
+    "hit_at_10": 0.7241,
+    "mean_recall_at_10": 0.5206
+  },
+  "stage2_routing_and_composition": [
+    {
+      "distractor_type": "hard",
+      "noise_count": 0,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.5402,
+      "routing_macro_f1": 0.818,
+      "est_end_to_end_exact_routing": 0.1863,
+      "task_paired_end_to_end_exact": 0.2989
+    },
+    {
+      "distractor_type": "hard",
+      "noise_count": 2,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.1149,
+      "routing_macro_f1": 0.5723,
+      "est_end_to_end_exact_routing": 0.0396,
+      "task_paired_end_to_end_exact": 0.0805
+    },
+    {
+      "distractor_type": "hard",
+      "noise_count": 5,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.1034,
+      "routing_macro_f1": 0.5074,
+      "est_end_to_end_exact_routing": 0.0357,
+      "task_paired_end_to_end_exact": 0.092
+    },
+    {
+      "distractor_type": "hard",
+      "noise_count": 10,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.1264,
+      "routing_macro_f1": 0.4759,
+      "est_end_to_end_exact_routing": 0.0436,
+      "task_paired_end_to_end_exact": 0.1034
+    },
+    {
+      "distractor_type": "hard",
+      "noise_count": 20,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.069,
+      "routing_macro_f1": 0.3833,
+      "est_end_to_end_exact_routing": 0.0238,
+      "task_paired_end_to_end_exact": 0.069
+    },
+    {
+      "distractor_type": "random",
+      "noise_count": 0,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.5402,
+      "routing_macro_f1": 0.818,
+      "est_end_to_end_exact_routing": 0.1863,
+      "task_paired_end_to_end_exact": 0.2989
+    },
+    {
+      "distractor_type": "random",
+      "noise_count": 2,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.6207,
+      "routing_macro_f1": 0.8657,
+      "est_end_to_end_exact_routing": 0.214,
+      "task_paired_end_to_end_exact": 0.3218
+    },
+    {
+      "distractor_type": "random",
+      "noise_count": 5,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.6207,
+      "routing_macro_f1": 0.8755,
+      "est_end_to_end_exact_routing": 0.214,
+      "task_paired_end_to_end_exact": 0.3218
+    },
+    {
+      "distractor_type": "random",
+      "noise_count": 10,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.6322,
+      "routing_macro_f1": 0.8846,
+      "est_end_to_end_exact_routing": 0.218,
+      "task_paired_end_to_end_exact": 0.3218
+    },
+    {
+      "distractor_type": "random",
+      "noise_count": 20,
+      "n_valid": 87,
+      "routing_exact_set_match": 0.6207,
+      "routing_macro_f1": 0.8821,
+      "est_end_to_end_exact_routing": 0.214,
+      "task_paired_end_to_end_exact": 0.3103
+    }
+  ]
+}

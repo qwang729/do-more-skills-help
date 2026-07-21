@@ -1,8 +1,9 @@
 # RQ5 README: Decision-Budget Stress Test for LLM Skill Routing
 
 **Script**: `experiments/rq5_llm_router_decision_budget.py`
+**Post-hoc diagnostics**: `experiments/rq5_pipeline_diagnostics.py` (read-only, see Section 9)
 **Proposal**: `docs/rq5_decision_budget/proposal.md`
-**Output directory**: `data/experiments/rq5_llm_router/`
+**Output directory**: `data/experiments/rq5_llm_router/` (diagnostics: `data/experiments/rq5_pipeline_diagnostics/`)
 **Status**: Finished
 
 ---
@@ -242,3 +243,33 @@ Primary total:                      783 calls
 ```
 
 Extended grid `{0,2,5,10,20,50}` raises the total to 957 calls.
+
+## 9. Post-hoc Pipeline Diagnostics
+
+`experiments/rq5_pipeline_diagnostics.py` is a separate read-only analysis script that answers three questions the main experiment reports raw material for but never analyzes. It requires no new API calls: everything is recomputed from the already-collected `raw_responses.jsonl` + `candidate_menus.jsonl` (plus RQ3 `per_query_metrics.csv`), and outputs go to `data/experiments/rq5_pipeline_diagnostics/`. Numeric results and interpretation live in `results.md` Section 5; this section documents what each diagnostic does and why it exists.
+
+### 9.1 Pipeline error decomposition (`pipeline_decomposition.json` / `.csv`)
+
+- **What**: combines the two pipeline stages measured separately by RQ3 and RQ5 into one end-to-end estimate: `P(correct routing) = P(all gold retrieved into top-10, full 34k library; RQ3 hybrid retriever) x P(exact gold set selected | all gold visible; RQ5)`. Reported both as a product of macro rates and as a per-task paired product.
+- **Question verified**: RQ5 alone shows routing quality *conditional on* gold visibility — an oracle assumption. How bad is a realistic retrieve-then-route pipeline when retrieval misses are put back in?
+- **Significance**: this is the quantitative link that ties RQ1-RQ3 (retrieval budget) and RQ5 (decision budget) into one multiplicative chain, showing that both stages are bottlenecks at library scale and neither can be fixed in isolation. It turns five separate experiments into a single pipeline argument.
+
+### 9.2 Failure-mode composition (`failure_modes.csv`)
+
+- **What**: classifies every condition into correct / under_selection / over_selection / mixed / refusal / invalid and reports the shares per (distractor_type, noise_count).
+- **Question verified**: H5.3 predicts two distinct failure behaviors (selecting too few vs too many). Macro F1 alone cannot distinguish them — a 0.5 F1 from missed gold and a 0.5 F1 from over-selection imply opposite mitigations.
+- **Significance**: reveals that the failure *mechanism* switches with distractor hardness (random noise -> under-selection on multi-gold tasks; hard noise -> over-selection/mixed), which motivates different remedies: better task decomposition for the former, library deduplication or a selection budget for the latter.
+
+### 9.3 Gold-position bias (`position_bias.csv`)
+
+- **What**: gold-skill selection rate as a function of relative position in the menu (menus with >= 10 candidates, 5 bins).
+- **Question verified**: does menu *position*, independent of content, affect whether a gold skill is selected — a skill-routing analogue of the lost-in-the-middle effect? The hash-blinded menu order (Section 2) makes position exogenous, so this is a fair, unconfounded estimate.
+- **Significance**: if position matters, candidate ordering becomes a free design lever for skill routers. Pre-registered as **exploratory**: per-bin sample sizes are small, so results are treated as suggestive only.
+
+### Running
+
+```bash
+python3 experiments/rq5_pipeline_diagnostics.py
+```
+
+Safe to run while the main experiment is still in flight (a truncated trailing JSONL line is skipped; partial results are flagged via `run_status.is_partial`). It also serves as an independent cross-check: the recomputed macro F1 / exact-match values must match `summary.csv`, validating the main script's scoring path. All decomposition claims inherit the RQ5 claim boundaries (Section 7): the end-to-end estimate is about correct *routing*, not downstream task success.
