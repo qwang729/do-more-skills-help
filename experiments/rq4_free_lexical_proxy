@@ -1,0 +1,277 @@
+#!/usr/bin/env python3
+"""Free, no-API-call proxy for RQ4: does the injected skill actually contain
+what solving the task needs?
+
+This does NOT call any model. It answers a weaker but zero-cost version of
+RQ4's question by reusing RQ1's exact BM25 machinery in a different role:
+
+- Normally (RQ1-RQ3), the *query* is the task query and we ask "which skill
+  does BM25 rank first". Here, the *query* is built from the task's own
+  oracle solution + verifier text (i.e. "what does actually solving this
+  task require"), and we ask: for each condition's injected skill_id, what
+  rank does it get in that ranking over the full 34k-skill library?
+
+Intuition: if a skill is genuinely useful for solving the task, its
+name+description+SKILL.md content should score highly against a query built
+from the oracle solution and verifier -- regardless of whether that skill
+was the one actually retrieved for the task's *user-facing* query. A skill
+that ranks #1 out of 34k against "what this task needs" is plausibly useful
+context for an agent; a skill that doesn't even score (rank = None) is
+plausibly useless or actively distracting.
+
+This is a content-relevance proxy, not a task-success measurement. It is
+free and fully reproducible. Default repeats=3, aligned with RQ3 (not RQ1/
+RQ2's 20) for consistency across the RQ1-RQ4 experiment set; repeats only
+matter for random_wrong, which is the only condition with sampling
+randomness, so 3 is already generous here -- raise it with --repeats if you
+want tighter variance estimates, since it costs nothing but local CPU time.
+
+Pairs with rq4_downstream_task_performance.py (the paid, LLM-judged
+version). Recommended order: run this first (free) to sanity check that the
+condition design behaves as expected, then spend API budget on the LLM-judge
+version for the real downstream-performance claim.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import random
+from pathlib import Path
+from statistics import mean, pstdev
+
+from rq1_retrieval_scaling import (
+    bm25_rank,
+    load_json,
+    load_skill_docs,
+    normalize_gt,
+    tokenize,
+)
+from rq2_distractor_types import rank_by_query_overlap
+from rq4_downstream_task_performance import (
+    find_task_dir,
+    load_task_bundle,
+    write_csv,
+)
+
+DEFAULT_CONDITIONS = ["no_skill", "gold_skill", "retrieved_top1_full", "hard_distractor", "random_wrong"]
+
+
+def reference_query(bundle: dict) -> str:
+    # "what does actually solving this task require" -- built only from
+    # oracle + verifier text, deliberately NOT from the task query, so this
+    # is an independent relevance signal rather than a restatement of RQ1.
+    return f"{bundle['oracle_text']} {bundle['verifier_text']}"
+
+
+def rank_of_skill(ranked: list[dict], skill_id: str | None) -> int | None:
+    if skill_id is None:
+        return None
+    for row in ranked:
+        if row["skill_id"] == skill_id:
+            return row["rank"]
+    return None
+
+
+def build_conditions_for_task(query: str, gold: set, all_skill_ids: list[str], docs: dict, rng: random.Random) -> dict:
+    gold_sorted = sorted(gold & set(all_skill_ids))
+    gold_id = gold_sorted[0] if gold_sorted else None
+
+    ranked_full = bm25_rank(query, all_skill_ids, docs, 1)
+    retrieved_id = ranked_full[0]["skill_id"] if ranked_full else None
+    retrieval_correct = bool(retrieved_id and retrieved_id in gold)
+
+    non_gold_ids = [sid for sid in all_skill_ids if sid not in gold]
+    hard_ranked = rank_by_query_overlap(query, non_gold_ids, docs)
+    hard_id = hard_ranked[0] if hard_ranked else rng.choice(non_gold_ids)
+
+    random_id = rng.choice(non_gold_ids)
+
+    return {
+        "no_skill": {"skill_id": None, "retrieval_correct": None},
+        "gold_skill": {"skill_id": gold_id, "retrieval_correct": True},
+        "retrieved_top1_full": {"skill_id": retrieved_id, "retrieval_correct": retrieval_correct},
+        "hard_distractor": {"skill_id": hard_id, "retrieval_correct": False},
+        "random_wrong": {"skill_id": random_id, "retrieval_correct": False},
+    }
+
+
+def reciprocal(rank: int | None) -> float:
+    return 0.0 if rank is None else 1.0 / rank
+
+
+def top_k_flag(rank: int | None, k: int) -> float:
+    return 1.0 if (rank is not None and rank <= k) else 0.0
+
+
+def summarize(rows: list[dict]) -> dict:
+    n = len(rows)
+    if n == 0:
+        return {"n": 0}
+    return {
+        "n": n,
+        "reciprocal_relevance_rank": mean(r["reciprocal_relevance_rank"] for r in rows),
+        "reciprocal_relevance_rank_std": pstdev([r["reciprocal_relevance_rank"] for r in rows]) if n > 1 else 0.0,
+        "top10_relevant": mean(r["top10_relevant"] for r in rows),
+        "top100_relevant": mean(r["top100_relevant"] for r in rows),
+        "found_rate": mean(1.0 if r["relevance_rank"] is not None else 0.0 for r in rows),
+    }
+
+
+def write_bar_svg(summary_rows: list[dict], path: Path) -> None:
+    width, height = 900, 420
+    left, right, top, bottom = 70, 30, 40, 110
+    plot_w = width - left - right
+    plot_h = height - top - bottom
+    n = len(summary_rows)
+    gap = plot_w / max(n, 1)
+    bar_w = gap * 0.45
+
+    def sy(v: float) -> float:
+        return top + (1.0 - v) * plot_h
+
+    lines = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<rect width="100%" height="100%" fill="white"/>',
+        f'<text x="{left}" y="22" font-family="Arial" font-size="18" font-weight="700">RQ4 (free proxy): skill content relevance to oracle+verifier, by condition</text>',
+        f'<line x1="{left}" y1="{top}" x2="{left}" y2="{top + plot_h}" stroke="#333"/>',
+        f'<line x1="{left}" y1="{top + plot_h}" x2="{left + plot_w}" y2="{top + plot_h}" stroke="#333"/>',
+    ]
+    for tick in [0, 0.25, 0.5, 0.75, 1.0]:
+        y = sy(tick)
+        lines.append(f'<line x1="{left}" y1="{y:.2f}" x2="{left + plot_w}" y2="{y:.2f}" stroke="#e5e5e5"/>')
+        lines.append(f'<text x="{left - 10}" y="{y + 4:.2f}" text-anchor="end" font-family="Arial" font-size="12">{tick:.2f}</text>')
+
+    for i, row in enumerate(summary_rows):
+        cx = left + gap * i + gap / 2
+        h = plot_h * min(row.get("top10_relevant", 0.0), 1.0)
+        x = cx - bar_w / 2
+        lines.append(f'<rect x="{x:.2f}" y="{top + plot_h - h:.2f}" width="{bar_w:.2f}" height="{h:.2f}" fill="#2ca02c"/>')
+        lines.append(
+            f'<text x="{cx:.2f}" y="{top + plot_h + 18}" text-anchor="middle" font-family="Arial" '
+            f'font-size="11" transform="rotate(28 {cx:.2f},{top + plot_h + 18})">{row["condition"]} (n={row["n"]})</text>'
+        )
+    lines.append(f'<text x="18" y="{top + plot_h / 2:.2f}" transform="rotate(-90 18,{top + plot_h / 2:.2f})" text-anchor="middle" font-family="Arial" font-size="13">Top-10 relevant rate</text>')
+    lines.append("</svg>")
+    path.write_text("\n".join(lines) + "\n")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skill-usage-root", default="data/raw/Skill-Usage")
+    parser.add_argument("--tasks-root", default="", help="Defaults to <skill-usage-root>/tasks")
+    parser.add_argument("--output-dir", default="data/experiments/rq4_free_lexical_proxy")
+    parser.add_argument("--conditions", nargs="+", default=DEFAULT_CONDITIONS)
+    parser.add_argument("--repeats", type=int, default=3, help="Matches RQ3. Only random_wrong actually varies per repeat.")
+    parser.add_argument("--seed", type=int, default=6002)
+    parser.add_argument("--limit-tasks", type=int, default=0, help="0 means all tasks (this is free, no reason to limit).")
+    parser.add_argument("--top-k", type=int, default=1000, help="How deep to rank when locating each condition's skill_id.")
+    args = parser.parse_args()
+
+    root = Path(args.skill_usage_root)
+    tasks_root = Path(args.tasks_root) if args.tasks_root else root / "tasks"
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    queries = load_json(root / "data" / "task_queries.json")
+    gt = normalize_gt(load_json(root / "data" / "task_skill_mapping.json"))
+    docs = load_skill_docs(root / "skills-34k" / "skills_meta.jsonl")
+    all_skill_ids = sorted(docs)
+
+    tasks = sorted(set(queries) & set(gt))
+    if args.limit_tasks:
+        tasks = tasks[: args.limit_tasks]
+
+    per_query_rows = []
+    missing_task_dirs = []
+    missing_reference = []
+
+    for task in tasks:
+        task_dir = find_task_dir(tasks_root, task)
+        if task_dir is None:
+            missing_task_dirs.append(task)
+            continue
+        bundle = load_task_bundle(task_dir)
+        ref_query = reference_query(bundle)
+        if not tokenize(ref_query):
+            missing_reference.append(task)
+            continue
+
+        ref_ranked = bm25_rank(ref_query, all_skill_ids, docs, args.top_k)
+        gold = gt[task]
+
+        for repeat in range(args.repeats):
+            rng = random.Random(args.seed + repeat + hash(task) % 100000)
+            conditions = build_conditions_for_task(" ".join(queries[task]), gold, all_skill_ids, docs, rng)
+
+            for cond_name in args.conditions:
+                if cond_name not in conditions:
+                    continue
+                cond = conditions[cond_name]
+                skill_id = cond["skill_id"]
+                rank = rank_of_skill(ref_ranked, skill_id)
+
+                row = {
+                    "task": task,
+                    "condition": cond_name,
+                    "repeat": repeat,
+                    "skill_id": skill_id,
+                    "retrieval_correct": cond["retrieval_correct"],
+                    "relevance_rank": rank,
+                    "reciprocal_relevance_rank": reciprocal(rank),
+                    "top10_relevant": top_k_flag(rank, 10),
+                    "top100_relevant": top_k_flag(rank, 100),
+                }
+                per_query_rows.append(row)
+
+            # no_skill and non-random conditions are identical across
+            # repeats; only random_wrong actually changes. Break early
+            # once repeats stop adding new information for cheap conditions
+            # is intentionally NOT done here, to keep summary stats simple
+            # and the CSV directly comparable across conditions.
+
+    if missing_task_dirs:
+        print(f"WARNING: no task directory found for {len(missing_task_dirs)} tasks under {tasks_root}: {missing_task_dirs[:10]}")
+    if missing_reference:
+        print(f"WARNING: {len(missing_reference)} tasks had no usable oracle/verifier text, skipped: {missing_reference[:10]}")
+
+    conditions_seen = []
+    for row in per_query_rows:
+        if row["condition"] not in conditions_seen:
+            conditions_seen.append(row["condition"])
+
+    summary_rows = []
+    for cond in conditions_seen:
+        rows = [r for r in per_query_rows if r["condition"] == cond]
+        summary_rows.append({"condition": cond, **summarize(rows)})
+
+    retrieved_rows = [r for r in per_query_rows if r["condition"] == "retrieved_top1_full"]
+    for label, flag in [("retrieved_top1_full__correct", True), ("retrieved_top1_full__wrong", False)]:
+        subset = [r for r in retrieved_rows if r.get("retrieval_correct") is flag]
+        summary_rows.append({"condition": label, **summarize(subset)})
+
+    write_csv(output_dir / "summary.csv", summary_rows)
+    (output_dir / "summary.json").write_text(json.dumps(summary_rows, indent=2) + "\n")
+    write_csv(output_dir / "per_query_metrics.csv", per_query_rows)
+    write_bar_svg([r for r in summary_rows if r["condition"] in args.conditions], output_dir / "condition_relevance_bar.svg")
+
+    print(f"\nWrote {output_dir / 'summary.csv'}")
+    print(f"Wrote {output_dir / 'summary.json'}")
+    print(f"Wrote {output_dir / 'per_query_metrics.csv'}")
+    print(f"Wrote {output_dir / 'condition_relevance_bar.svg'}")
+    print()
+    print(f"{'condition':>28} {'n':>6} {'RRR':>8} {'top10':>8} {'top100':>8} {'found':>8}")
+    for row in summary_rows:
+        if row.get("n", 0) == 0:
+            print(f"{row['condition']:>28} {0:>6}")
+            continue
+        print(
+            f"{row['condition']:>28} {row['n']:>6} "
+            f"{row['reciprocal_relevance_rank']:>8.3f} {row['top10_relevant']:>8.3f} "
+            f"{row['top100_relevant']:>8.3f} {row['found_rate']:>8.3f}"
+        )
+
+
+if __name__ == "__main__":
+    main()
