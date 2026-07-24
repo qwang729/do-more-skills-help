@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="26" font-family="Arial" font-size="17" font-weight="700">RQ5 failure-mode composition by condition</text>
+<line x1="70" y1="46" x2="70" y2="404" stroke="#333"/>
+<line x1="70" y1="404" x2="750" y2="404" stroke="#333"/>
+<line x1="70" y1="404.00" x2="750" y2="404.00" stroke="#e5e5e5"/>
+<text x="62" y="408.00" text-anchor="end" font-family="Arial" font-size="12">0.00</text>
+<line x1="70" y1="314.50" x2="750" y2="314.50" stroke="#e5e5e5"/>
+<text x="62" y="318.50" text-anchor="end" font-family="Arial" font-size="12">0.25</text>
+<line x1="70" y1="225.00" x2="750" y2="225.00" stroke="#e5e5e5"/>
+<text x="62" y="229.00" text-anchor="end" font-family="Arial" font-size="12">0.50</text>
+<line x1="70" y1="135.50" x2="750" y2="135.50" stroke="#e5e5e5"/>
+<text x="62" y="139.50" text-anchor="end" font-family="Arial" font-size="12">0.75</text>
+<line x1="70" y1="46.00" x2="750" y2="46.00" stroke="#e5e5e5"/>
+<text x="62" y="50.00" text-anchor="end" font-family="Arial" font-size="12">1.00</text>
+<rect x="79.89" y="210.61" width="42.04" height="193.39" fill="#2ca02c"/>
+<rect x="79.89" y="54.23" width="42.04" height="156.37" fill="#1f77b4"/>
+<rect x="79.89" y="46.00" width="42.04" height="8.23" fill="#7f7f7f"/>
+<text x="100.91" y="422" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+<rect x="141.71" y="362.87" width="42.04" height="41.13" fill="#2ca02c"/>
+<rect x="141.71" y="317.61" width="42.04" height="45.25" fill="#1f77b4"/>
+<rect x="141.71" y="185.94" width="42.04" height="131.67" fill="#ff7f0e"/>
+<rect x="141.71" y="50.15" width="42.04" height="135.79" fill="#d62728"/>
+<rect x="141.71" y="46.04" width="42.04" height="4.12" fill="#7f7f7f"/>
+<text x="162.73" y="422" text-anchor="middle" font-family="Arial" font-size="12">2</text>
+<rect x="203.53" y="366.98" width="42.04" height="37.02" fill="#2ca02c"/>
+<rect x="203.53" y="334.05" width="42.04" height="32.94" fill="#1f77b4"/>
+<rect x="203.53" y="181.79" width="42.04" height="152.26" fill="#ff7f0e"/>
+<rect x="203.53" y="46.00" width="42.04" height="135.79" fill="#d62728"/>
+<text x="224.55" y="422" text-anchor="middle" font-family="Arial" font-size="12">5</text>
+<rect x="265.35" y="358.75" width="42.04" height="45.25" fill="#2ca02c"/>
+<rect x="265.35" y="338.16" width="42.04" height="20.59" fill="#1f77b4"/>
+<rect x="265.35" y="190.02" width="42.04" height="148.14" fill="#ff7f0e"/>
+<rect x="265.35" y="46.00" width="42.04" height="144.02" fill="#d62728"/>
+<text x="286.36" y="422" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<rect x="327.16" y="379.30" width="42.04" height="24.70" fill="#2ca02c"/>
+<rect x="327.16" y="366.95" width="42.04" height="12.35" fill="#1f77b4"/>
+<rect x="327.16" y="222.92" width="42.04" height="144.02" fill="#ff7f0e"/>
+<rect x="327.16" y="45.96" width="42.04" height="176.96" fill="#d62728"/>
+<text x="348.18" y="422" text-anchor="middle" font-family="Arial" font-size="12">20</text>
+<text x="224.55" y="446" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700">hard</text>
+<rect x="450.80" y="210.61" width="42.04" height="193.39" fill="#2ca02c"/>
+<rect x="450.80" y="54.23" width="42.04" height="156.37" fill="#1f77b4"/>
+<rect x="450.80" y="46.00" width="42.04" height="8.23" fill="#7f7f7f"/>
+<text x="471.82" y="422" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+<rect x="512.62" y="181.79" width="42.04" height="222.21" fill="#2ca02c"/>
+<rect x="512.62" y="50.12" width="42.04" height="131.67" fill="#1f77b4"/>
+<rect x="512.62" y="46.00" width="42.04" height="4.12" fill="#7f7f7f"/>
+<text x="533.64" y="422" text-anchor="middle" font-family="Arial" font-size="12">2</text>
+<rect x="574.44" y="181.79" width="42.04" height="222.21" fill="#2ca02c"/>
+<rect x="574.44" y="50.12" width="42.04" height="131.67" fill="#1f77b4"/>
+<rect x="574.44" y="46.00" width="42.04" height="4.12" fill="#7f7f7f"/>
+<text x="595.45" y="422" text-anchor="middle" font-family="Arial" font-size="12">5</text>
+<rect x="636.25" y="177.67" width="42.04" height="226.33" fill="#2ca02c"/>
+<rect x="636.25" y="58.35" width="42.04" height="119.32" fill="#1f77b4"/>
+<rect x="636.25" y="54.23" width="42.04" height="4.12" fill="#ff7f0e"/>
+<rect x="636.25" y="46.00" width="42.04" height="8.23" fill="#d62728"/>
+<text x="657.27" y="422" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<rect x="698.07" y="181.79" width="42.04" height="222.21" fill="#2ca02c"/>
+<rect x="698.07" y="70.70" width="42.04" height="111.09" fill="#1f77b4"/>
+<rect x="698.07" y="58.35" width="42.04" height="12.35" fill="#ff7f0e"/>
+<rect x="698.07" y="46.00" width="42.04" height="12.35" fill="#d62728"/>
+<text x="719.09" y="422" text-anchor="middle" font-family="Arial" font-size="12">20</text>
+<text x="595.45" y="446" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700">random</text>
+<text x="410.00" y="486" text-anchor="middle" font-family="Arial" font-size="13">Distractor count (noise_count)</text>
+<rect x="776" y="50" width="16" height="16" fill="#2ca02c"/>
+<text x="800" y="63" font-family="Arial" font-size="13">correct</text>
+<rect x="776" y="74" width="16" height="16" fill="#1f77b4"/>
+<text x="800" y="87" font-family="Arial" font-size="13">under_selection</text>
+<rect x="776" y="98" width="16" height="16" fill="#ff7f0e"/>
+<text x="800" y="111" font-family="Arial" font-size="13">over_selection</text>
+<rect x="776" y="122" width="16" height="16" fill="#d62728"/>
+<text x="800" y="135" font-family="Arial" font-size="13">mixed</text>
+<rect x="776" y="146" width="16" height="16" fill="#7f7f7f"/>
+<text x="800" y="159" font-family="Arial" font-size="13">refusal</text>
+<rect x="776" y="170" width="16" height="16" fill="#17becf"/>
+<text x="800" y="183" font-family="Arial" font-size="13">invalid</text>
+</svg>

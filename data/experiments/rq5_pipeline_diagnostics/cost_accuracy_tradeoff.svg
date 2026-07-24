@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="26" font-family="Arial" font-size="17" font-weight="700">Cost-accuracy tradeoff: prompt tokens vs macro F1</text>
+<line x1="82" y1="46" x2="82" y2="384" stroke="#333"/>
+<line x1="82" y1="384" x2="650" y2="384" stroke="#333"/>
+<line x1="82" y1="384.00" x2="650" y2="384.00" stroke="#e5e5e5"/>
+<text x="74" y="388.00" text-anchor="end" font-family="Arial" font-size="12">0.00</text>
+<line x1="82" y1="299.50" x2="650" y2="299.50" stroke="#e5e5e5"/>
+<text x="74" y="303.50" text-anchor="end" font-family="Arial" font-size="12">0.25</text>
+<line x1="82" y1="215.00" x2="650" y2="215.00" stroke="#e5e5e5"/>
+<text x="74" y="219.00" text-anchor="end" font-family="Arial" font-size="12">0.50</text>
+<line x1="82" y1="130.50" x2="650" y2="130.50" stroke="#e5e5e5"/>
+<text x="74" y="134.50" text-anchor="end" font-family="Arial" font-size="12">0.75</text>
+<line x1="82" y1="46.00" x2="650" y2="46.00" stroke="#e5e5e5"/>
+<text x="74" y="50.00" text-anchor="end" font-family="Arial" font-size="12">1.00</text>
+<line x1="82.00" y1="384" x2="82.00" y2="390" stroke="#333"/>
+<text x="82.00" y="406" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+<line x1="195.60" y1="384" x2="195.60" y2="390" stroke="#333"/>
+<text x="195.60" y="406" text-anchor="middle" font-family="Arial" font-size="12">304</text>
+<line x1="309.20" y1="384" x2="309.20" y2="390" stroke="#333"/>
+<text x="309.20" y="406" text-anchor="middle" font-family="Arial" font-size="12">608</text>
+<line x1="422.80" y1="384" x2="422.80" y2="390" stroke="#333"/>
+<text x="422.80" y="406" text-anchor="middle" font-family="Arial" font-size="12">912</text>
+<line x1="536.40" y1="384" x2="536.40" y2="390" stroke="#333"/>
+<text x="536.40" y="406" text-anchor="middle" font-family="Arial" font-size="12">1216</text>
+<line x1="650.00" y1="384" x2="650.00" y2="390" stroke="#333"/>
+<text x="650.00" y="406" text-anchor="middle" font-family="Arial" font-size="12">1520</text>
+<polyline fill="none" stroke="#d62728" stroke-width="3" points="176.54,107.52 223.16,190.55 291.76,212.51 398.61,223.15 616.14,254.46"/>
+<circle cx="176.54" cy="107.52" r="4" fill="#d62728"/>
+<text x="176.54" y="97.52" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=0</text>
+<circle cx="223.16" cy="190.55" r="4" fill="#d62728"/>
+<text x="223.16" y="180.55" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=2</text>
+<circle cx="291.76" cy="212.51" r="4" fill="#d62728"/>
+<text x="291.76" y="202.51" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=5</text>
+<circle cx="398.61" cy="223.15" r="4" fill="#d62728"/>
+<text x="398.61" y="213.15" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=10</text>
+<circle cx="616.14" cy="254.46" r="4" fill="#d62728"/>
+<text x="616.14" y="244.46" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=20</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="3" points="176.54,107.52 216.74,91.40 286.01,88.07 399.01,84.99 622.95,85.87"/>
+<circle cx="176.54" cy="107.52" r="4" fill="#1f77b4"/>
+<text x="176.54" y="97.52" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=0</text>
+<circle cx="216.74" cy="91.40" r="4" fill="#1f77b4"/>
+<text x="216.74" y="81.40" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=2</text>
+<circle cx="286.01" cy="88.07" r="4" fill="#1f77b4"/>
+<text x="286.01" y="78.07" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=5</text>
+<circle cx="399.01" cy="84.99" r="4" fill="#1f77b4"/>
+<text x="399.01" y="74.99" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=10</text>
+<circle cx="622.95" cy="85.87" r="4" fill="#1f77b4"/>
+<text x="622.95" y="75.87" text-anchor="middle" font-family="Arial" font-size="11" fill="#444">n=20</text>
+<line x1="672" y1="60" x2="698" y2="60" stroke="#d62728" stroke-width="3"/>
+<text x="706" y="64" font-family="Arial" font-size="13">hard</text>
+<line x1="672" y1="84" x2="698" y2="84" stroke="#1f77b4" stroke-width="3"/>
+<text x="706" y="88" font-family="Arial" font-size="13">random</text>
+<text x="366.00" y="446" text-anchor="middle" font-family="Arial" font-size="13">Mean prompt tokens</text>
+<text x="18" y="215.00" transform="rotate(-90 18,215.00)" text-anchor="middle" font-family="Arial" font-size="13">Macro F1</text>
+</svg>

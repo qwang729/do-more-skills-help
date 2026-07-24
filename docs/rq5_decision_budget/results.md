@@ -141,17 +141,17 @@ Source: `experiments/rq5_pipeline_diagnostics.py` (read-only recomputation from 
 
 ### 5.1 RQ3 x RQ5 error decomposition (end-to-end correct routing)
 
-Stage 1 (RQ3, `hybrid_bm25_neural`, full 34k library): **complete gold coverage@10 = 0.345** over the same 87 tasks. Stage 2 is the RQ5 exact-set-match rate given guaranteed gold visibility. Their product estimates the end-to-end probability that a retrieve-then-route pipeline surfaces and selects exactly the right skill set:
+Stage 1 (RQ3, `hybrid_bm25_neural`, full 34k library): **complete gold coverage@10 = 0.345** (30/87 tasks). Stage 2 is the RQ5 exact-set-match rate given guaranteed gold visibility. Two end-to-end estimates are reported: the product of the two macro rates (assumes stage independence) and the task-paired variant (per-task product, then averaged; no independence assumption):
 
-| type | n | routing exact match | est. end-to-end exact routing |
-|---|---|---|---|
-| random | 0 | 0.540 | 0.186 |
-| random | 20 | 0.621 | 0.214 |
-| hard | 2 | 0.115 | 0.040 |
-| hard | 20 | 0.069 | 0.024 |
+| type | n | routing exact match | product end-to-end (independence) | task-paired end-to-end |
+|---|---|---|---|---|
+| random | 0 | 0.540 | 0.186 | 0.299 |
+| random | 20 | 0.621 | 0.214 | 0.310 |
+| hard | 2 | 0.115 | 0.040 | 0.081 |
+| hard | 20 | 0.069 | 0.024 | 0.069 |
 
-- **Both pipeline stages are severe bottlenecks at 34k scale**: even the best cell yields ~21% end-to-end exact routing; under realistic hard confusion it collapses to ~2-4%. This quantitatively ties RQ1-RQ3 (retrieval budget) and RQ5 (decision budget) into a single multiplicative chain.
-- The product assumes stage independence; the task-paired variant (per-task product, then averaged; see `pipeline_decomposition.json`) gives the same qualitative picture.
+- **Both pipeline stages are severe bottlenecks at 34k scale**: even the best cell yields ~21% (product) to ~31% (task-paired) end-to-end exact routing; under realistic hard confusion it collapses to ~2-4% (product) / ~7-10% (task-paired). This quantitatively ties RQ1-RQ3 (retrieval budget) and RQ5 (decision budget) into a single multiplicative chain.
+- **The stages are positively correlated**: the task-paired estimate is consistently higher than the independence product (0.299 vs 0.186 at n=0) because tasks whose full gold set is retrievable into top-10 are disproportionately single-gold and also easier to route. The independence product is therefore a lower bound; the figure `pipeline_decomposition.svg` (three panels: retrieval gate, conditional routing survival among the 30 retrieval-complete tasks, task-paired first-failure attribution) uses the task-paired values throughout.
 
 ### 5.2 Failure-mode composition
 
@@ -187,4 +187,4 @@ Gold-skill selection rate by relative menu position (menus with >= 10 candidates
 - **The failure mode is over-selection of near-duplicates**: the router keeps finding gold skills (recall stays 0.66-0.72 under hard noise) but cannot reject semantically equivalent alternatives, selecting +5.3 extras on average at n=20 and, in the worst cases, the entire menu.
 - **Implication for skill-library scaling**: as a library grows, the retriever surfaces increasingly similar candidates, so the router's decision budget is consumed by duplicate arbitration rather than relevance judgment. Guaranteed gold visibility is not sufficient; scaling requires deduplication/canonicalization of the library, richer skill metadata to break ties, or an explicit selection budget (e.g. cap k) at routing time.
 - **Cost scales linearly, value does not**: each hard distractor adds ~60 prompt tokens and negative accuracy value, so enlarging candidate menus past the point of retrieval precision is strictly wasteful.
-- **End-to-end, retrieval and routing bottlenecks multiply**: combining RQ3 full-library gold coverage@10 (0.345) with RQ5 routing exact match yields at best ~21% end-to-end exact skill routing, and ~2-4% under hard confusion — evidence that skill-library scaling must address both budgets, not either alone (Section 5.1).
+- **End-to-end, retrieval and routing bottlenecks multiply**: combining RQ3 full-library gold coverage@10 (0.345) with RQ5 routing exact match yields at best ~31% end-to-end exact skill routing (task-paired; ~21% under the independence product), and ~7-10% (task-paired; ~2-4% product) under hard confusion — evidence that skill-library scaling must address both budgets, not either alone (Section 5.1).
