@@ -266,6 +266,19 @@ Extended grid `{0,2,5,10,20,50}` raises the total to 957 calls.
 - **Question verified**: does menu *position*, independent of content, affect whether a gold skill is selected — a skill-routing analogue of the lost-in-the-middle effect? The hash-blinded menu order (Section 2) makes position exogenous, so this is a fair, unconfounded estimate.
 - **Significance**: if position matters, candidate ordering becomes a free design lever for skill routers. Pre-registered as **exploratory**: per-bin sample sizes are small, so results are treated as suggestive only.
 
+### 9.4 Report figures
+
+The script also renders six report figures (pure SVG, no plotting dependencies) into the same output directory:
+
+| Figure | Content |
+|---|---|
+| `failure_modes_stacked.svg` | Stacked outcome composition (correct/under/over/mixed/refusal/invalid) per (type, n) |
+| `pipeline_decomposition.svg` | Three-panel task-paired attribution: RQ3 retrieval gate, routing survival conditional on complete retrieval, and 100% stacked retrieval-failure/routing-failure/exact-success shares |
+| `precision_recall_vs_noise.svg` | Macro precision (solid) vs recall (dashed) curves, random vs hard |
+| `cost_accuracy_tradeoff.svg` | Mean prompt tokens vs macro F1 trajectories, points labeled by n |
+| `single_gold_accuracy.svg` | Single-gold subgroup correct-selection rate per (type, n) |
+| `position_bias.svg` | Gold selection rate by relative menu position bin (exploratory) |
+
 ### Running
 
 ```bash

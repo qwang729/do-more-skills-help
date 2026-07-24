@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="26" font-family="Arial" font-size="17" font-weight="700">Precision vs recall decomposition under distractor noise</text>
+<line x1="82" y1="46" x2="82" y2="384" stroke="#333"/>
+<line x1="82" y1="384" x2="650" y2="384" stroke="#333"/>
+<line x1="82" y1="384.00" x2="650" y2="384.00" stroke="#e5e5e5"/>
+<text x="74" y="388.00" text-anchor="end" font-family="Arial" font-size="12">0.00</text>
+<line x1="82" y1="299.50" x2="650" y2="299.50" stroke="#e5e5e5"/>
+<text x="74" y="303.50" text-anchor="end" font-family="Arial" font-size="12">0.25</text>
+<line x1="82" y1="215.00" x2="650" y2="215.00" stroke="#e5e5e5"/>
+<text x="74" y="219.00" text-anchor="end" font-family="Arial" font-size="12">0.50</text>
+<line x1="82" y1="130.50" x2="650" y2="130.50" stroke="#e5e5e5"/>
+<text x="74" y="134.50" text-anchor="end" font-family="Arial" font-size="12">0.75</text>
+<line x1="82" y1="46.00" x2="650" y2="46.00" stroke="#e5e5e5"/>
+<text x="74" y="50.00" text-anchor="end" font-family="Arial" font-size="12">1.00</text>
+<line x1="82.00" y1="384" x2="82.00" y2="390" stroke="#333"/>
+<text x="82.00" y="406" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+<line x1="136.10" y1="384" x2="136.10" y2="390" stroke="#333"/>
+<text x="136.10" y="406" text-anchor="middle" font-family="Arial" font-size="12">2</text>
+<line x1="217.24" y1="384" x2="217.24" y2="390" stroke="#333"/>
+<text x="217.24" y="406" text-anchor="middle" font-family="Arial" font-size="12">5</text>
+<line x1="352.48" y1="384" x2="352.48" y2="390" stroke="#333"/>
+<text x="352.48" y="406" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<line x1="622.95" y1="384" x2="622.95" y2="390" stroke="#333"/>
+<text x="622.95" y="406" text-anchor="middle" font-family="Arial" font-size="12">20</text>
+<polyline fill="none" stroke="#d62728" stroke-width="3" points="82.00,53.77 136.10,192.98 217.24,224.41 352.48,236.54 622.95,271.43"/>
+<circle cx="82.00" cy="53.77" r="4" fill="#d62728"/>
+<circle cx="136.10" cy="192.98" r="4" fill="#d62728"/>
+<circle cx="217.24" cy="224.41" r="4" fill="#d62728"/>
+<circle cx="352.48" cy="236.54" r="4" fill="#d62728"/>
+<circle cx="622.95" cy="271.43" r="4" fill="#d62728"/>
+<polyline fill="none" stroke="#d62728" stroke-width="3" stroke-dasharray="7,5" points="82.00,129.94 136.10,151.30 217.24,144.18 352.48,140.17 622.95,162.12"/>
+<circle cx="82.00" cy="129.94" r="4" fill="#d62728"/>
+<circle cx="136.10" cy="151.30" r="4" fill="#d62728"/>
+<circle cx="217.24" cy="144.18" r="4" fill="#d62728"/>
+<circle cx="352.48" cy="140.17" r="4" fill="#d62728"/>
+<circle cx="622.95" cy="162.12" r="4" fill="#d62728"/>
+<polyline fill="none" stroke="#1f77b4" stroke-width="3" points="82.00,53.77 136.10,49.89 217.24,49.89 352.48,48.91 622.95,53.45"/>
+<circle cx="82.00" cy="53.77" r="4" fill="#1f77b4"/>
+<circle cx="136.10" cy="49.89" r="4" fill="#1f77b4"/>
+<circle cx="217.24" cy="49.89" r="4" fill="#1f77b4"/>
+<circle cx="352.48" cy="48.91" r="4" fill="#1f77b4"/>
+<circle cx="622.95" cy="53.45" r="4" fill="#1f77b4"/>
+<polyline fill="none" stroke="#1f77b4" stroke-width="3" stroke-dasharray="7,5" points="82.00,129.94 136.10,110.15 217.24,106.55 352.48,101.24 622.95,99.04"/>
+<circle cx="82.00" cy="129.94" r="4" fill="#1f77b4"/>
+<circle cx="136.10" cy="110.15" r="4" fill="#1f77b4"/>
+<circle cx="217.24" cy="106.55" r="4" fill="#1f77b4"/>
+<circle cx="352.48" cy="101.24" r="4" fill="#1f77b4"/>
+<circle cx="622.95" cy="99.04" r="4" fill="#1f77b4"/>
+<line x1="672" y1="60" x2="698" y2="60" stroke="#d62728" stroke-width="3"/>
+<text x="706" y="64" font-family="Arial" font-size="13">hard precision</text>
+<line x1="672" y1="84" x2="698" y2="84" stroke="#d62728" stroke-width="3" stroke-dasharray="7,5"/>
+<text x="706" y="88" font-family="Arial" font-size="13">hard recall</text>
+<line x1="672" y1="108" x2="698" y2="108" stroke="#1f77b4" stroke-width="3"/>
+<text x="706" y="112" font-family="Arial" font-size="13">random precision</text>
+<line x1="672" y1="132" x2="698" y2="132" stroke="#1f77b4" stroke-width="3" stroke-dasharray="7,5"/>
+<text x="706" y="136" font-family="Arial" font-size="13">random recall</text>
+<text x="366.00" y="446" text-anchor="middle" font-family="Arial" font-size="13">Distractor count (noise_count)</text>
+<text x="18" y="215.00" transform="rotate(-90 18,215.00)" text-anchor="middle" font-family="Arial" font-size="13">Macro rate</text>
+</svg>
